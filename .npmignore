@@ -1,0 +1,34 @@
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# 要忽略目录和指定文件
+.vscode
+src/
+packages/
+public/
+vite.config.js
+*.map
+*.html
+babel.config.js
+.prettierrc
+.eslintrc.js
+

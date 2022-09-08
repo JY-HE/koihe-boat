@@ -1,20 +1,45 @@
 {
-  "name": "zigbee-plus",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "vue": "^3.2.37"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^3.1.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.1.0",
-    "vue-tsc": "^0.40.4"
-  }
+    "name": "zigbee-plus",
+    "private": false,
+    "version": "1.0.0",
+    "type": "module",
+    "main": "lib/zigbee-plus.umd.cjs",
+    "exports": {
+        "./lib/style.css": "./lib/style.css",
+        ".": {
+            "require": "./lib/zigbee-ui.umd.cjs"
+        }
+    },
+    "author": {
+        "name": "HeJiaYong"
+    },
+    "keywords": [
+        "zigbee-ui-plus",
+        "zigbee",
+        "vue3-zigbee-ui",
+        "vue-zigbee-ui",
+        "zigbee-plus"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "patch": "npm version patch",
+        "minor": "npm version minor",
+        "major": "npm version major",
+        "publish": "npm publish"
+    },
+    "dependencies": {
+        "@types/node": "^18.7.16",
+        "node-sass": "7.0.1",
+        "sass": "1.54.8",
+        "sass-loader": "13.0.2",
+        "vue": "^3.2.37"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^3.1.0",
+        "typescript": "^4.6.4",
+        "vite": "^3.1.0",
+        "vue-tsc": "^0.40.4"
+    }
 }

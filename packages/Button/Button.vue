@@ -69,7 +69,7 @@ export default defineComponent({
         },
     },
     setup(_, { emit }) {
-        const handleClick = (event: any) => {
+        const handleClick = (event: Event) => {
             emit('click', event);
         };
 

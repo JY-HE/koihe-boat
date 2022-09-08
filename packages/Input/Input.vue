@@ -79,8 +79,8 @@ export default defineComponent({
         const showSuffix = computed(() => props.clearable || props.showPassword);
 
         // 在 Input 值改变时触发
-        const onInput = (event: any) => {
-            emit('update:modelValue', event.target.value);
+        const onInput = (event: Event) => {
+            emit('update:modelValue', (event.target as HTMLInputElement).value);
         };
         // 清空输入框
         const clear = () => {
@@ -91,16 +91,16 @@ export default defineComponent({
             passwordVisible.value = !passwordVisible.value;
         };
         // 在 Input 失去焦点时触发
-        const onBlur = (event: any) => {
-            emit('onblur', event.target.value);
+        const onBlur = (event: Event) => {
+            emit('onblur', (event.target as HTMLInputElement).value);
         };
         // 在 Input 获得焦点时触发
-        const onFocus = (event: any) => {
-            emit('onfocus', event.target.value);
+        const onFocus = (event: Event) => {
+            emit('onfocus', (event.target as HTMLInputElement).value);
         };
         // 用户按下回车时触发
-        const keyup = (event: any) => {
-            emit('change', event.target.value);
+        const keyup = (event: Event) => {
+            emit('change', (event.target as HTMLInputElement).value);
         };
 
         return {

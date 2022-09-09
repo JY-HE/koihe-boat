@@ -24,7 +24,7 @@ const change = (val: String | Number) => {
                 <zb-button type="success" plain>成功</zb-button>
             </template>
         </zb-dialog>
-        <!-- <zb-input v-model="inputValue" placeholder="请输入信息" @onfocus="change"></zb-input> -->
+        <!-- <zb-input v-model="inputValue" placeholder="请输入信息" @change="change"></zb-input> -->
     </div>
 </template>
 

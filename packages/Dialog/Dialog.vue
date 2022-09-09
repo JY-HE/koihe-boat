@@ -102,7 +102,7 @@ export default defineComponent({
 
         onUpdated(() => {
             if (props.appendToBody && props.modelValue) {
-                document.querySelector('body')?.appendChild(ZbDialogRef.value);
+                document.querySelector('body')?.appendChild(ZbDialogRef?.value);
             }
         });
 

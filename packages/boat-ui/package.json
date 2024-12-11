@@ -1,0 +1,85 @@
+{
+    "name": "@koihe/boat-ui",
+    "version": "1.0.0",
+    "description": "Front-end UI component library for Vue3",
+    "main": "dist/lib/index.js",
+    "module": "dist/es/index.mjs",
+    "types": "dist/es/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/es/index.d.ts",
+            "import": "./dist/es/index.mjs",
+            "require": "./dist/lib/index.mjs"
+        },
+        "./es": {
+            "types": "./dist/es/index.d.ts",
+            "import": "./dist/es/index.mjs"
+        },
+        "./lib": {
+            "types": "./dist/lib/index.d.ts",
+            "require": "./dist/lib/index.js"
+        },
+        "./es/*.mjs": {
+            "types": "./dist/es/*.d.ts",
+            "import": "./dist/es/*.mjs"
+        },
+        "./es/*": {
+            "types": [
+                "./dist/lib/*.d.ts",
+                "./dist/lib/*/index.d.ts"
+            ],
+            "import": "./dist/es/*"
+        },
+        "./lib/*": {
+            "types": [
+                "./dist/lib/*.d.ts",
+                "./dist/lib/*/index.d.ts"
+            ],
+            "require": "./dist/lib/*.js"
+        },
+        "./styles/*": {
+            "import": "./dist/es/styles/*"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "keywords": [
+        "@koihe",
+        "koihe",
+        "boat-ui",
+        "vue3组件库"
+    ],
+    "author": "koihe",
+    "license": "MIT",
+    "peerDependencies": {
+        "vue": "^3.0.0"
+    },
+    "dependencies": {
+        "@koihe/boat-utils": "workspace:*",
+        "vue": "^3.2.37"
+    },
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^11.1.6",
+        "@types/node": "^18.7.16",
+        "@types/rollup": "^0.54.0",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "cpy": "^11.1.0",
+        "fast-glob": "^3.3.2",
+        "rollup": "^3.29.4",
+        "rollup-plugin-scss": "^4.0.0",
+        "sass": "1.54.8",
+        "sass-loader": "13.0.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^4.6.4",
+        "vite": "^3.2.11",
+        "vite-plugin-css": "^1.0.4",
+        "vite-plugin-dts": "^4.3.0",
+        "vitest": "^2.1.8",
+        "vue-tsc": "^0.40.4"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "lib": ["DOM", "ESNext"],
+        "emitDeclarationOnly": true,
+        "outDir": "./dist",
+        "skipLibCheck": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "declaration": true, // 生成类型声明文件
+        "declarationDir": "./dist", // 将类型声明文件输出到对应目录
+        "allowSyntheticDefaultImports": true, // 允许默认导入
+        "jsx": "preserve",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["components/*"]
+        }
+    },
+    "include": ["index.ts", "components/**/*"],
+    "exclude": ["node_modules", "dist"]
+}

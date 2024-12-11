@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "ES2015", // 使用现代的目标 ECMAScript 版本
+        "module": "ESNext", // 输出为 ES 模块
+        "moduleResolution": "Node", // 使用 Node 模块解析策略
+        "resolveJsonModule": true,
+        "jsx": "preserve", // 保留 JSX 语法
+        "strict": true, // 启用严格模式
+        "esModuleInterop": true, // 启用 ES 模块兼容性
+        "skipLibCheck": true, // 跳过库文件检查
+        "lib": ["esnext", "dom"], // 包括所有的 ES 模块和 DOM 库
+        "rootDirs": ["."], // 设置源代码目录
+        "outDir": "./dist", // 设置 JavaScript 文件的输出目录
+        "declaration": true, // 生成类型声明文件
+        "declarationMap": false, // 生成声明文件映射
+        "allowSyntheticDefaultImports": true, // 允许默认导入
+        "baseUrl": ".", // 基础路径
+        "paths": {
+            "@/*": ["src/*"] // 设置路径别名
+        }
+    },
+    "include": ["src/**/*", "index.ts"],
+    "exclude": ["node_modules", "dist"]
+}

@@ -1,16 +1,64 @@
-# Vue 3 + TypeScript + Vite
+<h1 align="center">@koihe/boat</h1>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">集合前端工具库以及适用于 Vue3 的 UI 组件库</p>
 
-## Recommended IDE Setup
+<p align="center">
+<a href="https://www.npmjs.com/package/boat-admin-cli" target="__blank"><img src="https://img.shields.io/npm/v/boat-admin-cli?label=version" alt="NPM version"></a>
+</p>
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+---
 
-## Type Support For `.vue` Imports in TS
+## @koihe/boat-ui
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+### 特性
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+- 🚀 性能极佳，组件平均体积小于 1KB（min+gzip）
+- 🚀 20+ 个高质量组件
+- 🚀 零外部依赖，不依赖三方 npm 包
+- 💪 使用 TypeScript 编写，提供完整的类型定义
+- 📖 提供丰富的文档和组件示例
+- 🍭 支持 Vue 3
+- 🍭 支持主题定制，内置 700+ 个主题变量
+- 🍭 支持按需引入和 Tree Shaking
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+### 安装
+
+在现有项目中使用 `@koihe/boat-ui` 时，可以通过 `npm`、`yarn` 或 `pnpm` 进行安装：
+
+```bash
+# 通过 npm 安装
+npm i @koihe/boat-ui
+
+# 通过 yarn 安装
+yarn add @koihe/boat-ui
+
+# 通过 pnpm 安装
+pnpm add @koihe/boat-ui
+```
+
+### 快速上手
+
+#### 全量引入
+
+```bash
+import { createApp } from 'vue';
+import App from './App.vue';
+# 引入组件样式文件
+import '@koihe/boat-ui/styles/index.css';
+# 引入组件
+import BoatUI from '@koihe/boat-ui';
+
+const app = createApp(App);
+
+app.use(BoatUI).mount('#app');
+```
+
+#### 按需引入
+```bash
+<script lang="ts" setup>
+# 引入需要的组件
+import { BoatInput } from '@koihe/boat-ui';
+# 引入组件样式文件
+import '@koihe/boat-ui/es/input/style.css';
+</script>
+```

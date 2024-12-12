@@ -40,12 +40,12 @@ pnpm add @koihe/boat-ui
 
 #### 全量引入
 
-```bash
+```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-# 引入组件样式文件
+// 引入组件样式文件
 import '@koihe/boat-ui/styles/index.css';
-# 引入组件
+// 引入组件
 import BoatUI from '@koihe/boat-ui';
 
 const app = createApp(App);
@@ -54,11 +54,12 @@ app.use(BoatUI).mount('#app');
 ```
 
 #### 按需引入
-```bash
+
+```vue
 <script lang="ts" setup>
-# 引入需要的组件
+// 引入需要的组件
 import { BoatInput } from '@koihe/boat-ui';
-# 引入组件样式文件
+// 引入组件样式文件
 import '@koihe/boat-ui/es/input/style.css';
 </script>
 ```

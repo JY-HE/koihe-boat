@@ -4,6 +4,10 @@
     "description": "Front-end UI component library for Vue3",
     "private": false,
     "author": "koihe",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
     "main": "lib/index.js",
     "module": "es/index.mjs",
     "types": "es/index.d.ts",

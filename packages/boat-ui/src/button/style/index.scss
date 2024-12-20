@@ -1,4 +1,4 @@
-.zb-button {
+.boat-button {
     display: inline-block;
     line-height: 1;
     white-space: nowrap;
@@ -57,7 +57,7 @@
 }
 
 // 主要按钮
-.zb-button-primary {
+.boat-button-primary {
     color: #fff;
     background-color: #409eff;
     border-color: #409eff;
@@ -84,7 +84,7 @@
 }
 
 // 成功按钮
-.zb-button-success {
+.boat-button-success {
     color: #fff;
     background-color: #67c23a;
     border-color: #67c23a;
@@ -110,7 +110,7 @@
 }
 
 // 信息按钮
-.zb-button-info {
+.boat-button-info {
     color: #fff;
     background-color: #909399;
     border-color: #909399;
@@ -136,7 +136,7 @@
 }
 
 // 警告按钮
-.zb-button-warning {
+.boat-button-warning {
     color: #fff;
     background-color: #e6a23c;
     border-color: #e6a23c;
@@ -162,7 +162,7 @@
 }
 
 // 危险按钮
-.zb-button-danger {
+.boat-button-danger {
     color: #fff;
     background-color: #f56c6c;
     border-color: #f56c6c;
@@ -188,7 +188,7 @@
 }
 
 // 文本按钮
-.zb-button-text {
+.boat-button-text {
     color: #606266;
     border-color: transparent;
     background: transparent;
@@ -208,6 +208,6 @@
 }
 
 // icon样式
-.zb-button [class*='zb-icon-'] + span {
+.boat-button [class*='boat-icon-'] + span {
     margin-left: 5px;
 }

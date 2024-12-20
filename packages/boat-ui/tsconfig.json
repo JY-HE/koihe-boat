@@ -1,26 +1,40 @@
 {
     "compilerOptions": {
-        "target": "ES2015",
         "module": "ESNext",
         "moduleResolution": "Node",
-        "lib": ["DOM", "ESNext"],
-        "emitDeclarationOnly": true,
-        "outDir": "./dist",
-        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "useDefineForClassFields": true,
+
+        // Required in Vue projects
+        // "jsx": "preserve",
+
+        // `"noImplicitThis": true` is part of `strict`
+        // Added again here in case some users decide to disable `strict`.
+        // This enables stricter inference for data properties on `this`.
+        "noImplicitThis": true,
         "strict": true,
+
+        // <https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#verbatimmodulesyntax>
+        // Any imports or exports without a type modifier are left around. This is important for `<script setup>`.
+        // Anything that uses the type modifier is dropped entirely.
+        "verbatimModuleSyntax": true,
+
+        // A few notes:
+        // - Vue 3 supports ES2016+
+        // - For Vite, the actual compilation target is determined by the
+        //   `build.target` option in the Vite config.
+        //   So don't change the `target` field here. It has to be
+        //   at least `ES2020` for dynamic `import()`s and `import.meta` to work correctly.
+        // - If you are not using Vite, feel free to override the `target` field.
+        "target": "ESNext",
+
+        // Recommended
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "declaration": true, // 生成类型声明文件
-        "declarationDir": "./dist", // 将类型声明文件输出到对应目录
-        "allowSyntheticDefaultImports": true, // 允许默认导入
-        "jsx": "preserve",
-        "baseUrl": "./",
-        "paths": {
-            "@/*": ["components/*"]
-        }
-    },
-    "include": ["index.ts", "components/**/*"],
-    "exclude": ["node_modules", "dist"]
+        // See <https://github.com/vuejs/vue-cli/pull/5688>
+        "skipLibCheck": true,
+
+        // Contains the specified types
+        "types": ["unplugin-vue-define-options"]
+    }
 }

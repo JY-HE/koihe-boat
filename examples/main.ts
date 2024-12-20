@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import '@koihe/boat-ui/styles/index.css';
+// import '@koihe/boat-ui/dist/index.css';
 // import BoatUI from '@koihe/boat-ui';
 
 import { testFun } from '@koihe/boat-utils';

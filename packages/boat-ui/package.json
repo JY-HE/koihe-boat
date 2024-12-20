@@ -2,51 +2,20 @@
     "name": "@koihe/boat-ui",
     "version": "1.0.0",
     "description": "Front-end UI component library for Vue3",
-    "main": "dist/lib/index.js",
-    "module": "dist/es/index.mjs",
-    "types": "dist/es/index.d.ts",
-    "exports": {
-        ".": {
-            "types": "./dist/es/index.d.ts",
-            "import": "./dist/es/index.mjs",
-            "require": "./dist/lib/index.mjs"
-        },
-        "./es": {
-            "types": "./dist/es/index.d.ts",
-            "import": "./dist/es/index.mjs"
-        },
-        "./lib": {
-            "types": "./dist/lib/index.d.ts",
-            "require": "./dist/lib/index.js"
-        },
-        "./es/*.mjs": {
-            "types": "./dist/es/*.d.ts",
-            "import": "./dist/es/*.mjs"
-        },
-        "./es/*": {
-            "types": [
-                "./dist/lib/*.d.ts",
-                "./dist/lib/*/index.d.ts"
-            ],
-            "import": "./dist/es/*"
-        },
-        "./lib/*": {
-            "types": [
-                "./dist/lib/*.d.ts",
-                "./dist/lib/*/index.d.ts"
-            ],
-            "require": "./dist/lib/*.js"
-        },
-        "./styles/*": {
-            "import": "./dist/es/styles/*"
-        }
-    },
+    "main": "lib/index.js",
+    "module": "es/index.mjs",
+    "types": "es/index.d.ts",
+    "unpkg": "dist/index.min.js",
+    "jsdelivr": "dist/index.min.js",
     "files": [
-        "dist"
+        "es",
+        "lib",
+        "dist",
+        "global.d.ts"
     ],
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "gulp --require ./node_modules/@esbuild-kit/cjs-loader -f scripts/build/index.ts"
     },
     "keywords": [
         "@koihe",
@@ -57,29 +26,49 @@
     "author": "koihe",
     "license": "MIT",
     "peerDependencies": {
-        "vue": "^3.0.0"
-    },
-    "dependencies": {
-        "@koihe/boat-utils": "workspace:*",
-        "vue": "^3.2.37"
+        "vue": "^3.2.0"
     },
     "devDependencies": {
+        "@esbuild-kit/cjs-loader": "^2.4.4",
+        "@rollup/plugin-node-resolve": "^15.3.0",
         "@rollup/plugin-typescript": "^11.1.6",
+        "@types/fs-extra": "^11.0.4",
+        "@types/gulp": "^4.0.17",
+        "@types/gulp-autoprefixer": "^0.0.37",
+        "@types/gulp-clean-css": "^4.3.4",
+        "@types/gulp-sass": "^5.0.4",
         "@types/node": "^18.7.16",
         "@types/rollup": "^0.54.0",
         "@vitejs/plugin-vue": "^5.2.1",
-        "cpy": "^11.1.0",
+        "@vitejs/plugin-vue-jsx": "^4.1.1",
+        "esbuild": "^0.24.0",
+        "execa": "8.0.1",
         "fast-glob": "^3.3.2",
-        "rollup": "^3.29.4",
+        "fs-extra": "^11.2.0",
+        "gulp": "^5.0.0",
+        "gulp-autoprefixer": "^9.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-sass": "^6.0.0",
+        "rollup": "^3.29.5",
+        "rollup-plugin-esbuild": "^6.1.1",
         "rollup-plugin-scss": "^4.0.0",
         "sass": "1.54.8",
         "sass-loader": "13.0.2",
         "ts-node": "^10.9.2",
         "typescript": "^4.6.4",
+        "unplugin-vue-components": "^0.28.0",
+        "unplugin-vue-define-options": "^1.5.3",
         "vite": "^3.2.11",
         "vite-plugin-css": "^1.0.4",
         "vite-plugin-dts": "^4.3.0",
         "vitest": "^2.1.8",
         "vue-tsc": "^0.40.4"
-    }
+    },
+    "sideEffects": [
+        "dist/*",
+        "es/**/*.css",
+        "lib/**/*.scss",
+        "es/**/style/*",
+        "lib/**/style/*"
+    ]
 }

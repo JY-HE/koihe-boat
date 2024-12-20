@@ -17,6 +17,7 @@
     "dependencies": {
         "@koihe/boat-ui": "workspace:^",
         "@koihe/boat-utils": "workspace:^",
+        "@vue/runtime-core": "^3.5.13",
         "vue": "^3.2.37"
     },
     "devDependencies": {
@@ -25,7 +26,6 @@
         "@types/node": "^18.7.16",
         "@types/rollup": "^0.54.0",
         "@vitejs/plugin-vue": "^5.2.1",
-        "cpy": "^11.1.0",
         "fast-glob": "^3.3.2",
         "rollup": "^3.29.4",
         "rollup-plugin-scss": "^4.0.0",

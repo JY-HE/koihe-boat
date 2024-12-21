@@ -48,6 +48,7 @@
         "@types/rollup": "^0.54.0",
         "@vitejs/plugin-vue": "^5.2.1",
         "@vitejs/plugin-vue-jsx": "^4.1.1",
+        "components-helper": "^2.2.0",
         "esbuild": "^0.24.0",
         "execa": "8.0.1",
         "fast-glob": "^3.3.2",
@@ -77,5 +78,10 @@
         "lib/**/*.scss",
         "es/**/style/*",
         "lib/**/style/*"
-    ]
+    ],
+    "vetur": {
+        "tags": "dist/tags.json",
+        "attributes": "dist/attributes.json"
+    },
+    "web-types": "dist/web-types.json"
 }

@@ -1,4 +1,5 @@
-import type { PropType, ExtractPropTypes } from 'vue';
+import { makeBooleanProp, makeEnumProp, makeStringProp } from '../../utils/makeProps';
+import type { ExtractPropTypes } from 'vue';
 
 /**
  * 定义按钮的类型选项
@@ -12,57 +13,34 @@ export const boatButtonProps = {
     /**
      * 按钮类型
      */
-    type: {
-        type: String as PropType<ButtonType>,
-        default: 'default',
-        validator: (value: ButtonType) => {
-            return ['default', 'primary', 'success', 'danger', 'warning', 'info', 'text'].includes(
-                value
-            );
-        },
-    },
+    type: makeEnumProp<ButtonType>(
+        ['default', 'primary', 'success', 'danger', 'warning', 'info', 'text'],
+        'default'
+    ),
     /**
      * 是否为朴素按钮
      */
-    plain: {
-        type: Boolean,
-        default: false,
-    },
+    plain: makeBooleanProp(false),
     /**
      * 是否为圆角按钮
      */
-    round: {
-        type: Boolean,
-        default: false,
-    },
+    round: makeBooleanProp(false),
     /**
      * 是否为圆形按钮
      */
-    circle: {
-        type: Boolean,
-        default: false,
-    },
+    circle: makeBooleanProp(false),
     /**
      * 按钮图标
      */
-    icon: {
-        type: String,
-        default: '',
-    },
+    icon: makeStringProp(''),
     /**
      * 是否禁用按钮
      */
-    disabled: {
-        type: Boolean,
-        default: false,
-    },
+    disabled: makeBooleanProp(false),
     /**
      * 是否为拟态按钮
      */
-    mimicry: {
-        type: Boolean,
-        default: false,
-    },
+    mimicry: makeBooleanProp(false),
 };
 
 /**

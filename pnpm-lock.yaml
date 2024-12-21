@@ -55,7 +55,7 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@18.19.67)(typescript@4.9.5)
       typescript:
-        specifier: ^4.6.4
+        specifier: ^4.9.5
         version: 4.9.5
       vite:
         specifier: ^3.2.11
@@ -88,11 +88,8 @@ importers:
 
   packages/boat-ui:
     dependencies:
-      '@koihe/boat-utils':
-        specifier: workspace:*
-        version: link:../boat-utils
       vue:
-        specifier: ^3.2.37
+        specifier: ^3.2.0
         version: 3.5.13(typescript@4.9.5)
     devDependencies:
       '@esbuild-kit/cjs-loader':
@@ -131,6 +128,9 @@ importers:
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.1.1
         version: 4.1.1(vite@3.2.11(@types/node@18.19.67)(sass@1.54.8)(terser@5.37.0))(vue@3.5.13(typescript@4.9.5))
+      components-helper:
+        specifier: ^2.2.0
+        version: 2.2.0
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -1521,6 +1521,10 @@ packages:
 
   compare-versions@6.1.1:
     resolution: {integrity: sha512-4hm4VPpIecmlg59CHXnRDnqGplJFrbLG4aFEl5vl6cK1u76ws3LLvX7ikFnTDl5vo39sjWD6AaDPYodJp/NNHg==}
+
+  components-helper@2.2.0:
+    resolution: {integrity: sha512-Qm0/BWAM94IdnLrHM7HG2PMBBX7HERmg6nhCdiCJ968HP4iLV05P8H9usnOuuDHH1LHkgttMAheRNSnsEWmAUQ==}
+    engines: {node: '>=16.0.0'}
 
   computeds@0.0.1:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
@@ -4224,6 +4228,10 @@ snapshots:
   commander@2.20.3: {}
 
   compare-versions@6.1.1: {}
+
+  components-helper@2.2.0:
+    dependencies:
+      fast-glob: 3.3.2
 
   computeds@0.0.1: {}
 

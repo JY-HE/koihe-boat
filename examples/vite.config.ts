@@ -9,6 +9,7 @@ export default defineConfig({
         vue(),
         Components({
             resolvers: [BoatUIResolver()], // 配置自动导入解析器,不需要再全局注册引入
+            dts: 'src/components.d.ts',
         }),
     ],
     root: resolve(__dirname, './'), // 设置根目录为 examples

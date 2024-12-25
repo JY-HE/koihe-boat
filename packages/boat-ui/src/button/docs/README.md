@@ -8,7 +8,7 @@ permalink: /src/button
 
 ## 基础用法
 
-使用 `type` / `plain`、`round`、`circle` 和 `mimicry` 来定义按钮的样式。
+使用 `type`、`plain`、`round`、`circle` 和 `mimicry` 来定义按钮的样式。
 
 <demo src="../__demos__/basic.vue"></demo>
 

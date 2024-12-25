@@ -21,11 +21,13 @@
         "vue": "^3.2.37"
     },
     "devDependencies": {
+        "@esbuild-kit/cjs-loader": "^2.4.4",
         "@rollup/plugin-typescript": "^11.1.6",
         "@types/less": "^3.0.7",
         "@types/node": "^18.7.16",
         "@types/rollup": "^0.54.0",
         "@vitejs/plugin-vue": "^5.2.1",
+        "esbuild": "^0.24.0",
         "fast-glob": "^3.3.2",
         "rollup": "^3.29.4",
         "rollup-plugin-scss": "^4.0.0",

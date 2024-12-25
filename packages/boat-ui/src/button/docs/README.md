@@ -24,7 +24,6 @@ permalink: /src/button
 | circle | 是否为圆形按钮 | boolean | - |  false    |
 | mimicry | 是否为拟态按钮 | boolean | - | false    |
 | disabled | 是否禁用按钮 | boolean | - | false    |
-| icon | 按钮图标 | string | - | -    |
 
 ### Events
 

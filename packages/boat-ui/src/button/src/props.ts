@@ -30,10 +30,6 @@ export const boatButtonProps = {
      */
     circle: makeBooleanProp(false),
     /**
-     * 按钮图标
-     */
-    icon: makeStringProp(''),
-    /**
      * 是否禁用按钮
      */
     disabled: makeBooleanProp(false),

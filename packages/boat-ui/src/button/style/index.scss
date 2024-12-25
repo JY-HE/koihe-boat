@@ -1,213 +1,199 @@
+/* 定义颜色变量 */
+$button-primary-color: #409eff;
+$button-success-color: #67c23a;
+$button-info-color: #909399;
+$button-warning-color: #e6a23c;
+$button-danger-color: #f56c6c;
+$button-text-color: #606266;
+$button-border-color: #dcdfe6;
+$button-hover-color: #409eff;
+$button-background-color: #ffffff;
+$button-focus-color: #c6e2ff;
+
+/* 公共按钮基础样式 */
 .boat-button {
     display: inline-block;
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
-    background: #ffffff;
-    border: 1px solid #dcdfe6;
-    color: #606266;
-    -webkit-appearance: none;
+    background: $button-background-color;
+    border: 1px solid $button-border-color;
+    color: $button-text-color;
     text-align: center;
     box-sizing: border-box;
     outline: none;
     margin: 0;
     transition: 0.1s;
     font-weight: 500;
-    //禁止元素的文字被选中
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 4px;
+    -webkit-appearance: none; /* 禁用Webkit浏览器的默认样式 */
+    -moz-appearance: none; /* 禁用Mozilla浏览器的默认样式 */
+    appearance: none; /* 标准属性，禁用所有浏览器的默认样式 */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; /* 标准属性，防止文本选中 */
+
     &:hover,
     &:focus {
-        color: #409eff;
-        border-color: #c6e2ff;
-        background-color: #ecf5ff;
+        color: $button-hover-color;
+        border-color: $button-focus-color;
+        background-color: lighten($button-focus-color, 40%);
     }
-    // 朴素按钮样式
-    &.is-plain {
-        &:hover,
-        &:focus {
-            background: #fff;
-            border-color: #489eff;
-            color: #409eff;
-        }
-    }
-    // 圆角按钮样式
-    &.is-round {
-        border-radius: 20px;
-        padding: 12px 23px;
-    }
-    // 圆按钮样式
-    &.is-circle {
-        border-radius: 50%;
-        padding: 12px;
-    }
-    // disabled属性
+
     &.is-disabled {
         cursor: not-allowed;
     }
-    // 拟态样式
+
+    /* Mimicry 样式 */
     &.is-mimicry {
         box-shadow: inset 3px 6px 10px #ccc, inset -3px -7px 10px #fff;
     }
 }
 
-// 主要按钮
+/* 按钮大小：圆角、圆形按钮 */
+.boat-button.is-round {
+    border-radius: 20px;
+    padding: 12px 23px;
+}
+
+.boat-button.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+}
+
+/* 主要按钮 */
 .boat-button-primary {
     color: #fff;
-    background-color: #409eff;
-    border-color: #409eff;
+    background-color: $button-primary-color;
+    border-color: $button-primary-color;
+
     &:hover,
     &:focus {
-        background: #66b1ff;
-        background-color: #66b1ff;
+        background: lighten($button-primary-color, 20%);
         color: #fff;
     }
-    // 朴素按钮样式
+
     &.is-plain {
-        color: #409eff;
-        background: #ecf5ff;
+        color: $button-primary-color;
+        background: lighten($button-primary-color, 60%);
         &:hover,
         &:focus {
-            background: #409eff;
-            border-color: #409eff;
+            background: $button-primary-color;
             color: #fff;
         }
     }
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #337ecc, inset -3px -7px 10px #4dbeff;
-    }
 }
 
-// 成功按钮
+/* 成功按钮 */
 .boat-button-success {
     color: #fff;
-    background-color: #67c23a;
-    border-color: #67c23a;
+    background-color: $button-success-color;
+    border-color: $button-success-color;
+
     &:hover,
     &:focus {
-        background: #85ce61;
-        background-color: #85ce61;
+        background: lighten($button-success-color, 20%);
         color: #fff;
     }
+
     &.is-plain {
-        color: #67c23a;
-        background: #c2e7b0;
+        color: $button-success-color;
+        background: lighten($button-success-color, 60%);
         &:hover,
         &:focus {
-            background: #67c23a;
-            border-color: #67c23a;
+            background: $button-success-color;
             color: #fff;
         }
     }
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #6aa54e, inset -3px -7px 10px #a0f774;
-    }
 }
 
-// 信息按钮
+/* 信息按钮 */
 .boat-button-info {
     color: #fff;
-    background-color: #909399;
-    border-color: #909399;
+    background-color: $button-info-color;
+    border-color: $button-info-color;
+
     &:hover,
     &:focus {
-        background: #a6a9ad;
-        background-color: #a6a9ad;
+        background: lighten($button-info-color, 20%);
         color: #fff;
     }
+
     &.is-plain {
-        color: #909399;
-        background: #d3d4d6;
+        color: $button-info-color;
+        background: lighten($button-info-color, 60%);
         &:hover,
         &:focus {
-            background: #909399;
-            border-color: #909399;
+            background: $button-info-color;
             color: #fff;
         }
     }
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #73767a, inset -3px -7px 10px #adb0b8;
-    }
 }
 
-// 警告按钮
+/* 警告按钮 */
 .boat-button-warning {
     color: #fff;
-    background-color: #e6a23c;
-    border-color: #e6a23c;
+    background-color: $button-warning-color;
+    border-color: $button-warning-color;
+
     &:hover,
     &:focus {
-        background: #ebb563;
-        background-color: #ebb563;
+        background: lighten($button-warning-color, 20%);
         color: #fff;
     }
+
     &.is-plain {
-        color: #e6a23c;
-        background: #f5dab1;
+        color: $button-warning-color;
+        background: lighten($button-warning-color, 60%);
         &:hover,
         &:focus {
-            background: #e6a23c;
-            border-color: #e6a23c;
+            background: $button-warning-color;
             color: #fff;
         }
     }
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #bc914f, inset -3px -7px 10px #ffd977;
-    }
 }
 
-// 危险按钮
+/* 危险按钮 */
 .boat-button-danger {
     color: #fff;
-    background-color: #f56c6c;
-    border-color: #f56c6c;
+    background-color: $button-danger-color;
+    border-color: $button-danger-color;
+
     &:hover,
     &:focus {
-        background: #f78989;
-        background-color: #f78989;
+        background: lighten($button-danger-color, 20%);
         color: #fff;
     }
+
     &.is-plain {
-        color: #f56c6c;
-        background: #fbc4c4;
+        color: $button-danger-color;
+        background: lighten($button-danger-color, 60%);
         &:hover,
         &:focus {
-            background: #f56c6c;
-            border-color: #f56c6c;
+            background: $button-danger-color;
             color: #fff;
         }
     }
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #c45656, inset -3px -7px 10px #ff8282;
-    }
 }
 
-// 文本按钮
+/* 文本按钮 */
 .boat-button-text {
-    color: #606266;
+    color: $button-text-color;
     border-color: transparent;
     background: transparent;
     padding: 0;
+
     &:hover,
     &:focus {
-        color: #409eff;
-        border-color: transparent;
+        color: $button-hover-color;
         background: transparent;
-        padding: 0;
     }
 
     &.is-disabled {
         cursor: not-allowed;
         color: #c0c4cc;
     }
-}
-
-// icon样式
-.boat-button [class*='boat-icon-'] + span {
-    margin-left: 5px;
 }

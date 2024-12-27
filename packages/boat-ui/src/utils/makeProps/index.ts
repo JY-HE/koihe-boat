@@ -39,3 +39,27 @@ export function makeEnumProp<T>(values: T[], defaultValue: T) {
         },
     };
 }
+
+/**
+ * 生成 Number 类型的 props
+ * @param defaultValue 数字的默认值，默认为 0
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeNumberProp(defaultValue = 0) {
+    return {
+        type: Number as PropType<number>,
+        default: defaultValue,
+    };
+}
+
+/**
+ * 生成 Object 类型的 props
+ * @param defaultValue 对象的默认值，默认为空对象
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeObjectProp<T>(defaultValue: T) {
+    return {
+        type: Object as PropType<T>,
+        default: defaultValue,
+    };
+}

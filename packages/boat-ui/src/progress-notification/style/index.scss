@@ -1,0 +1,64 @@
+.boat-progress-notification {
+    position: relative;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 320px;
+
+    &-header {
+        margin-bottom: 16px;
+    }
+
+    &-title {
+        font-weight: 600;
+        font-size: 15px;
+        color: #1f2329;
+    }
+
+    &-filename {
+        font-size: 13px;
+        color: #4e5969;
+        margin-bottom: 12px;
+        word-break: break-all;
+    }
+
+    &-progress-bar {
+        height: 6px;
+        background: #f2f3f5;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+
+    &-progress-inner {
+        height: 100%;
+        background: #165dff;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    &-success {
+        text-align: right;
+        color: #00b42a;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    &-error {
+        .boat-progress-notification-progress-inner {
+            background: #f53f3f;
+        }
+    }
+
+    &-success {
+        .boat-progress-notification-progress-inner {
+            background: #00b42a;
+        }
+    }
+}

@@ -4,11 +4,7 @@
         :class="[
             `boat-button-${type}`,
             {
-                'is-plain': plain,
-                'is-round': round,
-                'is-circle': circle,
                 'is-disabled': disabled,
-                'is-mimicry': mimicry,
             },
         ]"
         @click="handleClick"

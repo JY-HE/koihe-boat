@@ -1,33 +1,15 @@
-/* 定义颜色变量 */
-$button-primary-color: #409eff;
-$button-success-color: #67c23a;
-$button-info-color: #909399;
-$button-warning-color: #e6a23c;
-$button-danger-color: #f56c6c;
-$button-text-color: #606266;
-$button-border-color: #dcdfe6;
-$button-hover-color: #409eff;
-$button-background-color: #ffffff;
-$button-focus-color: #c6e2ff;
-
-/* 公共按钮基础样式 */
 .boat-button {
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    background: $button-background-color;
-    border: 1px solid $button-border-color;
-    color: $button-text-color;
-    text-align: center;
+    font-family: 'Microsoft YaHei UI';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
     box-sizing: border-box;
     outline: none;
-    margin: 0;
-    transition: 0.1s;
-    font-weight: 500;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.3s;
     -webkit-appearance: none; /* 禁用Webkit浏览器的默认样式 */
     -moz-appearance: none; /* 禁用Mozilla浏览器的默认样式 */
     appearance: none; /* 标准属性，禁用所有浏览器的默认样式 */
@@ -36,164 +18,142 @@ $button-focus-color: #c6e2ff;
     -ms-user-select: none;
     user-select: none; /* 标准属性，防止文本选中 */
 
-    &:hover,
-    &:focus {
-        color: $button-hover-color;
-        border-color: $button-focus-color;
-        background-color: lighten($button-focus-color, 40%);
-    }
-
     &.is-disabled {
         cursor: not-allowed;
     }
+}
 
-    /* Mimicry 样式 */
-    &.is-mimicry {
-        box-shadow: inset 3px 6px 10px #ccc, inset -3px -7px 10px #fff;
+/* 默认按钮 */
+.boat-button-default {
+    background: rgba(var(--boat-white-color), 1);
+    color: rgba(var(--boat-primary-color), 1);
+    border: 1px solid rgba(var(--boat-primary-color), var(--boat-hover-opacity));
+
+    &:hover,
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
     }
-}
 
-/* 按钮大小：圆角、圆形按钮 */
-.boat-button.is-round {
-    border-radius: 20px;
-    padding: 12px 23px;
-}
-
-.boat-button.is-circle {
-    border-radius: 50%;
-    padding: 12px;
+    &.is-disabled {
+        background: rgba(var(--boat-white-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
+    }
 }
 
 /* 主要按钮 */
 .boat-button-primary {
-    color: #fff;
-    background-color: $button-primary-color;
-    border-color: $button-primary-color;
+    background: rgba(var(--boat-primary-color), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
 
     &:hover,
-    &:focus {
-        background: lighten($button-primary-color, 20%);
-        color: #fff;
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
     }
 
-    &.is-plain {
-        color: $button-primary-color;
-        background: lighten($button-primary-color, 60%);
-        &:hover,
-        &:focus {
-            background: $button-primary-color;
-            color: #fff;
-        }
+    &.is-disabled {
+        background: rgba(var(--boat-primary-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
     }
 }
 
 /* 成功按钮 */
 .boat-button-success {
-    color: #fff;
-    background-color: $button-success-color;
-    border-color: $button-success-color;
+    background: rgba(var(--boat-success-color), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
 
     &:hover,
-    &:focus {
-        background: lighten($button-success-color, 20%);
-        color: #fff;
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-success-color), var(--boat-hover-opacity));
     }
 
-    &.is-plain {
-        color: $button-success-color;
-        background: lighten($button-success-color, 60%);
-        &:hover,
-        &:focus {
-            background: $button-success-color;
-            color: #fff;
-        }
+    &.is-disabled {
+        background: rgba(var(--boat-success-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-success-color), var(--boat-normal-opacity));
     }
 }
 
 /* 信息按钮 */
 .boat-button-info {
-    color: #fff;
-    background-color: $button-info-color;
-    border-color: $button-info-color;
+    background: rgba(var(--boat-info-color), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
 
     &:hover,
-    &:focus {
-        background: lighten($button-info-color, 20%);
-        color: #fff;
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-info-color), var(--boat-hover-opacity));
     }
 
-    &.is-plain {
-        color: $button-info-color;
-        background: lighten($button-info-color, 60%);
-        &:hover,
-        &:focus {
-            background: $button-info-color;
-            color: #fff;
-        }
+    &.is-disabled {
+        background: rgba(var(--boat-info-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-info-color), var(--boat-normal-opacity));
     }
 }
 
 /* 警告按钮 */
 .boat-button-warning {
-    color: #fff;
-    background-color: $button-warning-color;
-    border-color: $button-warning-color;
+    background: rgba(var(--boat-warning-color), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
 
     &:hover,
-    &:focus {
-        background: lighten($button-warning-color, 20%);
-        color: #fff;
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-warning-color), var(--boat-hover-opacity));
     }
 
-    &.is-plain {
-        color: $button-warning-color;
-        background: lighten($button-warning-color, 60%);
-        &:hover,
-        &:focus {
-            background: $button-warning-color;
-            color: #fff;
-        }
+    &.is-disabled {
+        background: rgba(var(--boat-warning-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-warning-color), var(--boat-normal-opacity));
     }
 }
 
 /* 危险按钮 */
 .boat-button-danger {
-    color: #fff;
-    background-color: $button-danger-color;
-    border-color: $button-danger-color;
+    background: rgba(var(--boat-danger-color), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
 
     &:hover,
-    &:focus {
-        background: lighten($button-danger-color, 20%);
-        color: #fff;
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-danger-color), var(--boat-hover-opacity));
     }
 
-    &.is-plain {
-        color: $button-danger-color;
-        background: lighten($button-danger-color, 60%);
-        &:hover,
-        &:focus {
-            background: $button-danger-color;
-            color: #fff;
-        }
+    &.is-disabled {
+        background: rgba(var(--boat-danger-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-danger-color), var(--boat-normal-opacity));
     }
 }
 
-/* 文本按钮 */
-.boat-button-text {
-    color: $button-text-color;
-    border-color: transparent;
+/* 链接按钮 */
+.boat-button-link {
     background: transparent;
-    padding: 0;
+    color: rgba(var(--boat-primary-color), 1);
+    border: none;
+    padding: 4px 8px;
 
-    &:hover,
-    &:focus {
-        color: $button-hover-color;
+    span:first-of-type {
+        text-decoration: underline;
+        text-decoration-color: rgba(var(--boat-primary-color), 1);
+        text-decoration-style: solid;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+    }
+
+    &:hover {
+        background: rgba(var(--boat-primary-color), 0.08);
+    }
+
+    &:active {
         background: transparent;
     }
 
     &.is-disabled {
-        cursor: not-allowed;
-        color: #c0c4cc;
+        color: rgba(var(--boat-info-color), 1);
+        text-decoration-color: rgba(var(--boat-info-color), 1);
+
+        &:hover {
+            background: transparent;
+        }
     }
 }

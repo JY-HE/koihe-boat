@@ -1,16 +1,10 @@
----
-permalink: /src/button
----
-
 # Button
 
 常用的操作按钮。
 
 ## 基础用法
 
-使用 `type`、`plain`、`round`、`circle` 和 `mimicry` 来定义按钮的样式。
-
-<demo src="../__demos__/basic.vue"></demo>
+使用 `type` 来定义按钮的样式。
 
 ## API
 
@@ -18,11 +12,7 @@ permalink: /src/button
 
 | 属性              | 说明                             | 类型 | 可选值           | 默认值        |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
-| type            | 按钮类型           | string   | primary / success / danger / warning / info / text        | default |
-| plain | 是否为朴素按钮       | boolean | - | false    |
-| round | 是否为圆角按钮   | boolean | - | false     |
-| circle | 是否为圆形按钮 | boolean | - |  false    |
-| mimicry | 是否为拟态按钮 | boolean | - | false    |
+| type            | 按钮类型           | string   | primary / success / danger / warning / info / link        | default |
 | disabled | 是否禁用按钮 | boolean | - | false    |
 
 ### Events

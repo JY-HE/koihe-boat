@@ -1,0 +1,22 @@
+/**
+ * 全局样式
+ */
+:root {
+    /* 基础白色 -> rgb(255,255,255) */
+    --boat-white-color: 255, 255, 255;
+    /* 基础灰色 -> rgb(144, 147, 153) */
+    --boat-info-color: 144, 147, 153;
+    /* 主要色 -> rgb(64, 158, 255) */
+    --boat-primary-color: 64, 158, 255;
+    /* 成功色 -> rgb(103, 194, 58) */
+    --boat-success-color: 103, 194, 58;
+    /* 警告色 -> rgb(230, 162, 60) */
+    --boat-warning-color: 230, 162, 60;
+    /* 错误色 -> rgb(245, 63, 63) */
+    --boat-danger-color: 245, 63, 63;
+
+    /* 悬浮或聚焦透明度 */
+    --boat-hover-opacity: 0.26;
+    /* 普通透明度 */
+    --boat-normal-opacity: 0.46;
+}

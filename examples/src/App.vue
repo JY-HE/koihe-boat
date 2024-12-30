@@ -1,20 +1,21 @@
 <template>
     <div>
-        <!-- <boat-button type="primary" plain>primary</boat-button>
-        <boat-button type="danger" round>danger</boat-button>
-        <boat-button type="success" circle>success</boat-button>
-        <boat-button type="warning" mimicry>warning</boat-button>
-        <boat-button type="info" disabled>info</boat-button>
-        <boat-button type="text">text</boat-button> -->
+        <boat-button disabled>默认按钮</boat-button>
+        <boat-button type="primary" disabled>主要按钮</boat-button>
+        <boat-button type="danger" disabled>危险按钮</boat-button>
+        <boat-button type="success">成功按钮</boat-button>
+        <boat-button type="warning">警告按钮</boat-button>
+        <boat-button type="info">信息按钮</boat-button>
+        <boat-button type="link">这是个链接</boat-button>
 
-        <boat-progress-notification
+        <!-- <boat-progress-notification
             title="上传文件"
             :fileName="file.name"
             :progress="uploadProgress"
             :status="status"
             @retry="handleRetry"
             @cancel="handleCancel"
-        />
+        /> -->
     </div>
 </template>
 <script setup>

@@ -33,7 +33,20 @@ const buildScssModules = async () => {
         src(`${COMPILER_ROOT}/**/style/*.scss`)
             .pipe(sass.sync()) // 编译
             .pipe(autoprefixer({ cascade: false })) // 兼容
-            .pipe(cleanCSS()) // 压缩
+            .pipe(
+                cleanCSS({
+                    level: {
+                        2: {
+                            mergeSemantically: true, // 合并语义相同的选择器
+                            restructureRules: true, // 重组规则
+                            mergeMedia: true, // 合并媒体查询
+                            mergeNonAdjacentRules: true, // 合并非相邻规则
+                            mergeIntoShorthands: true, // 合并成简写形式
+                            overrideProperties: true, // 覆盖重复的属性
+                        },
+                    },
+                })
+            )
             .pipe(dest(OUTPUT_ESM))
             .pipe(dest(OUTPUT_CJS))
             .on('end', resolve);
@@ -50,7 +63,20 @@ const buildScssFull = async () => {
         src(`${COMPILER_ROOT}/*.scss`)
             .pipe(sass.sync())
             .pipe(autoprefixer({ cascade: false }))
-            .pipe(cleanCSS())
+            .pipe(
+                cleanCSS({
+                    level: {
+                        2: {
+                            mergeSemantically: true, // 合并语义相同的选择器
+                            restructureRules: true, // 重组规则
+                            mergeMedia: true, // 合并媒体查询
+                            mergeNonAdjacentRules: true, // 合并非相邻规则
+                            mergeIntoShorthands: true, // 合并成简写形式
+                            overrideProperties: true, // 覆盖重复的属性
+                        },
+                    },
+                })
+            )
             .pipe(dest(OUTPUT))
             .on('end', resolve);
     });

@@ -1,5 +1,6 @@
-import type { ComponentResolver, SideEffectsInfo } from 'unplugin-vue-components/types';
+import type { ComponentResolver } from 'unplugin-vue-components/types';
 import { kebabCase } from 'unplugin-vue-components';
+import { getAllDependencies } from './styleDependencies';
 
 /**
  * @description 是否服务端渲染
@@ -22,15 +23,17 @@ export interface BoatUIResolverOptions {
 }
 
 /**
- * @description 获取到副作用
+ * @description 已导入的样式集合
+ */
+const importedStyles = new Set<string>();
+
+/**
+ * @description 获取副作用
  * @param dirName 目录名称
- * @param options 配置
+ * @param options.importStyle 是否加载样式，默认加载
  * @returns
  */
-function getSideEffects(
-    dirName: string,
-    options: BoatUIResolverOptions
-): SideEffectsInfo | undefined {
+function getSideEffects(dirName: string, options: BoatUIResolverOptions): string | undefined {
     // 是否加载
     const { importStyle = true } = options;
     if (!importStyle || isSSR) return;
@@ -38,31 +41,57 @@ function getSideEffects(
     // 获取到副作用的路径
     if (importStyle === 'scss') {
         return `@koihe/boat-ui/${moduleType}/${dirName}/style/scss`;
-    } else {
-        return `@koihe/boat-ui/${moduleType}/${dirName}/style/index`;
     }
+    return `@koihe/boat-ui/${moduleType}/${dirName}/style/index`;
 }
 
 /**
- * 解析器, 应用于自动导入
- * @param options 解析器的参数配置
+ * @description 获取组件的样式依赖
+ * @param componentName 组件名称
+ * @returns 依赖的组件数组
+ */
+function getStyleDependencies(componentName: string): string[] {
+    return getAllDependencies(componentName);
+}
+
+/**
+ * @description 解析器, 应用于自动导入
+ * @param options.importStyle 是否加载样式，默认加载
  * @returns
  */
 export function BoatUIResolver(options: BoatUIResolverOptions = {}): ComponentResolver {
     return {
-        type: 'component', // 组件类型
+        type: 'component',
         resolve: (name: string) => {
-            // 判断解析的组件名称是不是当前组件库的
             if (name.startsWith('Boat')) {
                 // 获取到组件目录名称 BoatButton -> Button
                 const partialName = name.slice(4);
+                const componentName = kebabCase(partialName);
+
+                // 收集所有需要导入的样式
+                const sideEffects: string[] = [];
+
+                // 先处理依赖组件的样式，确保依赖先导入
+                const dependencies = getStyleDependencies(componentName);
+                dependencies.forEach(dep => {
+                    const depStyle = getSideEffects(dep, options);
+                    if (depStyle && !importedStyles.has(depStyle)) {
+                        sideEffects.push(depStyle);
+                        importedStyles.add(depStyle);
+                    }
+                });
+
+                // 再处理组件自身的样式
+                const mainStyle = getSideEffects(componentName, options);
+                if (mainStyle && !importedStyles.has(mainStyle)) {
+                    sideEffects.push(mainStyle);
+                    importedStyles.add(mainStyle);
+                }
+
                 return {
-                    // 组件名称
                     name: name,
-                    // 从哪个路径导入，es/lib
                     from: `@koihe/boat-ui/${moduleType}`,
-                    // 根据组件名称获取到对应的 css 导入路径。BoatButton => es/button/style/index
-                    sideEffects: getSideEffects(kebabCase(partialName), options),
+                    sideEffects: sideEffects.length ? sideEffects : undefined,
                 };
             }
         },

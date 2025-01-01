@@ -36,5 +36,6 @@
 
         // Contains the specified types
         "types": ["unplugin-vue-define-options"]
-    }
+    },
+    "include": ["src/**/*.ts"]
 }

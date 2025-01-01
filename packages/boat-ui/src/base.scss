@@ -19,4 +19,15 @@
     --boat-hover-opacity: 0.26;
     /* 普通透明度 */
     --boat-normal-opacity: 0.46;
+    /* 深度透明度 */
+    --boat-deep-opacity: 0.12;
+}
+
+.boat-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    font-size: 16px;
 }

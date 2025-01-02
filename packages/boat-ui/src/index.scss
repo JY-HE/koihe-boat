@@ -1,3 +1,8 @@
+/* 引入基础样式 */
 @import './base.scss';
+/* 引入按钮组件样式 */
 @import './button/style/index.scss';
+/* 引入通知组件样式 */
+@import './notification/style/index.scss';
+/* 引入进度通知组件样式 */
 @import './progress-notification/style/index.scss';

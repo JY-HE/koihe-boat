@@ -1,11 +1,12 @@
-// 从 vue 中导入 App 类型
 import type { App } from 'vue';
-// 导入 BoatButton 组件
+import './iconfont.js';
+import { BoatIcon } from './icon';
 import { BoatButton } from './button';
+import { BoatNotification } from './notification';
 import { BoatProgressNotification } from './progress-notification';
 
 // 定义需要注册的组件数组
-const components = [BoatButton, BoatProgressNotification];
+const components = [BoatIcon, BoatButton, BoatNotification, BoatProgressNotification];
 
 /**
  * 提供 install 方法用于批量注册组件
@@ -31,6 +32,11 @@ export default {
     install,
 };
 
-// 导出 button 目录下的所有内容，使外部可以直接访问
+// 导出组件目录下的所有内容，使外部可以直接访问
+export * from './icon';
 export * from './button';
+export * from './notification';
 export * from './progress-notification';
+
+// 导出组件样式依赖关系
+export * from './styleDependencies';

@@ -1,4 +1,4 @@
-import type { PropType } from 'vue';
+import type { PropType, VNode } from 'vue';
 
 /**
  * 生成 Boolean 类型的 props
@@ -60,6 +60,42 @@ export function makeNumberProp(defaultValue = 0) {
 export function makeObjectProp<T>(defaultValue: T) {
     return {
         type: Object as PropType<T>,
+        default: defaultValue,
+    };
+}
+
+/**
+ * 生成 String 或 Object 类型的 props
+ * @param defaultValue 字符串或对象的默认值，默认为空字符串
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeStringOrObjectProp<T>(defaultValue: T) {
+    return {
+        type: [String, Object] as PropType<T>,
+        default: defaultValue,
+    };
+}
+
+/**
+ * 生成 VNode 类型的 props
+ * @param defaultValue VNode 的默认值，默认为空 VNode
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeVNodeProp(defaultValue: VNode) {
+    return {
+        type: Object as PropType<VNode>,
+        default: defaultValue,
+    };
+}
+
+/**
+ * 生成 Function 类型的 props
+ * @param defaultValue Function 的默认值，默认为空 Function
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeFunctionProp<T>(defaultValue: T) {
+    return {
+        type: Function as PropType<T>,
         default: defaultValue,
     };
 }

@@ -110,18 +110,18 @@
 
 /* 危险按钮 */
 .boat-button-danger {
-    background: rgba(var(--boat-danger-color), 1);
+    background: rgba(var(--boat-error-color), 1);
     color: rgba(var(--boat-white-color), 1);
     border: none;
 
     &:hover,
     &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-danger-color), var(--boat-hover-opacity));
+        box-shadow: 0px 3px 8px 0px rgba(var(--boat-error-color), var(--boat-hover-opacity));
     }
 
     &.is-disabled {
-        background: rgba(var(--boat-danger-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-danger-color), var(--boat-normal-opacity));
+        background: rgba(var(--boat-error-color), var(--boat-hover-opacity));
+        color: rgba(var(--boat-error-color), var(--boat-normal-opacity));
     }
 }
 

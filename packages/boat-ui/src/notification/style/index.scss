@@ -1,4 +1,12 @@
-.boat-notification {
+$notification-types: (
+    'primary': '--boat-primary-color',
+    'success': '--boat-success-color',
+    'error': '--boat-error-color',
+    'warning': '--boat-warning-color',
+    'info': '--boat-info-color',
+);
+
+@mixin notification-base {
     position: fixed;
     width: 400px;
     height: fit-content;
@@ -7,19 +15,55 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: rgba(var(--boat-primary-color), var(--boat-deep-opacity));
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(var(--boat-primary-color), var(--boat-deep-opacity));
     z-index: 9999;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+}
+
+@mixin notification-header {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin notification-type($var) {
+    background: rgba(var(#{$var}), var(--boat-deep-opacity));
+    box-shadow: 0 4px 12px rgba(var(#{$var}), var(--boat-deep-opacity));
 
     .notification-header {
-        width: 100%;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        &__icon {
+            color: rgb(var(#{$var}));
+        }
+        &__title {
+            color: rgb(var(#{$var}));
+        }
+        &__close {
+            .boat-icon {
+                color: rgba(var(#{$var}), var(--boat-normal-opacity));
+            }
+            &:hover,
+            &:active {
+                .boat-icon {
+                    color: rgb(var(#{$var}));
+                }
+            }
+        }
+    }
+
+    .notification-content {
+        color: rgb(var(#{$var}));
+    }
+}
+
+.boat-notification {
+    @include notification-base;
+    @include notification-type('--boat-primary-color');
+
+    .notification-header {
+        @include notification-header;
 
         &__icon {
             width: 16px;
@@ -27,6 +71,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             .boat-icon {
                 font-size: 16px;
             }
@@ -38,7 +83,6 @@
             font-size: 16px;
             font-weight: 700;
             line-height: 24px;
-            color: rgb(var(--boat-primary-color));
             padding: 0 8px 0 4px;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -53,15 +97,9 @@
             align-items: center;
             justify-content: center;
             transition: all 0.05s;
+
             .boat-icon {
                 font-size: 18px;
-                color: rgb(var(--boat-info-color));
-            }
-            &:hover,
-            &:active {
-                .boat-icon {
-                    color: rgb(var(--boat-dark-color));
-                }
             }
         }
     }
@@ -73,8 +111,8 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
-        color: rgb(var(--boat-primary-color));
         margin-top: 6px;
+
         p {
             padding: 0;
             margin: 0;
@@ -89,5 +127,13 @@
     &.top-left,
     &.bottom-left {
         left: 16px;
+    }
+
+    @each $type, $var in $notification-types {
+        @if $type != 'primary' {
+            &--#{$type} {
+                @include notification-type($var);
+            }
+        }
     }
 }

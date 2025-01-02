@@ -63,7 +63,11 @@ export const boatNotificationProps = {
     /**
      * 相对屏幕顶部/底部的距离
      */
-    offset: makeNumberProp(0),
+    offset: makeNumberProp(16),
+    /**
+     * Notification 之间的间距
+     */
+    gap: makeNumberProp(16),
     /**
      * 通知栏正文内容
      */

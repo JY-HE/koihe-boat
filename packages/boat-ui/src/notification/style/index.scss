@@ -81,11 +81,13 @@
         }
     }
 
-    &.right {
+    &.top-right,
+    &.bottom-right {
         right: 16px;
     }
 
-    &.left {
+    &.top-left,
+    &.bottom-left {
         left: 16px;
     }
 }

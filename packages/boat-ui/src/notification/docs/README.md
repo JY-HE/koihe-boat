@@ -91,7 +91,8 @@ const open = () => {
 | appendTo | 设置 notification 的根元素，默认为 document.body。 | string / HTMLElement | - | - |
 | duration | 显示时间, 单位为毫秒。 值为 0 则不会自动关闭 | number | - | 4000 |
 | position | 自定义弹出位置 | string | top-right / top-left / bottom-right / bottom-left | top-right |
-| offset | 相对屏幕顶部/底部的距离 | number | - | 0 |
+| offset | 相对屏幕顶部/底部的距离 | number | - | 16 |
+| gap | Notification 之间的间距 | number | - | 16 |
 | content | 通知栏正文内容 | string / VNode / Function(()=>VNode) | - | '' |
 
 ### Events

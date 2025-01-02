@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch, isVNode, type VNode } from 'vue';
+import { computed, onMounted, onBeforeMount, ref, watch, isVNode, nextTick, type VNode } from 'vue';
 import { BoatIcon } from '../../icon';
 import { boatNotificationProps } from './props';
 
@@ -48,8 +48,7 @@ const classes = computed(() => {
         'boat-notification': true,
         [`boat-notification--${props.type}`]: props.type,
         [props.customClass]: props.customClass,
-        right: props.position === 'top-right' || props.position === 'bottom-right',
-        left: props.position === 'top-left' || props.position === 'bottom-left',
+        [`${props.position}`]: props.position,
     };
 });
 
@@ -85,6 +84,7 @@ const handleClose = () => {
     emit('close');
     clearTimer();
     notificationElement.value?.remove();
+    nextTick(updatePosition);
 };
 
 const isRenderFunction = (value: unknown): value is () => VNode => {
@@ -128,6 +128,60 @@ function startTimer() {
         handleClose();
     }, props.duration);
 }
+
+function getPosition() {
+    nextTick(() => {
+        const elements = Array.from(
+            document.getElementsByClassName(`boat-notification ${props.position}`)
+        );
+
+        if (elements.length <= 1) return;
+
+        const currentElement = elements.at(-1) as HTMLElement;
+        const previousElement = elements.at(-2) as HTMLElement;
+
+        if (!currentElement || !previousElement) return;
+
+        const previousRect = previousElement.getBoundingClientRect();
+
+        if (props.position.includes('top')) {
+            const offset = previousRect.top + previousRect.height + props.gap;
+            currentElement.style.top = `${offset}px`;
+        } else if (props.position.includes('bottom')) {
+            const offset = window.innerHeight - previousRect.top + props.gap;
+            currentElement.style.bottom = `${offset}px`;
+        }
+    });
+}
+
+function updatePosition() {
+    nextTick(() => {
+        const elements = Array.from(
+            document.getElementsByClassName(`boat-notification ${props.position}`)
+        );
+
+        if (elements.length <= 0) return;
+
+        let totalHeight = props.offset;
+
+        elements.forEach(element => {
+            const el = element as HTMLElement;
+            const height = el.offsetHeight;
+
+            if (props.position.includes('top')) {
+                el.style.top = `${totalHeight}px`;
+                totalHeight += height + props.gap;
+            } else if (props.position.includes('bottom')) {
+                el.style.bottom = `${totalHeight}px`;
+                totalHeight += height + props.gap;
+            }
+        });
+    });
+}
+
+onBeforeMount(() => {
+    getPosition();
+});
 
 onMounted(() => {
     appendToHandler();

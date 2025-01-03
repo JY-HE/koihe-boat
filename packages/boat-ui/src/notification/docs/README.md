@@ -94,16 +94,20 @@ const open = () => {
 | offset | 相对屏幕顶部/底部的距离 | number | - | 16 |
 | gap | Notification 之间的间距 | number | - | 16 |
 | content | 通知栏正文内容 | string / VNode / Function(()=>VNode) | - | '' |
+| footerText | 底部按钮文本 | string | - | 'button' |
+| footerDisabled | 底部按钮是否禁用 | boolean | - | false |
+| footerType | 底部按钮类型。若不设置，则与通知类型一致 | string |  primary / success / error / warning / info / link | '' |
 
 ### Events
 
 | 事件名 | 说明               | 参数                          |
 | ------ | ------------------ | ----------------------------- |
 | close  | 点击关闭按钮触发的事件 | `() => void` |
+| footer-click | 点击底部按钮触发的事件。使用 footer 插槽时，该事件不会触发 | `() => void` |
 
 ### Slots
 
 | 插槽名  | 说明           |
 | ------- | -------------- |
 | default | 自定义通知栏正文内容。使用插槽会覆盖 content 属性 |
-
+| footer | 自定义底部内容 |

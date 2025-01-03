@@ -12,7 +12,7 @@
 
 | 属性              | 说明                             | 类型 | 可选值           | 默认值        |
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
-| type            | 按钮类型           | string   | primary / success / error / warning / info / link        | default |
+| type            | 按钮类型           | string   | primary / success / error / warning / info / link        | '' |
 | disabled | 是否禁用按钮 | boolean | - | false    |
 
 ### Events

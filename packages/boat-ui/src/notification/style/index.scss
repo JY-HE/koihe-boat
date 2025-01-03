@@ -119,6 +119,13 @@ $notification-types: (
         }
     }
 
+    .notification-footer {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 6px;
+    }
+
     &.top-right,
     &.bottom-right {
         right: 16px;

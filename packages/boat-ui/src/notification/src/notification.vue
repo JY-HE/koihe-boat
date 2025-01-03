@@ -23,12 +23,27 @@
                 </template>
             </slot>
         </div>
+        <div class="notification-footer">
+            <template v-if="$slots.footer">
+                <slot name="footer" />
+            </template>
+            <template v-else>
+                <boat-button
+                    :disabled="footerDisabled"
+                    :type="footerType || type"
+                    @click="emit('footer-click')"
+                >
+                    {{ footerText }}
+                </boat-button>
+            </template>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, onMounted, onBeforeMount, ref, watch, isVNode, nextTick, type VNode } from 'vue';
 import { BoatIcon } from '../../icon';
+import { BoatButton } from '../../button';
 import { boatNotificationProps } from './props';
 
 defineOptions({
@@ -41,6 +56,7 @@ const props = defineProps(boatNotificationProps);
 
 const emit = defineEmits<{
     (e: 'close'): void;
+    (e: 'footer-click'): void;
 }>();
 
 const classes = computed(() => {

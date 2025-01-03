@@ -1,3 +1,4 @@
+import type { ButtonType } from '../../button';
 import {
     makeStringProp,
     makeNumberProp,
@@ -75,6 +76,21 @@ export const boatNotificationProps = {
         type: [String, Object, Function] as PropType<string | VNode | (() => VNode)>,
         default: '',
     },
+    /**
+     * 底部按钮类型。若不设置，则与通知类型一致
+     */
+    footerType: makeEnumProp<ButtonType>(
+        ['primary', 'success', 'error', 'warning', 'info', 'link', ''],
+        ''
+    ),
+    /**
+     * 底部按钮文本
+     */
+    footerText: makeStringProp('button'),
+    /**
+     * 底部按钮是否禁用
+     */
+    footerDisabled: makeBooleanProp(false),
 };
 
 /**

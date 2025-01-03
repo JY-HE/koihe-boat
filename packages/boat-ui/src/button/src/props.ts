@@ -4,7 +4,7 @@ import type { ExtractPropTypes } from 'vue';
 /**
  * 定义按钮的类型选项
  */
-export type ButtonType = 'default' | 'primary' | 'success' | 'error' | 'warning' | 'info' | 'link';
+export type ButtonType = 'primary' | 'success' | 'error' | 'warning' | 'info' | 'link' | '';
 
 /**
  * 定义 Button 组件的 Props 类型
@@ -14,8 +14,8 @@ export const boatButtonProps = {
      * 按钮类型
      */
     type: makeEnumProp<ButtonType>(
-        ['default', 'primary', 'success', 'error', 'warning', 'info', 'link'],
-        'default'
+        ['primary', 'success', 'error', 'warning', 'info', 'link', ''],
+        ''
     ),
     /**
      * 是否禁用按钮

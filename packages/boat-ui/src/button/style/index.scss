@@ -1,159 +1,109 @@
-.boat-button {
+$button-types: (
+    'primary': '--boat-primary-color',
+    'success': '--boat-success-color',
+    'error': '--boat-error-color',
+    'warning': '--boat-warning-color',
+    'info': '--boat-info-color',
+);
+
+@mixin button-base {
     font-family: 'Microsoft YaHei UI';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     outline: none;
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 12px;
     transition: all 0.3s;
-    -webkit-appearance: none; /* 禁用Webkit浏览器的默认样式 */
-    -moz-appearance: none; /* 禁用Mozilla浏览器的默认样式 */
-    appearance: none; /* 标准属性，禁用所有浏览器的默认样式 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    user-select: none; /* 标准属性，防止文本选中 */
+    user-select: none;
+}
+
+@mixin button-type($var) {
+    background: rgba(var(#{$var}), 1);
+    color: rgba(var(--boat-white-color), 1);
+    border: none;
+
+    &:hover,
+    &:active {
+        box-shadow: 0px 3px 8px 0px rgba(var(#{$var}), var(--boat-hover-opacity));
+    }
+
+    &.is-disabled {
+        background: rgba(var(#{$var}), var(--boat-hover-opacity));
+        color: rgba(var(#{$var}), var(--boat-normal-opacity));
+    }
+}
+
+.boat-button {
+    @include button-base;
 
     &.is-disabled {
         cursor: not-allowed;
     }
-}
 
-/* 默认按钮 */
-.boat-button-default {
-    background: rgba(var(--boat-white-color), 1);
-    color: rgba(var(--boat-primary-color), 1);
-    border: 1px solid rgba(var(--boat-primary-color), var(--boat-hover-opacity));
+    &--default {
+        background: rgba(var(--boat-white-color), 1);
+        color: rgba(var(--boat-primary-color), 1);
+        border: 1px solid rgba(var(--boat-primary-color), var(--boat-hover-opacity));
 
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
+        &:hover,
+        &:active {
+            box-shadow: 0px 3px 8px 0px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
+        }
+
+        &.is-disabled {
+            background: rgba(var(--boat-white-color), var(--boat-hover-opacity));
+            color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
+        }
     }
 
-    &.is-disabled {
-        background: rgba(var(--boat-white-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 主要按钮 */
-.boat-button-primary {
-    background: rgba(var(--boat-primary-color), 1);
-    color: rgba(var(--boat-white-color), 1);
-    border: none;
-
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
-    }
-
-    &.is-disabled {
-        background: rgba(var(--boat-primary-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 成功按钮 */
-.boat-button-success {
-    background: rgba(var(--boat-success-color), 1);
-    color: rgba(var(--boat-white-color), 1);
-    border: none;
-
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-success-color), var(--boat-hover-opacity));
-    }
-
-    &.is-disabled {
-        background: rgba(var(--boat-success-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-success-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 信息按钮 */
-.boat-button-info {
-    background: rgba(var(--boat-info-color), 1);
-    color: rgba(var(--boat-white-color), 1);
-    border: none;
-
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-info-color), var(--boat-hover-opacity));
-    }
-
-    &.is-disabled {
-        background: rgba(var(--boat-info-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-info-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 警告按钮 */
-.boat-button-warning {
-    background: rgba(var(--boat-warning-color), 1);
-    color: rgba(var(--boat-white-color), 1);
-    border: none;
-
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-warning-color), var(--boat-hover-opacity));
-    }
-
-    &.is-disabled {
-        background: rgba(var(--boat-warning-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-warning-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 危险按钮 */
-.boat-button-danger {
-    background: rgba(var(--boat-error-color), 1);
-    color: rgba(var(--boat-white-color), 1);
-    border: none;
-
-    &:hover,
-    &:active {
-        box-shadow: 0px 3px 8px 0px rgba(var(--boat-error-color), var(--boat-hover-opacity));
-    }
-
-    &.is-disabled {
-        background: rgba(var(--boat-error-color), var(--boat-hover-opacity));
-        color: rgba(var(--boat-error-color), var(--boat-normal-opacity));
-    }
-}
-
-/* 链接按钮 */
-.boat-button-link {
-    background: transparent;
-    color: rgba(var(--boat-primary-color), 1);
-    border: none;
-    padding: 4px 8px;
-
-    span:first-of-type {
-        text-decoration: underline;
-        text-decoration-color: rgba(var(--boat-primary-color), 1);
-        text-decoration-style: solid;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 4px;
-    }
-
-    &:hover {
-        background: rgba(var(--boat-primary-color), 0.08);
-    }
-
-    &:active {
+    &--link {
         background: transparent;
-    }
+        color: rgba(var(--boat-primary-color), 1);
+        border: none;
+        padding: 4px 8px;
 
-    &.is-disabled {
-        color: rgba(var(--boat-info-color), 1);
-        text-decoration-color: rgba(var(--boat-info-color), 1);
+        span:first-of-type {
+            text-decoration: underline;
+            text-decoration-color: rgba(var(--boat-primary-color), 1);
+            text-decoration-style: solid;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 4px;
+        }
 
         &:hover {
+            background: rgba(var(--boat-primary-color), 0.08);
+        }
+
+        &:active {
             background: transparent;
+        }
+
+        &.is-disabled {
+            color: rgba(var(--boat-info-color), 1);
+            text-decoration-color: rgba(var(--boat-info-color), 1);
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+
+    @each $type, $var in $button-types {
+        &--#{$type} {
+            @include button-type($var);
         }
     }
 }

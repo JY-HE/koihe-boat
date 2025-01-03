@@ -2,7 +2,7 @@
     <button
         class="boat-button"
         :class="[
-            `boat-button-${type}`,
+            `boat-button--${type}`,
             {
                 'is-disabled': disabled,
             },

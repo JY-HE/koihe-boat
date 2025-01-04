@@ -1,15 +1,10 @@
-import {
-    makeStringProp,
-    makeNumberProp,
-    makeEnumProp,
-    makeObjectProp,
-} from '../../utils/makeProps';
+import { makeStringProp, makeNumberProp, makeEnumProp } from '../../utils/makeProps';
 import type { ExtractPropTypes } from 'vue';
 
 /**
  * 定义进度通知的状态类型
  */
-export type ProgressNotificationStatus = 'processing' | 'success' | 'error';
+export type ProgressNotificationStatus = 'success' | 'error' | '';
 
 /**
  * 定义 ProgressNotification 组件的 Props 类型
@@ -18,11 +13,7 @@ export const boatProgressNotificationProps = {
     /**
      * 自定义类名
      */
-    className: makeStringProp(''),
-    /**
-     * 自定义样式
-     */
-    style: makeObjectProp<Record<string, string>>({}),
+    customClass: makeStringProp(''),
     /**
      * 通知标题
      */
@@ -38,10 +29,7 @@ export const boatProgressNotificationProps = {
     /**
      * 状态
      */
-    status: makeEnumProp<ProgressNotificationStatus>(
-        ['processing', 'success', 'error'],
-        'processing'
-    ),
+    status: makeEnumProp<ProgressNotificationStatus>(['success', 'error', ''], ''),
 };
 
 /**

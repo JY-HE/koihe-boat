@@ -1,31 +1,38 @@
 <template>
-    <div :class="classes" :style="style">
-        <div class="boat-progress-notification-header">
-            <span class="boat-progress-notification-title">{{ title }}</span>
-        </div>
+    <!-- <div :class="classes"> -->
+    <boat-notification
+        appendTo="boat-progress-notification"
+        :title="title"
+        :duration="0"
+        :type="status"
+        :class="classes"
+    >
+        <template>
+            <div v-if="fileName" class="boat-progress-notification-filename">
+                {{ fileName }}
+            </div>
 
-        <div v-if="fileName" class="boat-progress-notification-filename">
-            {{ fileName }}
-        </div>
+            <div class="boat-progress-notification-progress-bar">
+                <div
+                    class="boat-progress-notification-progress-inner"
+                    :style="{ width: `${progress}%` }"
+                />
+            </div>
+        </template>
 
-        <div class="boat-progress-notification-progress-bar">
-            <div
-                class="boat-progress-notification-progress-inner"
-                :style="{ width: `${progress}%` }"
-            />
-        </div>
-
-        <div v-if="status === 'error'" class="boat-progress-notification-actions">
-            <boat-button size="small" @click="handleCancel"> 取消 </boat-button>
-            <boat-button type="primary" size="small" @click="handleRetry"> 重试 </boat-button>
-        </div>
-
-        <div v-if="status === 'success'" class="boat-progress-notification-success">完成</div>
-    </div>
+        <template #footer>
+            <div v-if="status === 'error'" class="boat-progress-notification-actions">
+                <boat-button @click="handleCancel"> 取消导入 </boat-button>
+                <boat-button type="primary" @click="handleRetry"> 重新导入 </boat-button>
+            </div>
+        </template>
+    </boat-notification>
+    <!-- </div> -->
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { BoatNotification } from '../../notification';
 import { BoatButton } from '../../button';
 import { boatProgressNotificationProps } from './props';
 
@@ -43,8 +50,8 @@ const emit = defineEmits<{
 const classes = computed(() => {
     return {
         'boat-progress-notification': true,
-        [`boat-progress-notification-${props.status}`]: props.status,
-        [props.className]: props.className,
+        [`boat-progress-notification--${props.status}`]: props.status,
+        [props.customClass]: props.customClass,
     };
 });
 

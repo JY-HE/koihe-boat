@@ -1,47 +1,45 @@
 <template>
-    <div ref="notificationElement" :class="classes" :style="styles">
-        <div class="notification-header">
-            <div class="notification-header__icon">
-                <boat-icon v-if="iconName" :name="iconName" :color="iconColor" />
+    <teleport to="#boat-notification-container" :disabled="!hasContainer">
+        <div ref="notificationElement" :class="classes" :style="styles">
+            <div class="notification-header">
+                <div class="notification-header__icon">
+                    <boat-icon v-if="iconName" :name="iconName" :color="iconColor" />
+                </div>
+                <div class="notification-header__title">{{ title }}</div>
+                <div v-if="showClose" class="notification-header__close" @click="close">
+                    <boat-icon name="close" />
+                </div>
             </div>
-            <div class="notification-header__title">{{ title }}</div>
-            <div v-if="showClose" class="notification-header__close" @click="handleClose">
-                <boat-icon name="close" />
+            <div v-if="content" class="notification-content">
+                <slot>
+                    <template
+                        v-if="isVNode(content) || (isRenderFunction(content) && isVNode(content()))"
+                    >
+                        <component :is="content" />
+                    </template>
+                    <template v-else>
+                        <p>{{ content }}</p>
+                    </template>
+                </slot>
             </div>
-        </div>
-        <div class="notification-content">
-            <slot>
-                <template
-                    v-if="isVNode(content) || (isRenderFunction(content) && isVNode(content()))"
-                >
-                    <component :is="content" />
-                </template>
-                <template v-else>
-                    <p>
-                        {{ content }}
-                    </p>
-                </template>
-            </slot>
-        </div>
-        <div class="notification-footer">
-            <template v-if="$slots.footer">
+            <div v-if="$slots.footer" class="notification-footer">
                 <slot name="footer" />
-            </template>
-            <template v-else>
+            </div>
+            <div v-if="!$slots.footer && showFooterButton" class="notification-footer">
                 <boat-button
-                    :disabled="footerDisabled"
-                    :type="footerType || type"
+                    :disabled="footerButtonDisabled"
+                    :type="footerButtonType || type"
                     @click="emit('footer-click')"
                 >
-                    {{ footerText }}
+                    {{ footerButtonText }}
                 </boat-button>
-            </template>
+            </div>
         </div>
-    </div>
+    </teleport>
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, onBeforeMount, ref, watch, isVNode, nextTick, type VNode } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch, isVNode, type VNode } from 'vue';
 import { BoatIcon } from '../../icon';
 import { BoatButton } from '../../button';
 import { boatNotificationProps } from './props';
@@ -50,27 +48,43 @@ defineOptions({
     name: 'BoatNotification',
 });
 
-const notificationElement = ref<HTMLElement | null>(null);
-
+// Props & Emits
 const props = defineProps(boatNotificationProps);
-
 const emit = defineEmits<{
     (e: 'close'): void;
     (e: 'footer-click'): void;
 }>();
 
-const classes = computed(() => {
-    return {
-        'boat-notification': true,
-        [`boat-notification--${props.type}`]: props.type,
-        [props.customClass]: props.customClass,
-        [`${props.position}`]: props.position,
+// Refs
+const notificationElement = ref<HTMLElement | null>(null);
+const isClosing = ref(false);
+const durationTimer = ref<ReturnType<typeof setTimeout> | null>(null);
+const hasContainer = ref(false);
+
+// Computed
+const classes = computed(() => ({
+    'boat-notification': true,
+    [`boat-notification--${props.type}`]: props.type,
+    [props.customClass]: props.customClass,
+    [`${props.position}`]: props.position,
+}));
+
+const styles = computed(() => {
+    const style: Record<string, string> = {
+        zIndex: String(props.zIndex),
     };
+
+    if (props.position === 'top-right' || props.position === 'top-left') {
+        style.top = props.offset + 'px';
+    }
+    if (props.position === 'bottom-right' || props.position === 'bottom-left') {
+        style.bottom = props.offset + 'px';
+    }
+
+    return style;
 });
 
-const iconName = computed(() => {
-    return props.type || props.icon;
-});
+const iconName = computed(() => props.type || props.icon);
 
 const iconColor = computed(() => {
     const colors = new Map([
@@ -82,104 +96,75 @@ const iconColor = computed(() => {
     return colors.get(props.type) || props.iconColor;
 });
 
-const styles = computed(() => {
-    if (props.position === 'top-right' || props.position === 'top-left') {
-        return {
-            top: props.offset + 'px',
-        };
+/**
+ * @description 创建或获取通知容器，如果不存在则创建新的容器
+ * @returns {HTMLElement} 返回通知容器元素
+ */
+function createContainer() {
+    let container = document.getElementById('boat-notification-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'boat-notification-container';
+        container.style.zIndex = String(props.zIndex);
+        document.body.appendChild(container);
+        hasContainer.value = true;
     }
-    if (props.position === 'bottom-right' || props.position === 'bottom-left') {
-        return {
-            bottom: props.offset + 'px',
-        };
-    }
-    return {};
-});
-
-const handleClose = () => {
-    emit('close');
-    clearTimer();
-    notificationElement.value?.remove();
-    nextTick(updatePosition);
-};
-
-const isRenderFunction = (value: unknown): value is () => VNode => {
-    return typeof value === 'function' && !value.length;
-};
-
-function appendToHandler() {
-    const appendToElement = ref<HTMLElement | null>(null);
-    if (typeof props.appendTo === 'string') {
-        appendToElement.value =
-            (document.getElementsByClassName(props.appendTo)[0] as HTMLElement) || null;
-    }
-    if (typeof props.appendTo === 'object') {
-        appendToElement.value = props.appendTo;
-    }
-    if (!appendToElement.value) {
-        appendToElement.value = document.body;
-    }
-    appendToElement.value.appendChild(notificationElement.value!);
-}
-watch(
-    () => props.appendTo,
-    () => {
-        appendToHandler();
-    }
-);
-
-const timer = ref<NodeJS.Timeout | null>(null);
-
-function clearTimer() {
-    if (timer.value) {
-        clearTimeout(timer.value);
-        timer.value = null;
-    }
+    return container;
 }
 
-function startTimer() {
-    if (props.duration === 0) return;
-    clearTimer();
-    timer.value = setTimeout(() => {
-        handleClose();
-    }, props.duration);
-}
+// 立即创建容器
+createContainer();
 
-function getPosition() {
-    nextTick(() => {
-        const elements = Array.from(
-            document.getElementsByClassName(`boat-notification ${props.position}`)
-        );
+// Container & Observer
+let observer: MutationObserver | null = null;
 
-        if (elements.length <= 1) return;
+/**
+ * @description 监听容器的子元素变化，当有变化时更新通知位置
+ * @param container 需要观察的容器元素
+ */
+function setupObserver(container: HTMLElement) {
+    if (observer) return;
 
-        const currentElement = elements.at(-1) as HTMLElement;
-        const previousElement = elements.at(-2) as HTMLElement;
+    observer = new MutationObserver(() => {
+        updatePosition();
+    });
 
-        if (!currentElement || !previousElement) return;
-
-        const previousRect = previousElement.getBoundingClientRect();
-
-        if (props.position.includes('top')) {
-            const offset = previousRect.top + previousRect.height + props.gap;
-            currentElement.style.top = `${offset}px`;
-        } else if (props.position.includes('bottom')) {
-            const offset = window.innerHeight - previousRect.top + props.gap;
-            currentElement.style.bottom = `${offset}px`;
-        }
+    observer.observe(container, {
+        childList: true,
+        subtree: true,
     });
 }
 
+/**
+ * @description 获取或创建容器，并确保已设置 MutationObserver
+ * @returns {HTMLElement} 返回通知容器元素
+ */
+function ensureContainer() {
+    const container = document.getElementById('boat-notification-container');
+    if (!container) {
+        return createContainer();
+    }
+
+    setupObserver(container);
+    hasContainer.value = true;
+    return container;
+}
+
+/**
+ * @description 计算并设置每个通知元素的位置，确保它们不会重叠
+ */
 function updatePosition() {
-    nextTick(() => {
+    requestAnimationFrame(() => {
+        const container = document.getElementById('boat-notification-container');
+        if (!container) return;
+
         const elements = Array.from(
-            document.getElementsByClassName(`boat-notification ${props.position}`)
+            container.querySelectorAll(`.boat-notification.${props.position}`)
         );
 
         if (elements.length <= 0) return;
 
         let totalHeight = props.offset;
-
         elements.forEach(element => {
             const el = element as HTMLElement;
             const height = el.offsetHeight;
@@ -195,12 +180,93 @@ function updatePosition() {
     });
 }
 
-onBeforeMount(() => {
-    getPosition();
+/**
+ * @description 清除并重置定时器
+ */
+function clearDurationTimer() {
+    if (durationTimer.value) {
+        clearTimeout(durationTimer.value);
+        durationTimer.value = null;
+    }
+}
+
+/**
+ * @description 根据 duration 属性设置自动关闭定时器
+ */
+function startDurationTimer() {
+    clearDurationTimer();
+    if (props.duration === 0) return;
+    durationTimer.value = setTimeout(() => close(), props.duration);
+}
+
+/**
+ * @description 移除通知元素并触发关闭事件
+ */
+const close = () => {
+    if (isClosing.value) return;
+    isClosing.value = true;
+
+    emit('close');
+    clearDurationTimer();
+
+    if (notificationElement.value) {
+        notificationElement.value.remove();
+        updatePosition();
+        isClosing.value = false;
+    }
+};
+
+/**
+ * @description 检查值是否为渲染函数
+ * @param value 需要检查的值
+ * @returns {boolean} 是否为渲染函数
+ */
+const isRenderFunction = (value: unknown): value is () => VNode => {
+    return typeof value === 'function' && !value.length;
+};
+
+// Watchers
+watch(
+    () => props.duration,
+    () => {
+        if (!isClosing.value) {
+            startDurationTimer();
+        }
+    }
+);
+
+// Lifecycle Hooks
+onMounted(() => {
+    if (!isClosing.value) {
+        const container = ensureContainer();
+        setupObserver(container);
+        startDurationTimer();
+        requestAnimationFrame(() => {
+            updatePosition();
+        });
+    }
 });
 
-onMounted(() => {
-    appendToHandler();
-    startTimer();
+onUnmounted(() => {
+    clearDurationTimer();
+    isClosing.value = true;
+
+    // 移除元素
+    notificationElement.value?.remove();
+    updatePosition();
+
+    // 检查容器是否为空
+    const container = document.getElementById('boat-notification-container');
+    if (container && !container.hasChildNodes()) {
+        container.remove();
+        observer?.disconnect();
+        observer = null;
+        // 重置容器状态
+        hasContainer.value = false;
+    }
+});
+
+defineExpose({
+    close,
 });
 </script>

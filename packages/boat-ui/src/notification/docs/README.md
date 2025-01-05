@@ -88,15 +88,16 @@ const open = () => {
 | icon | 自定义图标。若设置了 type，则 icon 会被覆盖 | string | - | '' |
 | iconColor | icon 颜色 | string | - | '' |
 | showClose | 是否显示关闭按钮 | boolean | - | true |
-| appendTo | 设置 notification 的根元素，默认为 document.body。 | string / HTMLElement | - | - |
 | duration | 显示时间, 单位为毫秒。 值为 0 则不会自动关闭 | number | - | 4000 |
 | position | 自定义弹出位置 | string | top-right / top-left / bottom-right / bottom-left | top-right |
 | offset | 相对屏幕顶部/底部的距离 | number | - | 16 |
 | gap | Notification 之间的间距 | number | - | 16 |
 | content | 通知栏正文内容 | string / VNode / Function(()=>VNode) | - | '' |
-| footerText | 底部按钮文本 | string | - | 'button' |
-| footerDisabled | 底部按钮是否禁用 | boolean | - | false |
-| footerType | 底部按钮类型。若不设置，则与通知类型一致 | string |  primary / success / error / warning / info / link | '' |
+| showFooterButton | 是否显示底部按钮。使用 footer 插槽时，该属性无效 | boolean | - | false |
+| footerButtonType | 底部按钮类型。若不设置，则与通知类型一致 | string |  primary / success / error / warning / info / link | '' |
+| footerButtonText | 底部按钮文本 | string | - | 'button' |
+| footerButtonDisabled | 底部按钮是否禁用 | boolean | - | false |
+| zIndex | 设置通知的 z-index | number | - | 9999 |
 
 ### Events
 

@@ -16,7 +16,6 @@ $notification-types: (
     justify-content: flex-start;
     align-items: center;
     border-radius: 8px;
-    z-index: 9999;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
 }
@@ -58,7 +57,18 @@ $notification-types: (
     }
 }
 
+#boat-notification-container {
+    position: fixed;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
 .boat-notification {
+    pointer-events: auto;
+    position: fixed;
     @include notification-base;
     @include notification-type('--boat-primary-color');
 

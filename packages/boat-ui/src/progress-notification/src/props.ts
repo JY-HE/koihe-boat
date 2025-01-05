@@ -1,4 +1,9 @@
-import { makeStringProp, makeNumberProp, makeEnumProp } from '../../utils/makeProps';
+import {
+    makeStringProp,
+    makeBooleanProp,
+    makeEnumProp,
+    makeNumberProp,
+} from '../../utils/makeProps';
 import type { ExtractPropTypes } from 'vue';
 
 /**
@@ -15,21 +20,37 @@ export const boatProgressNotificationProps = {
      */
     customClass: makeStringProp(''),
     /**
-     * 通知标题
+     * 标题
      */
     title: makeStringProp(''),
     /**
-     * 文件名
+     * 消息内容
      */
-    fileName: makeStringProp(''),
-    /**
-     * 进度值
-     */
-    progress: makeNumberProp(0),
+    message: makeStringProp(''),
     /**
      * 状态
      */
     status: makeEnumProp<ProgressNotificationStatus>(['success', 'error', ''], ''),
+    /**
+     * 状态为 success 时自动关闭时间，单位: 毫秒。为 0 时不自动关闭
+     */
+    duration: makeNumberProp(3000),
+    /**
+     * 底部左侧按钮文本
+     */
+    footerLeftText: makeStringProp('Cancel'),
+    /**
+     * 底部右侧按钮文本
+     */
+    footerRightText: makeStringProp('Retry'),
+    /**
+     * 底部左侧按钮是否禁用
+     */
+    footerLeftDisabled: makeBooleanProp(false),
+    /**
+     * 底部右侧按钮是否禁用
+     */
+    footerRightDisabled: makeBooleanProp(false),
 };
 
 /**

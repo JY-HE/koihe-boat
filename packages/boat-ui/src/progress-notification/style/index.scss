@@ -1,148 +1,62 @@
 .boat-progress-notification {
-    // position: relative;
-    // padding: 12px 16px;
-    // background: rgba(232, 246, 254, 0.95);
-    // border-radius: 8px;
-    // box-shadow: 0 4px 12px rgba(22, 93, 255, 0.08);
-    // width: 280px;
-    // transition: all 0.3s;
-    // backdrop-filter: blur(8px);
-
-    &-header {
-        margin-bottom: 8px;
+    .notification-content {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-    }
 
-    &-title {
-        font-size: 14px;
-        color: #1d2129;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        .progress-notification--message {
+            width: 100%;
+            margin-bottom: 6px;
+            font-size: 14px;
+            line-height: 22px;
+            color: rba(var(--boat-primary-color));
+            text-align: left;
+        }
 
-        &::before {
-            content: '';
-            display: inline-block;
-            width: 2px;
-            height: 12px;
-            background: #165dff;
-            border-radius: 1px;
+        .progress-notification--bar {
+            width: 100%;
+            height: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 3px;
+            background: transparent;
+            border: 1px solid;
+            border-color: rgb(var(--boat-primary-color));
+
+            &__inner {
+                height: 100%;
+                background: rgb(var(--boat-primary-color));
+                border-radius: 12px;
+                transition: all 0.3s linear;
+            }
         }
     }
 
-    &-filename {
-        font-size: 13px;
-        color: #86909c;
-        margin-bottom: 8px;
-        word-break: break-all;
-    }
-
-    &-progress-bar {
-        height: 8px;
-        background: transparent;
-        border-radius: 4px;
-        overflow: hidden;
-        margin-bottom: 4px;
-        border: 1px solid #165dff;
-        padding: 1px;
-    }
-
-    &-progress-inner {
-        height: 100%;
-        background: #165dff;
-        border-radius: 3px;
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    &-actions {
+    .progress-notification--operations {
         display: flex;
         justify-content: flex-end;
         gap: 8px;
-        margin-top: 12px;
-
-        .boat-button {
-            transition: all 0.3s;
-            height: 24px;
-            padding: 0 12px;
-            font-size: 12px;
-            backdrop-filter: blur(4px);
-        }
     }
 
-    // 成功状态
     &--success {
-        background: rgba(232, 255, 234, 0.95);
-        box-shadow: 0 4px 12px rgba(0, 180, 42, 0.08);
-
-        .boat-progress-notification-title {
-            &::before {
-                background: #00b42a;
+        .notification-content {
+            .progress-notification--bar {
+                border-color: rgb(var(--boat-success-color));
+                &__inner {
+                    background: rgb(var(--boat-success-color));
+                }
             }
-        }
-
-        .boat-progress-notification-progress-bar {
-            border-color: #00b42a;
-        }
-
-        .boat-progress-notification-progress-inner {
-            background: #00b42a;
         }
     }
 
-    // 错误状态
     &--error {
-        background: rgba(255, 236, 232, 0.95);
-        box-shadow: 0 4px 12px rgba(245, 63, 63, 0.08);
-
-        .boat-progress-notification-title {
-            &::before {
-                background: #f53f3f;
-            }
-        }
-
-        .boat-progress-notification-progress-bar {
-            border-color: #f53f3f;
-        }
-
-        .boat-progress-notification-progress-inner {
-            background: #f53f3f;
-        }
-
-        .boat-button {
-            &:not(.boat-button-primary) {
-                color: #f53f3f;
-                border: none;
-                background: rgba(255, 241, 240, 0.6);
-
-                &:hover {
-                    background: rgba(255, 241, 240, 0.8);
+        .notification-content {
+            .progress-notification--bar {
+                border-color: rgb(var(--boat-error-color));
+                &__inner {
+                    background: rgb(var(--boat-error-color));
                 }
             }
-
-            &.boat-button-primary {
-                background: rgba(245, 63, 63, 0.9);
-                border: none;
-                color: #fff;
-
-                &:hover {
-                    background: rgba(255, 77, 79, 0.9);
-                }
-            }
-        }
-    }
-
-    // 状态文本
-    &--status-text {
-        font-size: 13px;
-
-        &-success {
-            color: #00b42a;
-        }
-
-        &-error {
-            color: #f53f3f;
         }
     }
 }

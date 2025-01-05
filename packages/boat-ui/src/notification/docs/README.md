@@ -4,7 +4,7 @@
 
 ## 基础用法
 
-你可以将 `Notification` 作为 `vue` 组件使用，通过设置 `title` 和 `content` 属性来设置通知的标题和正文内容。 默认情况下，通知在 4000 毫秒后自动关闭，但你可以通过设置 `duration` 属性来自定义通知的展示时间。如果你将它设置为 0，那么通知将不会自动关闭。 需要注意的是 `duration` 接收一个 `Number`，单位为毫秒。
+你可以将 `BoatNotification` 作为 `vue` 组件使用，通过设置 `title` 和 `content` 属性来设置通知的标题和正文内容。 默认情况下，通知在 4000 毫秒后自动关闭，但你可以通过设置 `duration` 属性来自定义通知的展示时间。如果你将它设置为 0，那么通知将不会自动关闭。 需要注意的是 `duration` 接收一个 `Number`，单位为毫秒。
 
 ```vue
 <template>
@@ -16,7 +16,7 @@
 
 ## 单独引用
 
-`Notification` 还可以通过函数调用直接应用于某些场景中。
+`BoatNotification` 还可以通过函数调用直接应用于某些场景中。
 
 ### 字符串形式的 content
 
@@ -105,6 +105,14 @@ const open = () => {
 | ------ | ------------------ | ----------------------------- |
 | close  | 点击关闭按钮触发的事件 | `() => void` |
 | footer-click | 点击底部按钮触发的事件。使用 footer 插槽时，该事件不会触发 | `() => void` |
+
+### Methods
+
+`BoatNotification` 和 `BoatNotification.notify` 都返回当前的 `BoatNotification` 实例。如果需要手动关闭实例，可以调用它的 close 方法。
+
+| 方法名 | 说明               | 类型        | 参数                  |
+| ------ | ------------------ | ----------------------------- | ------------------ |
+| close  | 关闭当前的 BoatNotification |    Function    |`() => void` |
 
 ### Slots
 

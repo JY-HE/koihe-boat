@@ -11,8 +11,54 @@
     "main": "lib/index.js",
     "module": "es/index.mjs",
     "types": "es/index.d.ts",
+    "style": "dist/index.css",
     "unpkg": "dist/index.min.js",
     "jsdelivr": "dist/index.min.js",
+    "exports": {
+        ".": {
+            "types": "./es/index.d.ts",
+            "import": "./es/index.mjs",
+            "require": "./lib/index.js"
+        },
+        "./global": {
+            "types": "./global.d.ts"
+        },
+        "./es": {
+            "types": "./es/index.d.ts",
+            "import": "./es/index.mjs"
+        },
+        "./lib": {
+            "types": "./lib/index.d.ts",
+            "require": "./lib/index.js"
+        },
+        "./es/*.mjs": {
+            "types": "./es/*.d.ts",
+            "import": "./es/*.mjs"
+        },
+        "./lib/*.js": {
+            "types": "./lib/*.d.ts",
+            "require": "./lib/*.js"
+        },
+        "./es/*": {
+            "types": [
+                "./es/*.d.ts",
+                "./es/*/index.d.ts"
+            ],
+            "import": "./es/*.mjs"
+        },
+        "./lib/*": {
+            "types": [
+                "./lib/*.d.ts",
+                "./lib/*/index.d.ts"
+            ],
+            "require": "./lib/*.js"
+        },
+        "./dist/index.css": "./dist/index.css",
+        "./es/*.scss": "./es/*.scss",
+        "./lib/*.scss": "./lib/*.scss",
+        "./es/*/style/*": "./es/*/style/*",
+        "./lib/*/style/*": "./lib/*/style/*"
+    },
     "files": [
         "es",
         "lib",

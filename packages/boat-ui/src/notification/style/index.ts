@@ -1,4 +1,4 @@
-import '@koihe/boat-ui/es/base.scss';
-import '@koihe/boat-ui/es/icon/style/index.scss';
-import '@koihe/boat-ui/es/button/style/index.scss';
+import '../../base.scss';
+import '../../icon/style/index.css';
+import '../../button/style/index.css';
 import './index.css';

@@ -21,6 +21,10 @@ export const boatButtonProps = {
      * 是否禁用按钮
      */
     disabled: makeBooleanProp(false),
+    /**
+     * 是否为次要按钮
+     */
+    plain: makeBooleanProp(false),
 };
 
 /**

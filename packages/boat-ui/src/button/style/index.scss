@@ -44,6 +44,12 @@ $button-types: (
         background: rgba(var(#{$var}), var(--boat-hover-opacity));
         color: rgba(var(#{$var}), var(--boat-normal-opacity));
     }
+
+    &.plain {
+        background: rgba(var(--boat-white-color), 1);
+        color: rgba(var(#{$var}), 1);
+        border: 1px solid rgba(var(#{$var}), var(--boat-hover-opacity));
+    }
 }
 
 .boat-button {

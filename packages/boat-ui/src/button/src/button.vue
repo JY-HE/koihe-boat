@@ -24,6 +24,7 @@ const classes = computed(() => {
         'boat-button--default': !props.type,
         [`boat-button--${props.type}`]: props.type,
         'is-disabled': props.disabled,
+        plain: props.plain,
     };
 });
 

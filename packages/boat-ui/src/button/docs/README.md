@@ -14,6 +14,8 @@
 | ----------------- | -------------------------------- | --------------- | ------ | ------ |
 | type            | 按钮类型           | string   | primary / success / error / warning / info / link        | '' |
 | disabled | 是否禁用按钮 | boolean | - | false    |
+| plain | 是否为次要按钮 | boolean | - | false    |
+
 
 ### Events
 

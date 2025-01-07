@@ -4,19 +4,57 @@
 
 ## 基础用法
 
-你可以将 `BoatNotification` 作为 `vue` 组件使用，通过设置 `title` 和 `content` 属性来设置通知的标题和正文内容。 默认情况下，通知在 4000 毫秒后自动关闭，但你可以通过设置 `duration` 属性来自定义通知的展示时间。如果你将它设置为 0，那么通知将不会自动关闭。 需要注意的是 `duration` 接收一个 `Number`，单位为毫秒。
+### 全局引用
+
+如果你全局注册了 `BoatUI`，那么可以直接使用 `$notify` 方法来调用。
 
 ```vue
 <template>
     <div>
-        <boat-notification title="这是个标题" />
+        <boat-button @click="open"> open </boat-button>
     </div>
 </template>
+
+<script setup lang="ts">
+import { getCurrentInstance } from 'vue';
+
+const { proxy } = getCurrentInstance()!;
+
+const open = () => {
+    proxy.$notify({
+        title: '全局引用',
+        content: '这是一条消息',
+    });
+}
+</script>
 ```
 
-## 单独引用
+### 单独引用
 
-`BoatNotification` 还可以通过函数调用直接应用于某些场景中。
+如果你没有全局注册 `BoatUI`，那么可以单独引用 `BoatNotification`。
+
+```vue
+<template>
+    <div>
+        <boat-button @click="open"> open </boat-button>
+    </div>
+</template>
+
+<script setup lang="ts">
+import { BoatNotification } from '@koihe/boat-ui';
+// 引入 BoatNotification 样式。如果已经全局引入了 BoatUI 的样式文件则可以忽略
+import '@koihe/boat-ui/es/notification/style/index';
+
+const open = () => {
+    BoatNotification({
+        title: '单独引用',
+        content: '这是一条消息',
+    });
+}
+</script>
+```
+
+## content 属性用法
 
 ### 字符串形式的 content
 
@@ -30,7 +68,7 @@ import { BoatNotification } from '@koihe/boat-ui';
 import '@koihe/boat-ui/es/notification/style/index';
 
 const open = () => {
-    BoatNotification.notify({ title: '这是个标题', content: '这是一条消息' });
+    BoatNotification({ title: '这是个标题', content: '这是一条消息' });
 }
 </script>
 ```
@@ -47,7 +85,7 @@ const open = () => {
 import { h } from 'vue';
 
 const open = () => {
-    BoatNotification.notify({
+    BoatNotification({
     title: '这是个标题',
     duration: 0,
     content: () => h('div', [h('span', '这是一条'), h('strong', '重要消息')]),
@@ -68,7 +106,7 @@ const open = () => {
 import { h } from 'vue';
 
 const open = () => {
-    BoatNotification.notify({
+    BoatNotification({
     title: '这是个标题',
     content: h('div', '这是一条消息'),
 });
@@ -91,32 +129,21 @@ const open = () => {
 | duration | 显示时间, 单位为毫秒。 值为 0 则不会自动关闭 | number | - | 4000 |
 | position | 自定义弹出位置 | string | top-right / top-left / bottom-right / bottom-left | top-right |
 | offset | 相对屏幕顶部/底部的距离 | number | - | 16 |
-| gap | Notification 之间的间距 | number | - | 16 |
 | content | 通知栏正文内容 | string / VNode / Function(()=>VNode) | - | '' |
-| showFooterButton | 是否显示底部按钮。使用 footer 插槽时，该属性无效 | boolean | - | false |
+| showFooterButton | 是否显示底部按钮 | boolean | - | false |
 | footerButtonType | 底部按钮类型。若不设置，则与通知类型一致 | string |  primary / success / error / warning / info / link | '' |
 | footerButtonText | 底部按钮文本 | string | - | 'button' |
 | footerButtonDisabled | 底部按钮是否禁用 | boolean | - | false |
 | zIndex | 设置通知的 z-index | number | - | 9999 |
-
-### Events
-
-| 事件名 | 说明               | 参数                          |
-| ------ | ------------------ | ----------------------------- |
-| close  | 点击关闭按钮触发的事件 | `() => void` |
-| footer-click | 点击底部按钮触发的事件。使用 footer 插槽时，该事件不会触发 | `() => void` |
+| onClose | 关闭时的回调函数 | Function(() => void) | - | - |
+| onDestroy | 销毁时的回调函数 | Function(() => void) | - | - |
+| onFooterClick | 点击底部按钮时的回调函数 | Function(() => void) | - | - |
 
 ### Methods
 
-`BoatNotification` 和 `BoatNotification.notify` 都返回当前的 `BoatNotification` 实例。如果需要手动关闭实例，可以调用它的 close 方法。
+`BoatNotification` 和 `$notify` 都返回当前的 `BoatNotification` 实例。如果需要手动关闭实例，可以调用它的 close 方法。也可以通过调用 `$notify.closeAll()` 或者 `BoatNotification.closeAll()` 来关闭所有通知。
 
 | 方法名 | 说明               | 类型        | 参数                  |
 | ------ | ------------------ | ----------------------------- | ------------------ |
 | close  | 关闭当前的 BoatNotification |    Function    |`() => void` |
-
-### Slots
-
-| 插槽名  | 说明           |
-| ------- | -------------- |
-| default | 自定义通知栏正文内容。使用插槽会覆盖 content 属性 |
-| footer | 自定义底部内容 |
+| closeAll  | 关闭所有 BoatNotification |    Function    |`() => void` |

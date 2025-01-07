@@ -4,6 +4,7 @@ import {
     makeNumberProp,
     makeEnumProp,
     makeBooleanProp,
+    makeFunctionProp,
 } from '../../utils/makeProps';
 import type { ExtractPropTypes, VNode, PropType } from 'vue';
 
@@ -61,10 +62,6 @@ export const boatNotificationProps = {
      */
     offset: makeNumberProp(16),
     /**
-     * Notification 之间的间距
-     */
-    gap: makeNumberProp(16),
-    /**
      * 通知栏正文内容
      */
     content: {
@@ -72,7 +69,7 @@ export const boatNotificationProps = {
         default: '',
     },
     /**
-     * 是否显示底部按钮。使用 footer 插槽时，该属性无效
+     * 是否显示底部按钮。
      */
     showFooterButton: makeBooleanProp(false),
     /**
@@ -94,6 +91,22 @@ export const boatNotificationProps = {
      * 设置通知的 z-index
      */
     zIndex: makeNumberProp(9999),
+    /**
+     * 通知的唯一标识
+     */
+    id: makeStringProp(''),
+    /**
+     * 关闭时的回调函数
+     */
+    onClose: makeFunctionProp(() => {}),
+    /**
+     * 销毁时的回调函数
+     */
+    onDestroy: makeFunctionProp(() => {}),
+    /**
+     * 点击底部按钮时的回调函数
+     */
+    onFooterClick: makeFunctionProp(() => {}),
 };
 
 /**

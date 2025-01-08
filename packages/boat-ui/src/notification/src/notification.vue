@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref, isVNode, type VNode } from 'vue';
+import { computed, onMounted, onUnmounted, ref, isVNode, type VNode } from 'vue';
 import { BoatIcon } from '../../icon';
 import { BoatButton } from '../../button';
 import { boatNotificationProps } from './props';
@@ -140,6 +140,10 @@ function onFooterButtonClick() {
 // Lifecycle
 onMounted(() => {
     startTimer();
+});
+
+onUnmounted(() => {
+    clearTimer();
 });
 
 // Expose

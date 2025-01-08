@@ -65,18 +65,6 @@ export function makeObjectProp<T>(defaultValue: T) {
 }
 
 /**
- * 生成 String 或 Object 类型的 props
- * @param defaultValue 字符串或对象的默认值，默认为空字符串
- * @returns 返回 Vue prop 的配置对象
- */
-export function makeStringOrObjectProp<T>(defaultValue: T) {
-    return {
-        type: [String, Object] as PropType<T>,
-        default: defaultValue,
-    };
-}
-
-/**
  * 生成 VNode 类型的 props
  * @param defaultValue VNode 的默认值，默认为空 VNode
  * @returns 返回 Vue prop 的配置对象
@@ -90,12 +78,27 @@ export function makeVNodeProp(defaultValue: VNode) {
 
 /**
  * 生成 Function 类型的 props
- * @param defaultValue Function 的默认值，默认为空 Function
+ * @param defaultValue Function 的默认值，默认为 null
  * @returns 返回 Vue prop 的配置对象
  */
-export function makeFunctionProp<T>(defaultValue: T) {
+export function makeFunctionProp<T extends (...args: any[]) => any | null | undefined>(
+    defaultValue: T = null as unknown as T
+) {
     return {
         type: Function as PropType<T>,
+        default: defaultValue,
+    };
+}
+
+/**
+ * 生成联合类型的 props
+ * @param types 联合类型数组
+ * @param defaultValue 联合类型的默认值
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeUnionProp<T>(types: PropType<T>[], defaultValue: T) {
+    return {
+        type: types as PropType<T>,
         default: defaultValue,
     };
 }

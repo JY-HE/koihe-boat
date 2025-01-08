@@ -1,61 +1,166 @@
-.boat-progress-notification {
-    .notification-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+$notification-types: (
+    'primary': '--boat-primary-color',
+    'success': '--boat-success-color',
+    'error': '--boat-error-color',
+);
 
-        .progress-notification--message {
-            width: 100%;
-            margin-bottom: 6px;
-            font-size: 14px;
-            line-height: 22px;
-            color: rba(var(--boat-primary-color));
-            text-align: left;
+@mixin notification-type($var) {
+    background: rgba(var(#{$var}), var(--boat-deep-opacity));
+    box-shadow: 0 4px 12px rgba(var(#{$var}), var(--boat-deep-opacity));
+
+    .progress-header {
+        &__icon,
+        &__title {
+            color: rgb(var(#{$var}));
+        }
+        &__close {
+            .boat-icon {
+                color: rgba(var(#{$var}), var(--boat-normal-opacity));
+            }
+            &:hover,
+            &:active {
+                .boat-icon {
+                    color: rgb(var(#{$var}));
+                }
+            }
+        }
+    }
+
+    .progress-main {
+        &__message,
+        &__errorTip {
+            color: rgb(var(#{$var}));
         }
 
-        .progress-notification--bar {
+        &__bar {
+            border: 1px solid rgb(var(#{$var}));
+            &__inner {
+                background: rgb(var(#{$var}));
+            }
+        }
+    }
+}
+
+.boat-progress-notification {
+    pointer-events: auto;
+    position: fixed;
+    width: 400px;
+    height: fit-content;
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    @include notification-type('--boat-primary-color');
+
+    .progress-header {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__icon {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .boat-icon {
+                font-size: 16px;
+            }
+        }
+
+        &__title {
+            flex: 1;
+            flex-shrink: 0;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            padding: 0 8px 0 4px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &__close {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.05s;
+
+            .boat-icon {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .progress-main {
+        width: 100%;
+        padding-left: 20px;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        &__message,
+        &__errorTip {
+            width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__bar {
             width: 100%;
             height: 14px;
             border-radius: 12px;
             overflow: hidden;
             padding: 3px;
             background: transparent;
-            border: 1px solid;
-            border-color: rgb(var(--boat-primary-color));
 
             &__inner {
                 height: 100%;
-                background: rgb(var(--boat-primary-color));
                 border-radius: 12px;
                 transition: all 0.3s linear;
             }
         }
     }
 
-    .progress-notification--operations {
+    .progress-footer {
+        width: 100%;
         display: flex;
         justify-content: flex-end;
         gap: 8px;
+        margin-top: 8px;
     }
 
-    &--success {
-        .notification-content {
-            .progress-notification--bar {
-                border-color: rgb(var(--boat-success-color));
-                &__inner {
-                    background: rgb(var(--boat-success-color));
-                }
-            }
-        }
+    &.top-right,
+    &.bottom-right {
+        right: 16px;
     }
 
-    &--error {
-        .notification-content {
-            .progress-notification--bar {
-                border-color: rgb(var(--boat-error-color));
-                &__inner {
-                    background: rgb(var(--boat-error-color));
-                }
+    &.top-left,
+    &.bottom-left {
+        left: 16px;
+    }
+
+    @each $type, $var in $notification-types {
+        @if $type != 'primary' {
+            &--#{$type} {
+                @include notification-type($var);
             }
         }
     }

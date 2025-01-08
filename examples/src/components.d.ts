@@ -8,5 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BoatButton: typeof import('@koihe/boat-ui/es')['BoatButton']
+    BoatIcon: typeof import('@koihe/boat-ui/es')['BoatIcon']
+    BoatNotification: typeof import('@koihe/boat-ui/es')['BoatNotification']
+    BoatProgressNotification: typeof import('@koihe/boat-ui/es')['BoatProgressNotification']
   }
 }

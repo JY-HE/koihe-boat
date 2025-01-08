@@ -5,6 +5,7 @@ import {
     makeEnumProp,
     makeBooleanProp,
     makeFunctionProp,
+    makeUnionProp,
 } from '../../utils/makeProps';
 import type { ExtractPropTypes, VNode, PropType } from 'vue';
 
@@ -64,10 +65,10 @@ export const boatNotificationProps = {
     /**
      * 通知栏正文内容
      */
-    content: {
-        type: [String, Object, Function] as PropType<string | VNode | (() => VNode)>,
-        default: '',
-    },
+    content: makeUnionProp<string | VNode | (() => VNode)>(
+        [String, Object, Function as PropType<() => VNode>],
+        ''
+    ),
     /**
      * 是否显示底部按钮。
      */

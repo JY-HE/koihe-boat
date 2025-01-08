@@ -1,4 +1,4 @@
-import { withInstall } from '../utils/withInstall';
+import { withInstall } from '../utils/install';
 import ProgressNotification from './src/progressNotification.vue';
 
 export const BoatProgressNotification = withInstall(ProgressNotification);

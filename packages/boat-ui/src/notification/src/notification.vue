@@ -100,9 +100,7 @@ const iconColor = computed(() => {
 // Methods
 function startTimer() {
     if (props.duration === 0 || !visible.value) return;
-    timer.value = setTimeout(() => {
-        close();
-    }, props.duration);
+    timer.value = setTimeout(close, props.duration);
 }
 
 function clearTimer() {
@@ -138,13 +136,8 @@ function onFooterButtonClick() {
 }
 
 // Lifecycle
-onMounted(() => {
-    startTimer();
-});
-
-onUnmounted(() => {
-    clearTimer();
-});
+onMounted(startTimer);
+onUnmounted(clearTimer);
 
 // Expose
 defineExpose({

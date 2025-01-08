@@ -14,14 +14,10 @@ defineOptions({
 
 const props = defineProps(iconProps);
 
-const iconName = computed(() => {
-    return `#boat-${props.name}`;
-});
+const iconName = computed(() => `#boat-${props.name}`);
 
-const style = computed(() => {
-    return {
-        color: props.color,
-        fontSize: props.size,
-    };
-});
+const style = computed(() => ({
+    color: props.color,
+    fontSize: props.size,
+}));
 </script>

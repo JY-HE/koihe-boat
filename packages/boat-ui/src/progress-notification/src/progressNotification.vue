@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onUnmounted, onMounted } from 'vue';
+import { ref, computed, watch, onUnmounted, Ref } from 'vue';
 import { BoatButton } from '../../button';
 import { BoatIcon } from '../../icon';
 import { boatProgressNotificationProps, type ProgressNotificationStatus } from './props';
@@ -46,102 +46,66 @@ defineOptions({
 });
 
 const props = defineProps(boatProgressNotificationProps);
-
-const emit = defineEmits<{
-    (e: 'update:modelValue', value: boolean): void;
-    (e: 'retry'): void;
-    (e: 'close'): void;
-}>();
+const emit = defineEmits(['update:modelValue', 'retry', 'close']);
 
 const currentStatus = ref<ProgressNotificationStatus>('');
 const errorMessage = ref('');
-
-// Computed
-const classes = computed(() => {
-    return {
-        'boat-progress-notification': true,
-        [`boat-progress-notification--${currentStatus.value}`]: currentStatus.value,
-        [props.customClass]: props.customClass,
-        [`${props.position}`]: props.position,
-    };
-});
-const iconName = computed(() => currentStatus.value || 'info');
-const styles = computed(() => {
-    const style: Record<string, string> = {
-        zIndex: String(props.zIndex),
-    };
-
-    if (typeof props.offset === 'number') {
-        if (props.position?.includes('top')) {
-            style.top = `${props.offset}px`;
-        }
-        if (props.position?.includes('bottom')) {
-            style.bottom = `${props.offset}px`;
-        }
-    }
-
-    return style;
-});
-
 const progress = ref(0);
 const progressTimer = ref<ReturnType<typeof setTimeout> | null>(null);
 const durationTimer = ref<ReturnType<typeof setTimeout> | null>(null);
-/**
- * 清除进度条定时器
- */
-function clearProgressTimer() {
-    if (progressTimer.value) {
-        clearTimeout(progressTimer.value);
-        progressTimer.value = null;
+
+// Computed
+const classes = computed(() => ({
+    'boat-progress-notification': true,
+    [`boat-progress-notification--${currentStatus.value}`]: currentStatus.value,
+    [props.customClass]: props.customClass,
+    [`${props.position}`]: props.position,
+}));
+const iconName = computed(() => currentStatus.value || 'info');
+const styles = computed(() => {
+    const style: Record<string, string> = { zIndex: String(props.zIndex) };
+    if (typeof props.offset === 'number') {
+        if (props.position?.includes('top')) style.top = `${props.offset}px`;
+        if (props.position?.includes('bottom')) style.bottom = `${props.offset}px`;
+    }
+    return style;
+});
+
+// Methods
+function clearTimer(timer: Ref<ReturnType<typeof setTimeout> | null>) {
+    if (timer.value) {
+        clearTimeout(timer.value);
+        timer.value = null;
     }
 }
-/**
- * 清除持续时间定时器
- */
-function clearDurationTimer() {
-    if (durationTimer.value) {
-        clearTimeout(durationTimer.value);
-        durationTimer.value = null;
-    }
-}
-/**
- * 递增进度条
- */
+
 function incrementProgress() {
     if (currentStatus.value === 'error') return;
     if (currentStatus.value === 'success') {
         progress.value = 100;
         if (props.duration > 0) {
-            clearDurationTimer();
-            durationTimer.value = setTimeout(() => {
-                close();
-            }, props.duration);
+            clearTimer(durationTimer);
+            durationTimer.value = setTimeout(close, props.duration);
         }
         return;
     }
     if (progress.value < 90) {
-        clearProgressTimer();
+        clearTimer(progressTimer);
         progress.value += (90 - progress.value) * 0.1;
         progressTimer.value = setTimeout(incrementProgress, 500);
     }
 }
 
-/**
- * 关闭通知
- */
 function close() {
     emit('close');
-    clearProgressTimer();
-    clearDurationTimer();
+    clearTimer(progressTimer);
+    clearTimer(durationTimer);
     progress.value = 0;
     errorMessage.value = '';
     currentStatus.value = '';
     emit('update:modelValue', false);
 }
 
-/**
- * 重试
- */
 function handleRetry() {
     emit('retry');
     currentStatus.value = '';
@@ -152,9 +116,6 @@ function handleRetry() {
     incrementProgress();
 }
 
-/**
- * 执行传入的 action 函数
- */
 async function executeAction() {
     try {
         await props.action();
@@ -165,6 +126,7 @@ async function executeAction() {
     }
 }
 
+// Watchers
 watch(
     () => props.modelValue,
     newVal => {
@@ -175,9 +137,7 @@ watch(
             incrementProgress();
         }
     },
-    {
-        immediate: true,
-    }
+    { immediate: true }
 );
 
 watch(
@@ -188,13 +148,11 @@ watch(
             incrementProgress();
         }
     },
-    {
-        deep: true,
-    }
+    { deep: true }
 );
 
 onUnmounted(() => {
-    clearProgressTimer();
-    clearDurationTimer();
+    clearTimer(progressTimer);
+    clearTimer(durationTimer);
 });
 </script>

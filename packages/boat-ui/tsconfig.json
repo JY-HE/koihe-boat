@@ -4,7 +4,6 @@
         "moduleResolution": "Node",
         "resolveJsonModule": true,
         "useDefineForClassFields": true,
-
         // Required in Vue projects
         // "jsx": "preserve",
 
@@ -33,9 +32,13 @@
         "forceConsistentCasingInFileNames": true,
         // See <https://github.com/vuejs/vue-cli/pull/5688>
         "skipLibCheck": true,
-
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        },
         // Contains the specified types
         "types": ["unplugin-vue-define-options"]
     },
-    "include": ["src/**/*.ts"]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "shims-vue.d.ts"],
+    "exclude": ["node_modules"]
 }

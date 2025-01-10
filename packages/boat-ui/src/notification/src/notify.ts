@@ -75,7 +75,7 @@ const notify: NotificationFn = (options: Partial<BoatNotificationProps>) => {
 
     return {
         close: () => {
-            (vNode.component!.exposed as { visible: Ref<boolean> }).visible.value = false;
+            (vNode.component!.exposed as any).close();
         },
     };
 };
@@ -108,7 +108,7 @@ function close(id: string, position: string) {
 function closeAll() {
     Object.values(notifications).forEach(orientedNotifications => {
         orientedNotifications.forEach(({ vm }) => {
-            (vm.component!.exposed as { visible: Ref<boolean> }).visible.value = false;
+            (vm.component!.exposed as any).close();
         });
     });
 }

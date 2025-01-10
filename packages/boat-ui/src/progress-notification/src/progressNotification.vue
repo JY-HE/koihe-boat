@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch, onUnmounted, Ref } from 'vue';
+import { ref, computed, watch, onUnmounted, type Ref } from 'vue';
 import { BoatButton } from '../../button';
 import { BoatIcon } from '../../icon';
 import { boatProgressNotificationProps, type ProgressNotificationStatus } from './props';

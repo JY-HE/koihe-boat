@@ -1,11 +1,12 @@
 <template>
     <div class="con" ref="conRef">
-        <!-- <boat-button @click="handleRetry" plain>BoatNotification</boat-button>
-        <boat-button type="primary" @click="handleCancel" plain disabled>$notify</boat-button>
-        <boat-button type="error" @click="handleClose" plain disabled>close</boat-button>
-        <boat-button type="success" @click="handleClose" plain disabled>close</boat-button>
-        <boat-button type="info" @click="handleClose" plain disabled>close</boat-button>
-        <boat-button type="link" @click="handleClose" plain disabled>close</boat-button> -->
+        <boat-icon name="close" color="blue" size="24px" />
+        <boat-button plain>BoatNotification</boat-button>
+        <boat-button type="primary" plain disabled>$notify</boat-button>
+        <boat-button type="error" plain disabled>close</boat-button>
+        <boat-button type="success" plain disabled>close</boat-button>
+        <boat-button type="info" plain disabled>close</boat-button>
+        <boat-button type="link" plain disabled>close</boat-button>
         <boat-button @click="open"> open </boat-button>
     </div>
 </template>
@@ -18,7 +19,10 @@ import '@koihe/boat-ui/es/notification/style/index';
 const open = () => {
     BoatNotification({
         title: '这是个标题',
-        content: h('div', '这是一条消息'),
+        duration: 0,
+        type: 'success',
+        position: 'top-left',
+        content: () => h('p', null, '这是个内容111'),
     });
 };
 </script>

@@ -1,0 +1,37 @@
+{
+  "hash": "85c272dc",
+  "configHash": "74fb385c",
+  "lockfileHash": "8dbc5094",
+  "browserHash": "994b7cd4",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/.pnpm/vue@3.5.13_typescript@4.9.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "3d6c3059",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.7.0/node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "597f947e",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@11.3.0_vue@3.5.13_typescript@5.4.2_/node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "41723f08",
+      "needsInterop": false
+    },
+    "@koihe/boat-ui": {
+      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.1_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs",
+      "file": "@koihe_boat-ui.js",
+      "fileHash": "57f93a17",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YV5EF3ZW": {
+      "file": "chunk-YV5EF3ZW.js"
+    }
+  }
+}

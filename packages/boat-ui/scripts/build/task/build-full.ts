@@ -1,5 +1,6 @@
 import path from 'path';
 import { rollup } from 'rollup';
+import { dest, src } from 'gulp';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -8,6 +9,17 @@ import esbuild, { minify as minifyPlugin } from 'rollup-plugin-esbuild';
 import { COMPILER_ROOT, OUTPUT } from '../utils/paths';
 import { target, generateExternal } from '../utils/rollup';
 import { PKG_CAMELCASE_NAME } from '../utils/constants';
+
+/**
+ * @description 复制 iconfont.js 文件
+ */
+const buildIconfontCopy = async () => {
+    await new Promise(resolve => {
+        src(`${COMPILER_ROOT}/assets/icons/iconfont.js`)
+            .pipe(dest(path.join(OUTPUT, 'icons')))
+            .on('end', resolve);
+    });
+};
 
 /**
  * @description 全量打包
@@ -59,6 +71,7 @@ const build = async (minify: boolean = false) => {
                 vue: 'Vue',
             },
         }),
+        buildIconfontCopy(),
     ]);
 };
 

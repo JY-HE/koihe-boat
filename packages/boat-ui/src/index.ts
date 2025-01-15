@@ -1,5 +1,4 @@
 import type { App } from 'vue';
-import './iconfont.js';
 import { BoatIcon } from './icon';
 import { BoatButton } from './button';
 import { BoatNotification } from './notification';

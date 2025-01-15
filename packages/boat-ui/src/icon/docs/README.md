@@ -1,6 +1,20 @@
 # Icon 图标组件
 
-Boat UI 提供了常用的 SVG 图标组件。
+`Boat UI` 提供了一套常用的 `SVG` 图标集合。
+
+## 使用图标
+
+在使用图标之前，你需要在项目的主入口文件中导入图标文件。例如在 `main.ts` 中引入:
+
+```javascript
+import { createApp } from 'vue';
+import App from './App.vue';
+// 引入图标文件
+import '@koihe/boat-ui/dist/icons/iconfont.js';
+
+const app = createApp(App);
+app.mount('#app');
+```
 
 ## 基础用法
 

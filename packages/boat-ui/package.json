@@ -1,6 +1,6 @@
 {
     "name": "@koihe/boat-ui",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Front-end UI component library for Vue3",
     "private": false,
     "author": "koihe",
@@ -54,6 +54,7 @@
             "require": "./lib/*.js"
         },
         "./dist/index.css": "./dist/index.css",
+        "./dist/icons/iconfont.js": "./dist/icons/iconfont.js",
         "./es/*.scss": "./es/*.scss",
         "./lib/*.scss": "./lib/*.scss",
         "./es/*/style/*": "./es/*/style/*",

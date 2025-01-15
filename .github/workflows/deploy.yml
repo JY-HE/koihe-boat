@@ -53,6 +53,14 @@ jobs:
             - name: Build with VitePress
               run: pnpm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
 
+            - name: Verify build output
+              run: ls -R docs/.vitepress/dist
+
+            - name: Debug build output
+              run: |
+                  echo "Current directory: $(pwd)"
+                  ls -R docs/.vitepress/dist
+
     # 部署工作
     deploy:
         environment:

@@ -1,32 +1,38 @@
 {
-  "hash": "85c272dc",
+  "hash": "975fb466",
   "configHash": "74fb385c",
-  "lockfileHash": "8dbc5094",
-  "browserHash": "994b7cd4",
+  "lockfileHash": "f530244a",
+  "browserHash": "21350fa9",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.5.13_typescript@4.9.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "3d6c3059",
+      "fileHash": "86056553",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.7.0/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "597f947e",
+      "fileHash": "a010aad6",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/.pnpm/@vueuse+core@11.3.0_vue@3.5.13_typescript@5.4.2_/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "41723f08",
+      "fileHash": "5160467b",
       "needsInterop": false
     },
     "@koihe/boat-ui": {
-      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.1_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs",
+      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs",
       "file": "@koihe_boat-ui.js",
-      "fileHash": "57f93a17",
+      "fileHash": "a20a7da6",
       "needsInterop": false
+    },
+    "@koihe/boat-ui/dist/icons/iconfont.js": {
+      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/dist/icons/iconfont.js",
+      "file": "@koihe_boat-ui_dist_icons_iconfont__js.js",
+      "fileHash": "38d0ed56",
+      "needsInterop": true
     }
   },
   "chunks": {

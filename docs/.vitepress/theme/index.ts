@@ -1,14 +1,15 @@
 import DefaultTheme from 'vitepress/theme';
+import type { Theme } from 'vitepress';
 import BoatUI from '@koihe/boat-ui';
 import '@koihe/boat-ui/dist/index.css';
 import './custom.css';
 
 export default {
     ...DefaultTheme,
-    enhanceApp({ app, router, siteData }) {
-        // app is the Vue 3 app instance from createApp()
-        // router is VitePress' custom router (see `lib/app/router.js`)
-        // siteData is a ref of current site-level metadata.
+    async enhanceApp({ app }) {
+        if (!import.meta.env.SSR) {
+            await import('@koihe/boat-ui/dist/icons/iconfont.js');
+        }
         app.use(BoatUI);
     },
-};
+} satisfies Theme;

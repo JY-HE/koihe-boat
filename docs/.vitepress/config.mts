@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+    base: '/koihe-boat/',
     title: 'Boat UI',
     description: 'Front-end UI component library for Vue3',
     themeConfig: {

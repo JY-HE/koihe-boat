@@ -8,11 +8,9 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "dev": "pnpm -r run dev",
-        "patch": "npm version patch",
-        "minor": "npm version minor",
-        "major": "npm version major",
-        "publish": "npm publish"
+        "ui:build": "gulp --require node_modules/@esbuild-kit/cjs-loader -f packages/boat-ui/scripts/build/index.ts",
+        "docs:build": "vitepress build docs",
+        "docs:preview": "vitepress preview docs"
     },
     "dependencies": {
         "@koihe/boat-ui": "workspace:^",

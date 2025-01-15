@@ -82,8 +82,8 @@ importers:
   docs:
     dependencies:
       '@koihe/boat-ui':
-        specifier: ^1.0.1
-        version: 1.0.1(vue@3.5.13(typescript@5.4.2))
+        specifier: ^1.0.2
+        version: 1.0.2(vue@3.5.13(typescript@5.4.2))
     devDependencies:
       vitepress:
         specifier: ^1.5.0
@@ -1092,8 +1092,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@koihe/boat-ui@1.0.1':
-    resolution: {integrity: sha512-oketj4BQfx1hQJ61kFumcEPC39j0N5sKBtEQzn2Nn5JfwTK3imwU5FkXs2wroWhcH+yIPQoLD/7zcagLq41P2A==}
+  '@koihe/boat-ui@1.0.2':
+    resolution: {integrity: sha512-kUCFQleCSv3sYrkDs9ceRuMbx5TORgRf8DsKdz4P8LPXeu2FKijrEMYgeswc67sbsGkAWuLyVaP3DPOkkfz0aw==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -4320,7 +4320,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@koihe/boat-ui@1.0.1(vue@3.5.13(typescript@5.4.2))':
+  '@koihe/boat-ui@1.0.2(vue@3.5.13(typescript@5.4.2))':
     dependencies:
       vue: 3.5.13(typescript@5.4.2)
 

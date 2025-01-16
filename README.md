@@ -1,9 +1,13 @@
-<h1 align="center">@koihe/boat</h1>
+<h1 align="center">@koihe/boat-ui</h1>
 
-<p align="center">集合前端工具库以及适用于 Vue3 的 UI 组件库</p>
+<p align="center">UI component library for Vue3</p>
 
 <p align="center">
 <a href="https://www.npmjs.com/package/@koihe/boat-ui" target="__blank"><img src="https://img.shields.io/npm/v/@koihe/boat-ui?label=version" alt="NPM version"></a>
+</p>
+
+<p align="center">
+<a href="https://github.com/JY-HE/koihe-boat" target="__blank"><img src="https://api.iconify.design/simple-icons/github.svg" alt="NPM version"></a>
 </p>
 
 ---

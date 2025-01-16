@@ -5,3 +5,45 @@
 .VPDoc.has-aside .content-container {
     max-width: none !important;
 }
+
+@media (min-width: 1440px) {
+    .VPSidebar {
+        padding-left: 32px !important;
+        width: 320px !important;
+    }
+
+    .VPNavBar.has-sidebar {
+        .title {
+            width: 320px !important;
+            padding-left: 32px !important;
+
+            .VPNavBarTitle.has-sidebar {
+                width: 100%;
+                a {
+                    width: 100% !important;
+                    padding-left: 0 !important;
+                }
+            }
+        }
+
+        .divider {
+            padding-left: 336px !important;
+        }
+
+        .content {
+            padding-right: 32px !important;
+            padding-left: 320px !important;
+        }
+    }
+
+    .VPContent.has-sidebar {
+        padding-right: 32px !important;
+        padding-left: 320px !important;
+    }
+}
+
+@media (min-width: 960px) {
+    .group {
+        width: 100% !important;
+    }
+}

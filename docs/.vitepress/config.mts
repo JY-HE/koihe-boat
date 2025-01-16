@@ -4,12 +4,12 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
     base: '/koihe-boat/',
     title: 'Boat UI',
-    description: 'Front-end UI component library for Vue3',
+    description: 'UI component library for Vue3',
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
-            { text: '开发指南', link: '/guide/installation' },
-            { text: '组件', link: '/components/overview' },
+            { text: '开发指南', link: '/guide/installation', activeMatch: '^/guide(/|$)' },
+            { text: '组件', link: '/components/overview', activeMatch: '^/components(/|$)' },
         ],
 
         sidebar: {

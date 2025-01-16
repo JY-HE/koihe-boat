@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-<a href="https://github.com/JY-HE/koihe-boat" target="__blank"><img src="https://api.iconify.design/simple-icons/github.svg" alt="NPM version"></a>
+<a href="https://github.com/JY-HE/koihe-boat" target="__blank"><img src="https://api.iconify.design/simple-icons/github.svg" alt="github"></a>
 </p>
 
 ---

@@ -27,7 +27,7 @@ import {
   withDirectives
 } from "./chunk-YV5EF3ZW.js";
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
 var withInstall = (main, extra) => {
   main.install = (app) => {
     for (const comp of [main, ...Object.values(extra ?? {})]) {
@@ -49,7 +49,7 @@ var withInstallFunction = (fn, name) => {
   return fn;
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
 function makeBooleanProp(defaultValue = false) {
   return {
     type: Boolean,
@@ -90,7 +90,7 @@ function makeUnionProp(types, defaultValue) {
   };
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
 var iconProps = {
   /**
    * 图标名称
@@ -106,7 +106,7 @@ var iconProps = {
   size: makeStringProp("")
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
 var _hoisted_1 = ["xlink:href"];
 var __default__ = defineComponent({
   name: "BoatIcon"
@@ -140,10 +140,10 @@ var _sfc_main = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
 var BoatIcon = withInstall(_sfc_main);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
 var boatButtonProps = {
   /**
    * 按钮类型
@@ -162,7 +162,7 @@ var boatButtonProps = {
   plain: makeBooleanProp(false)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
 var _hoisted_12 = ["disabled"];
 var __default__2 = defineComponent({
   name: "BoatButton"
@@ -197,10 +197,10 @@ var _sfc_main2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
 var BoatButton = withInstall(_sfc_main2);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
 var boatNotificationProps = {
   /**
    * 通知标题
@@ -292,7 +292,7 @@ var boatNotificationProps = {
   })
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
 var _hoisted_13 = ["id"];
 var _hoisted_2 = { class: "notification-header" };
 var _hoisted_3 = { class: "notification-header__icon" };
@@ -459,7 +459,7 @@ var _sfc_main3 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -533,10 +533,10 @@ function closeAll() {
 notify.closeAll = closeAll;
 notify._context = null;
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
 var BoatNotification = withInstallFunction(notify, "$notify");
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
 var boatProgressNotificationProps = {
   /**
    * 进度通知是否可见
@@ -611,7 +611,7 @@ var boatProgressNotificationProps = {
   offset: makeNumberProp(16)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
 var _hoisted_14 = { class: "progress-header" };
 var _hoisted_22 = { class: "progress-header__icon" };
 var _hoisted_32 = { class: "progress-header__title" };
@@ -841,10 +841,10 @@ var _sfc_main4 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
 var BoatProgressNotification = withInstall(_sfc_main4);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
 var styleDependencies = {
   // 基础组件
   icon: [],
@@ -866,7 +866,7 @@ function getAllDependencies(componentName) {
   return Array.from(visited);
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
 var components = [BoatIcon, BoatButton, BoatNotification, BoatProgressNotification];
 function install(app) {
   components.forEach((item) => {

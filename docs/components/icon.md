@@ -26,19 +26,44 @@ app.mount('#app');
 
 ## 图标集合
 
+### System
+
 <div :class="$style.iconBox">
-    <div :class="$style.iconItem" v-for="item in icons" :key="item">
+    <div :class="$style.iconItem" v-for="item in getIconFonts('System')" :key="item">
+        <boat-icon :name="item" size="24"></boat-icon>
+        <span> {{ item }} </span>
+    </div>
+</div>
+
+### Media
+
+<div :class="$style.iconBox">
+    <div :class="$style.iconItem" v-for="item in getIconFonts('Media')" :key="item">
+        <boat-icon :name="item" size="24"></boat-icon>
+        <span> {{ item }} </span>
+    </div>
+</div>
+
+### Arrow
+
+<div :class="$style.iconBox">
+    <div :class="$style.iconItem" v-for="item in getIconFonts('Arrow')" :key="item">
+        <boat-icon :name="item" size="24"></boat-icon>
+        <span> {{ item }} </span>
+    </div>
+</div>
+
+### Others
+
+<div :class="$style.iconBox">
+    <div :class="$style.iconItem" v-for="item in getIconFonts('Others')" :key="item">
         <boat-icon :name="item" size="24"></boat-icon>
         <span> {{ item }} </span>
     </div>
 </div>
 
 <script setup>
-import { computed } from 'vue'
-
-const icons = computed(()=>{
-    return ['search', 'info', 'error', 'success', 'close', 'warning']
-})
+import { getIconFonts } from '../utils'
 </script>
 
 <style module>

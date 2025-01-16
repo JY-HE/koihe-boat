@@ -1,37 +1,37 @@
 {
-  "hash": "975fb466",
+  "hash": "322059ac",
   "configHash": "74fb385c",
-  "lockfileHash": "f530244a",
-  "browserHash": "21350fa9",
+  "lockfileHash": "236daeeb",
+  "browserHash": "3020b424",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.5.13_typescript@4.9.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "86056553",
+      "fileHash": "611eed6a",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.7.0/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "a010aad6",
+      "fileHash": "e34c0f8d",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/.pnpm/@vueuse+core@11.3.0_vue@3.5.13_typescript@5.4.2_/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "5160467b",
+      "fileHash": "ccf21911",
       "needsInterop": false
     },
     "@koihe/boat-ui": {
-      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs",
+      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs",
       "file": "@koihe_boat-ui.js",
-      "fileHash": "a20a7da6",
+      "fileHash": "39e54172",
       "needsInterop": false
     },
     "@koihe/boat-ui/dist/icons/iconfont.js": {
-      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.2_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/dist/icons/iconfont.js",
+      "src": "../../../../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/dist/icons/iconfont.js",
       "file": "@koihe_boat-ui_dist_icons_iconfont__js.js",
-      "fileHash": "38d0ed56",
+      "fileHash": "f42077fc",
       "needsInterop": true
     }
   },

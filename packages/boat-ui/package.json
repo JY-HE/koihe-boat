@@ -1,6 +1,6 @@
 {
     "name": "@koihe/boat-ui",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Front-end UI component library for Vue3",
     "private": false,
     "author": "koihe",

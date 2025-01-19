@@ -1,4 +1,4 @@
-import { makeBooleanProp, makeArrayProp } from '../../utils/makeProps';
+import { makeBooleanProp, makeArrayProp, makeNumberProp } from '../../utils/makeProps';
 import type { ExtractPropTypes } from 'vue';
 
 /**
@@ -6,13 +6,17 @@ import type { ExtractPropTypes } from 'vue';
  */
 export const rotateMenuProps = {
     /**
-     * 菜单是否默认展开
-     */
-    expend: makeBooleanProp(false),
-    /**
      * 按钮文本数组
      */
     menus: makeArrayProp<string>(),
+    /**
+     * 半径，默认为 110
+     */
+    radius: makeNumberProp(110),
+    /**
+     * z-index，默认为 9999
+     */
+    zIndex: makeNumberProp(9999),
 };
 
 /**

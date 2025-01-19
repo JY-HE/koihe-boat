@@ -1,18 +1,23 @@
 <template>
-    <div class="boat-rotate-menu" :style="cssVariables">
-        <!-- <input type="checkbox" id="menu_toggler" checked /> -->
-        <input type="checkbox" id="menu_toggler" v-model="isExpanded" />
-        <label for="menu_toggler"></label>
+    <div :class="classes" :style="{ zIndex: props.zIndex }">
+        <div class="menu-toggler" @click="isExpanded = !isExpanded">
+            <div class="menu-toggler__line"></div>
+        </div>
         <ul>
-            <li class="menu-item" v-for="(item, index) in menus" :key="item">
-                <a href="#">{{ item }}</a>
+            <li
+                class="menu-item"
+                v-for="(item, index) in menus"
+                :key="item"
+                :id="`menu-item-${index}`"
+            >
+                <a href="#" :style="getLinkStyle(index)">{{ item }}</a>
             </li>
         </ul>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { rotateMenuProps } from './props';
 
 defineOptions({
@@ -21,36 +26,41 @@ defineOptions({
 
 const props = defineProps(rotateMenuProps);
 
-// 控制菜单展开状态
-const isExpanded = ref(props.expend);
+const isExpanded = ref(false);
 
-const cssVariables = computed(() => ({
-    '--menus-count': props.menus.length,
-    '--menus-items': Array.from({ length: props.menus.length }, (_, i) => i + 1).join(', '),
+const classes = computed(() => ({
+    'boat-rotate-menu': true,
+    'is-expand': isExpanded.value,
 }));
 
-// 计算每个菜单项的样式
-const getMenuItemStyle = (index: number) => {
-    const totalItems = props.menus.length;
-    const angle = (360 / totalItems) * index; // 计算每个菜单项的角度
-    const radius = 110; // 半径，可以根据需要调整
-
-    return {
-        transform: isExpanded.value
-            ? `rotate(${angle}deg) translateX(-${radius}px)` // 展开状态
-            : `rotate(${angle}deg) translateX(0)`, // 折叠状态
-        opacity: isExpanded.value ? 1 : 0, // 展开时显示，折叠时隐藏
-        transition: `opacity 0.3s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`, // 动态设置 transition-delay
-    };
-};
-
-// 计算每个链接的样式（反向旋转）
 const getLinkStyle = (index: number) => {
     const totalItems = props.menus.length;
-    const angle = (360 / totalItems) * index; // 计算每个菜单项的角度
+    const angle = totalItems < 6 ? index * 60 : (360 / totalItems) * index;
 
     return {
-        transform: `rotate(-${angle}deg)`, // 反向旋转，抵消父元素的旋转
+        transform: `rotate(-${angle}deg)`,
     };
 };
+
+watch(
+    () => isExpanded.value,
+    newVal => {
+        const totalItems = props.menus.length;
+
+        for (let i = 0; i < totalItems; i += 1) {
+            const menuItem = document.querySelector(`#menu-item-${i}`) as HTMLElement;
+            const angle = totalItems < 6 ? i * 60 : (360 / totalItems) * i;
+            if (menuItem) {
+                menuItem.style.transform = 'none';
+                menuItem.style.opacity = '0';
+                menuItem.getBoundingClientRect();
+
+                if (newVal) {
+                    menuItem.style.transform = `rotate(${angle}deg) translateX(-${props.radius}px)`;
+                    menuItem.style.opacity = '1';
+                }
+            }
+        }
+    }
+);
 </script>

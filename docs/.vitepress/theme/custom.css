@@ -6,6 +6,11 @@
     max-width: none !important;
 }
 
+.VPNavBarSearch {
+    justify-content: flex-end;
+    padding-right: 32px;
+}
+
 @media (min-width: 1440px) {
     .VPSidebar {
         padding-left: 32px !important;

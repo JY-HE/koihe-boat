@@ -3,9 +3,16 @@ import { BoatIcon } from './icon';
 import { BoatButton } from './button';
 import { BoatNotification } from './notification';
 import { BoatProgressNotification } from './progress-notification';
+import { BoatRotateMenu } from './rotate-menu';
 
 // 定义需要注册的组件数组
-const components = [BoatIcon, BoatButton, BoatNotification, BoatProgressNotification];
+const components = [
+    BoatIcon,
+    BoatButton,
+    BoatNotification,
+    BoatProgressNotification,
+    BoatRotateMenu,
+];
 
 /**
  * 提供 install 方法用于批量注册组件
@@ -36,6 +43,7 @@ export * from './icon';
 export * from './button';
 export * from './notification';
 export * from './progress-notification';
+export * from './rotate-menu';
 
 // 导出组件样式依赖关系
 export * from './styleDependencies';

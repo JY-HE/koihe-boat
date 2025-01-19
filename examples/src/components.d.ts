@@ -11,5 +11,6 @@ declare module 'vue' {
     BoatIcon: typeof import('@koihe/boat-ui/es')['BoatIcon']
     BoatNotification: typeof import('@koihe/boat-ui/es')['BoatNotification']
     BoatProgressNotification: typeof import('@koihe/boat-ui/es')['BoatProgressNotification']
+    BoatRotateMenu: typeof import('@koihe/boat-ui/es')['BoatRotateMenu']
   }
 }

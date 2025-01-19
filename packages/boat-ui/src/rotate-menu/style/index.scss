@@ -48,8 +48,8 @@
         &:hover {
             &::before,
             &::after,
-            &__line {
-                background: rgb(var(--boat-primary-color));
+            .menu-toggler__line {
+                background: rgba(var(--boat-primary-color), 1);
             }
         }
     }
@@ -68,19 +68,19 @@
         transition: 0.5s;
         z-index: 1;
 
-        a {
-            display: block;
-            width: inherit;
-            height: inherit;
-            line-height: 80px;
+        &__icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
             background: rgba(var(--boat-primary-color), var(--boat-hover-opacity));
             border-radius: 50%;
-            text-align: center;
-            text-decoration: none;
             font-size: 40px;
             pointer-events: none;
             transition: 0.2s;
+            cursor: pointer;
 
             &:hover {
                 box-shadow: 0 0 0 2px rgba(var(--boat-primary-color), var(--boat-hover-opacity));
@@ -107,10 +107,15 @@
             &__line {
                 background: transparent;
             }
+            &:hover {
+                .menu-toggler__line {
+                    background: transparent;
+                }
+            }
         }
 
         .menu-item {
-            a {
+            &__icon {
                 pointer-events: auto;
             }
         }

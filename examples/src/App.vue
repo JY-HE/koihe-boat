@@ -1,5 +1,5 @@
 <template>
-    <boat-rotate-menu :menus="['1', '2', '5', '1', '2', '5', '1', '2', '5']" :radius="180" />
+    <boat-rotate-menu :menus="['1', '2', '5', '1']" :radius="120" />
 </template>
 
 <script setup lang="ts"></script>

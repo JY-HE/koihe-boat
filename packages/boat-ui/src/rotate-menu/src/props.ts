@@ -1,10 +1,14 @@
-import { makeBooleanProp, makeArrayProp, makeNumberProp } from '../../utils/makeProps';
+import { makeStringProp, makeArrayProp, makeNumberProp } from '../../utils/makeProps';
 import type { ExtractPropTypes } from 'vue';
 
 /**
  * 定义 RotateMenu 组件的 Props 类型
  */
 export const rotateMenuProps = {
+    /**
+     * 自定义类名
+     */
+    customClass: makeStringProp(''),
     /**
      * 按钮文本数组
      */

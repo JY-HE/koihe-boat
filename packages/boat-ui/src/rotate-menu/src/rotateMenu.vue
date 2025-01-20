@@ -1,16 +1,22 @@
 <template>
     <div :class="classes" :style="{ zIndex: props.zIndex }">
         <div class="menu-toggler" @click="isExpanded = !isExpanded">
-            <div class="menu-toggler__line"></div>
+            <div class="toggler-content">
+                <div class="toggler-content__line"></div>
+            </div>
         </div>
         <ul>
             <li
                 class="menu-item"
-                v-for="(item, index) in menus"
-                :key="item"
+                v-for="(menu, index) in menus"
+                :key="index"
                 :id="`menu-item__${index}`"
+                @click="clickHandler(menu)"
             >
-                <div class="menu-item__icon" :style="getLinkStyle(index)">{{ item }}</div>
+                <div class="menu-item__icon" :style="getLinkStyle(index)">
+                    <slot :data="menu" v-if="$slots.default"></slot>
+                    <boat-icon v-else-if="typeof menu === 'string'" :name="menu" />
+                </div>
             </li>
         </ul>
     </div>
@@ -19,12 +25,17 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue';
 import { rotateMenuProps } from './props';
+import BoatIcon from '../../icon';
 
 defineOptions({
     name: 'BoatRotateMenu',
 });
 
 const props = defineProps(rotateMenuProps);
+
+const emit = defineEmits<{
+    click: [menu: string | object];
+}>();
 
 const isExpanded = ref(false);
 
@@ -63,4 +74,8 @@ watch(
         }
     }
 );
+
+function clickHandler(menu: string | object) {
+    emit('click', menu);
+}
 </script>

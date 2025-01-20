@@ -1,4 +1,4 @@
-import { makeStringProp, makeArrayProp, makeNumberProp } from '../../utils/makeProps';
+import { makeStringProp, makeUnionProp, makeNumberProp } from '../../utils/makeProps';
 import type { ExtractPropTypes } from 'vue';
 
 /**
@@ -10,9 +10,9 @@ export const rotateMenuProps = {
      */
     customClass: makeStringProp(''),
     /**
-     * 按钮文本数组
+     * 菜单数组，支持传 boat-icon 图标名称字符串数组，或者自定义数据数组对象
      */
-    menus: makeArrayProp<string>(),
+    menus: makeUnionProp<string[] | object[]>([Array], []),
     /**
      * 半径，默认为 110
      */

@@ -9,52 +9,82 @@
     bottom: 0;
 
     .menu-toggler {
-        width: 40px;
-        height: 40px;
+        width: 62px;
+        height: 62px;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 10;
+        border-radius: 50%;
 
-        &::before,
-        &::after,
-        &__line {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            border-radius: 3px;
-            background: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
-            transition: all 0.5s;
-        }
-
-        &::before,
-        &::after {
+        &::before {
             display: block;
             content: '';
-        }
-        &::before {
-            top: 10px;
-        }
-        &__line {
-            top: 20px;
-        }
-        &::after {
-            top: 30px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 1;
+            transform: rotate(0deg);
+            transform-origin: center;
+            background: conic-gradient(
+                from 0deg,
+                #79b7f1,
+                #6eb8e9,
+                #5ac8fa,
+                #7ad0f7,
+                #9ad8f5,
+                #95d6f5,
+                #badcf0,
+                #85c0f5,
+                #72b4f5
+            );
+            animation: rotateCircle 1s linear infinite;
         }
 
-        &:hover {
+        .toggler-content {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 3px;
+            border-radius: 50%;
+            background: rgba(var(--boat-white-color), 1);
+            z-index: 2;
+
             &::before,
             &::after,
-            .menu-toggler__line {
-                background: rgba(var(--boat-primary-color), 1);
+            &__line {
+                width: 30px;
+                height: 5px;
+                border-radius: 3px;
+                background: rgba(var(--boat-primary-color), var(--boat-normal-opacity));
+            }
+
+            &::before,
+            &::after {
+                display: block;
+                content: '';
+                transition: 0.5s;
+            }
+
+            &__line {
+                transition: 0.2s;
             }
         }
     }
 
     .menu-item {
+        width: 70px;
+        height: 70px;
         position: absolute;
         display: block;
         top: 0;
@@ -62,8 +92,6 @@
         left: 0;
         right: 0;
         margin: auto;
-        width: 80px;
-        height: 80px;
         opacity: 0;
         transition: 0.5s;
         z-index: 1;
@@ -87,29 +115,40 @@
                 background: rgba(var(--boat-primary-color), var(--boat-hover-opacity));
                 color: rgb(var(--boat-primary-color));
                 font-size: 45px;
+
+                .boat-icon {
+                    font-size: 45px;
+                }
+            }
+
+            .boat-icon {
+                font-size: 40px;
+                transition: font-size 0.2s;
             }
         }
     }
 
     &.is-expand {
         .menu-toggler {
-            &::before,
-            &::after {
-                top: 18px;
-                transform-origin: 50% 50%;
-            }
-            &::before {
-                transform: rotate(45deg);
-            }
-            &::after {
-                transform: rotate(-45deg);
-            }
-            &__line {
-                background: transparent;
-            }
-            &:hover {
-                .menu-toggler__line {
+            .toggler-content {
+                &::before,
+                &::after {
+                    position: absolute;
+                    transform-origin: center;
+                }
+                &::before {
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    transform: rotate(-45deg);
+                }
+                &__line {
                     background: transparent;
+                }
+                &:hover {
+                    .toggler-content__line {
+                        background: transparent;
+                    }
                 }
             }
         }
@@ -118,6 +157,15 @@
             &__icon {
                 pointer-events: auto;
             }
+        }
+    }
+
+    @keyframes rotateCircle {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
         }
     }
 }

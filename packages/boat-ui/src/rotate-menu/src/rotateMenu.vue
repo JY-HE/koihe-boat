@@ -1,5 +1,11 @@
 <template>
-    <div :class="classes" :style="{ zIndex: props.zIndex }">
+    <div
+        :class="classes"
+        :style="{ zIndex: props.zIndex }"
+        v-draggable="{
+            triggerSelector: '.menu-toggler',
+        }"
+    >
         <div class="menu-toggler" @click="isExpanded = !isExpanded">
             <div class="toggler-content">
                 <div class="toggler-content__line"></div>

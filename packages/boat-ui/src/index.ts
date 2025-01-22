@@ -1,4 +1,5 @@
 import type { App } from 'vue';
+import { vDraggable } from './directives/draggable';
 import { BoatIcon } from './icon';
 import { BoatButton } from './button';
 import { BoatNotification } from './notification';
@@ -30,6 +31,7 @@ export function install(app: App) {
             app.component(item.name, item);
         }
     });
+    app.directive('draggable', vDraggable);
 }
 
 // 导出默认对象，包含 install 方法

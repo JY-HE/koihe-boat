@@ -5,6 +5,7 @@ declare module '@vue/runtime-core' {
         BoatIcon: typeof import('@koihe/boat-ui')['BoatIcon'];
         BoatNotification: typeof import('@koihe/boat-ui')['BoatNotification'];
         BoatProgressNotification: typeof import('@koihe/boat-ui')['BoatProgressNotification'];
+        BoatRotateMenu: typeof import('@koihe/boat-ui')['BoatRotateMenu'];
     }
 }
 

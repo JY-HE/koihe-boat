@@ -6,7 +6,10 @@ export default defineConfig({
     title: 'Boat UI',
     description: 'UI component library for Vue3',
     themeConfig: {
-        // https://vitepress.dev/reference/default-theme-config
+        search: {
+            provider: 'local',
+        },
+
         nav: [
             { text: '开发指南', link: '/guide/installation', activeMatch: '^/guide(/|$)' },
             { text: '组件', link: '/components/overview', activeMatch: '^/components(/|$)' },

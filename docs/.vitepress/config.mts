@@ -47,6 +47,10 @@ export default defineConfig({
                         },
                     ],
                 },
+                {
+                    text: '导航组件',
+                    items: [{ text: 'RotateMenu 旋转菜单', link: '/components/rotate-menu' }],
+                },
             ],
         },
 

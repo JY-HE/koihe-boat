@@ -102,3 +102,15 @@ export function makeUnionProp<T>(types: PropType<T>[], defaultValue: T) {
         default: defaultValue,
     };
 }
+
+/**
+ * 生成 Array 类型的 props
+ * @param defaultValue 数组的默认值，默认为空数组
+ * @returns 返回 Vue prop 的配置对象
+ */
+export function makeArrayProp<T>(defaultValue: T[] = []) {
+    return {
+        type: Array as PropType<T[]>,
+        default: defaultValue,
+    };
+}

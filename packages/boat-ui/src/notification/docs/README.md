@@ -139,6 +139,13 @@ const open = () => {
 | onDestroy | 销毁时的回调函数 | Function(() => void) | - | - |
 | onFooterClick | 点击底部按钮时的回调函数 | Function(() => void) | - | - |
 
+
+### Slots
+
+| 插槽名  | 说明           |
+| ------- | -------------- |
+| default | 自定义通知栏正文内容 |
+
 ### Methods
 
 `BoatNotification` 和 `$notify` 都返回当前的 `BoatNotification` 实例。如果需要手动关闭实例，可以调用它的 close 方法。也可以通过调用 `$notify.closeAll()` 或者 `BoatNotification.closeAll()` 来关闭所有通知。

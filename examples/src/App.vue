@@ -1,8 +1,18 @@
 <template>
-    <boat-rotate-menu :menus="['1', '2', '5', '1']" :radius="120" />
+    <boat-rotate-menu :menus="menus" @click="click"> </boat-rotate-menu>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue';
+
+const menus = computed(() => {
+    return ['play', 'shut', 'close', 'move', 'delete'];
+});
+
+function click(data: string | object) {
+    console.log('🚀 ~ App.vue:34 ~ data:', data);
+}
+</script>
 
 <style lang="scss">
 html,
@@ -12,6 +22,6 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(140 192 161);
+    background-color: rgb(0, 0, 0);
 }
 </style>

@@ -47,7 +47,7 @@ const isExpanded = ref(false);
 
 const classes = computed(() => ({
     'boat-rotate-menu': true,
-    customClass: props.customClass,
+    [props.customClass]: props.customClass,
     'is-expand': isExpanded.value,
 }));
 

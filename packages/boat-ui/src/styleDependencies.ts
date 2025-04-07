@@ -9,6 +9,7 @@ export const styleDependencies: Record<string, string[]> = {
     // 依赖其他组件的组件
     notification: ['icon'],
     'progress-notification': ['notification', 'button'],
+    'rotate-menu': ['icon'],
 };
 
 /**

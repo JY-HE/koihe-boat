@@ -1,4 +1,5 @@
 import {
+  Fragment,
   Teleport,
   Transition,
   computed,
@@ -17,7 +18,9 @@ import {
   openBlock,
   ref,
   render,
+  renderList,
   renderSlot,
+  resolveDirective,
   resolveDynamicComponent,
   toDisplayString,
   unref,
@@ -27,7 +30,110 @@ import {
   withDirectives
 } from "./chunk-YV5EF3ZW.js";
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/directives/draggable/index.mjs
+var getTriggerElement = (context, selector) => {
+  if (!selector) return context;
+  const target = context.querySelector(selector);
+  if (!(target instanceof HTMLElement)) {
+    console.warn(`v-draggable: trigger selector "${selector}" not found`);
+    return null;
+  }
+  return target;
+};
+var parseTranslate = (context) => {
+  const match = context.style.transform.match(/translate(3d)?\(([-\d.]+)px,\s*([-\d.]+)px/);
+  return match ? { x: +match[2], y: +match[3] } : { x: 0, y: 0 };
+};
+var getElementGeometry = (context) => {
+  const rect = context.getBoundingClientRect();
+  const translate = parseTranslate(context);
+  return {
+    baseX: rect.left - translate.x,
+    // 元素未应用 transform 时的原始 left
+    baseY: rect.top - translate.y,
+    // 元素未应用 transform 时的原始 top
+    width: context.offsetWidth,
+    height: context.offsetHeight
+  };
+};
+var getDragBoundaries = (context) => {
+  const { baseX, baseY, width, height } = getElementGeometry(context);
+  return {
+    minX: -baseX,
+    maxX: window.innerWidth - baseX - width,
+    minY: -baseY,
+    maxY: window.innerHeight - baseY - height
+  };
+};
+var clamp = (value, min, max) => Math.max(min, Math.min(value, max));
+var vDraggable = {
+  mounted(el, binding) {
+    var _a;
+    let isDragging = false;
+    let startPosition = { x: 0, y: 0 };
+    let currentTranslate = { x: 0, y: 0 };
+    let blockClickHandler = null;
+    const threshold = ((_a = binding.value) == null ? void 0 : _a.dragThreshold) || 5;
+    const options = binding.value || {};
+    const triggerElement = getTriggerElement(el, options.triggerSelector);
+    if (!triggerElement) return;
+    const initialCursor = getComputedStyle(triggerElement).cursor;
+    const handleMouseDown = (event) => {
+      event.preventDefault();
+      currentTranslate = parseTranslate(el);
+      startPosition = {
+        x: event.clientX - currentTranslate.x,
+        y: event.clientY - currentTranslate.y
+      };
+      window.addEventListener("mousemove", handleMouseMove, { passive: false });
+      window.addEventListener("mouseup", handleMouseUp, { passive: false });
+    };
+    const handleMouseMove = (event) => {
+      var _a2, _b, _c, _d;
+      event.preventDefault();
+      const deltaX = Math.abs(event.clientX - startPosition.x - currentTranslate.x);
+      const deltaY = Math.abs(event.clientY - startPosition.y - currentTranslate.y);
+      if (!isDragging && (deltaX > threshold || deltaY > threshold)) {
+        isDragging = true;
+        if (blockClickHandler) {
+          el.removeEventListener("click", blockClickHandler, true);
+          blockClickHandler = null;
+        }
+        (_b = (_a2 = binding.value) == null ? void 0 : _a2.onDragStart) == null ? void 0 : _b.call(_a2, event);
+      }
+      if (isDragging) {
+        triggerElement.style.cursor = "move";
+        const boundaries = getDragBoundaries(el);
+        currentTranslate = {
+          x: clamp(event.clientX - startPosition.x, boundaries.minX, boundaries.maxX),
+          y: clamp(event.clientY - startPosition.y, boundaries.minY, boundaries.maxY)
+        };
+        el.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px)`;
+        (_d = (_c = binding.value) == null ? void 0 : _c.onDrag) == null ? void 0 : _d.call(_c, event);
+      }
+    };
+    const handleMouseUp = (event) => {
+      var _a2;
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      if (isDragging) {
+        triggerElement.style.cursor = initialCursor;
+        blockClickHandler = (event2) => {
+          event2.stopPropagation();
+          event2.preventDefault();
+          el.removeEventListener("click", blockClickHandler, true);
+          blockClickHandler = null;
+        };
+        el.addEventListener("click", blockClickHandler, true);
+        (_a2 = options.onDragEnd) == null ? void 0 : _a2.call(options, event);
+      }
+      isDragging = false;
+    };
+    triggerElement.addEventListener("mousedown", handleMouseDown);
+  }
+};
+
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
 var withInstall = (main, extra) => {
   main.install = (app) => {
     for (const comp of [main, ...Object.values(extra ?? {})]) {
@@ -49,7 +155,7 @@ var withInstallFunction = (fn, name) => {
   return fn;
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
 function makeBooleanProp(defaultValue = false) {
   return {
     type: Boolean,
@@ -90,7 +196,7 @@ function makeUnionProp(types, defaultValue) {
   };
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
 var iconProps = {
   /**
    * 图标名称
@@ -106,7 +212,7 @@ var iconProps = {
   size: makeStringProp("")
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
 var _hoisted_1 = ["xlink:href"];
 var __default__ = defineComponent({
   name: "BoatIcon"
@@ -140,10 +246,10 @@ var _sfc_main = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
 var BoatIcon = withInstall(_sfc_main);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
 var boatButtonProps = {
   /**
    * 按钮类型
@@ -162,7 +268,7 @@ var boatButtonProps = {
   plain: makeBooleanProp(false)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
 var _hoisted_12 = ["disabled"];
 var __default__2 = defineComponent({
   name: "BoatButton"
@@ -197,10 +303,10 @@ var _sfc_main2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
 var BoatButton = withInstall(_sfc_main2);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
 var boatNotificationProps = {
   /**
    * 通知标题
@@ -292,7 +398,7 @@ var boatNotificationProps = {
   })
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
 var _hoisted_13 = ["id"];
 var _hoisted_2 = { class: "notification-header" };
 var _hoisted_3 = { class: "notification-header__icon" };
@@ -459,7 +565,7 @@ var _sfc_main3 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -533,10 +639,10 @@ function closeAll() {
 notify.closeAll = closeAll;
 notify._context = null;
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
 var BoatNotification = withInstallFunction(notify, "$notify");
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
 var boatProgressNotificationProps = {
   /**
    * 进度通知是否可见
@@ -611,7 +717,7 @@ var boatProgressNotificationProps = {
   offset: makeNumberProp(16)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
 var _hoisted_14 = { class: "progress-header" };
 var _hoisted_22 = { class: "progress-header__icon" };
 var _hoisted_32 = { class: "progress-header__title" };
@@ -841,10 +947,150 @@ var _sfc_main4 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
 var BoatProgressNotification = withInstall(_sfc_main4);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/props.mjs
+var rotateMenuProps = {
+  /**
+   * 自定义类名
+   */
+  customClass: makeStringProp(""),
+  /**
+   * 菜单数组，支持传 boat-icon 图标名称字符串数组，或者自定义数据数组对象
+   */
+  menus: makeUnionProp([Array], []),
+  /**
+   * 半径，默认为 110
+   */
+  radius: makeNumberProp(110),
+  /**
+   * z-index，默认为 9999
+   */
+  zIndex: makeNumberProp(9999)
+};
+
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/rotateMenu.vue2.mjs
+var _hoisted_15 = ["id", "onClick"];
+var __default__5 = defineComponent({
+  name: "BoatRotateMenu"
+});
+var _sfc_main5 = defineComponent({
+  ...__default__5,
+  props: rotateMenuProps,
+  emits: ["click"],
+  setup(__props, { emit: __emit }) {
+    ;
+    const props = __props;
+    const emit = __emit;
+    const isExpanded = ref(false);
+    const classes = computed(() => ({
+      "boat-rotate-menu": true,
+      [props.customClass]: props.customClass,
+      "is-expand": isExpanded.value
+    }));
+    const getLinkStyle = (index2) => {
+      const totalItems = props.menus.length;
+      const angle = totalItems < 6 ? index2 * 60 : 360 / totalItems * index2;
+      return {
+        transform: `rotate(-${angle}deg)`
+      };
+    };
+    watch(
+      () => isExpanded.value,
+      (newVal) => {
+        const totalItems = props.menus.length;
+        for (let i = 0; i < totalItems; i += 1) {
+          const menuItem = document.querySelector(`#menu-item__${i}`);
+          const angle = totalItems < 6 ? i * 60 : 360 / totalItems * i;
+          if (menuItem) {
+            menuItem.style.transform = "none";
+            menuItem.style.opacity = "0";
+            if (newVal) {
+              menuItem.style.transform = `rotate(${angle}deg) translateX(-${props.radius}px)`;
+              menuItem.style.opacity = "1";
+            }
+          }
+        }
+      }
+    );
+    function clickHandler(menu) {
+      emit("click", menu);
+    }
+    return (_ctx, _cache) => {
+      const _directive_draggable = resolveDirective("draggable");
+      return withDirectives((openBlock(), createElementBlock(
+        "div",
+        {
+          class: normalizeClass(classes.value),
+          style: normalizeStyle({ zIndex: props.zIndex })
+        },
+        [
+          createBaseVNode("div", {
+            class: "menu-toggler",
+            onClick: _cache[0] || (_cache[0] = ($event) => isExpanded.value = !isExpanded.value)
+          }, _cache[1] || (_cache[1] = [
+            createBaseVNode(
+              "div",
+              { class: "toggler-content" },
+              [
+                createBaseVNode("div", { class: "toggler-content__line" })
+              ],
+              -1
+              /* HOISTED */
+            )
+          ])),
+          createBaseVNode("ul", null, [
+            (openBlock(true), createElementBlock(
+              Fragment,
+              null,
+              renderList(_ctx.menus, (menu, index2) => {
+                return openBlock(), createElementBlock("li", {
+                  class: "menu-item",
+                  key: index2,
+                  id: `menu-item__${index2}`,
+                  onClick: ($event) => clickHandler(menu)
+                }, [
+                  createBaseVNode(
+                    "div",
+                    {
+                      class: "menu-item__icon",
+                      style: normalizeStyle(getLinkStyle(index2))
+                    },
+                    [
+                      _ctx.$slots.default ? renderSlot(_ctx.$slots, "default", {
+                        key: 0,
+                        data: menu
+                      }) : typeof menu === "string" ? (openBlock(), createBlock(unref(BoatIcon), {
+                        key: 1,
+                        name: menu
+                      }, null, 8, ["name"])) : createCommentVNode("v-if", true)
+                    ],
+                    4
+                    /* STYLE */
+                  )
+                ], 8, _hoisted_15);
+              }),
+              128
+              /* KEYED_FRAGMENT */
+            ))
+          ])
+        ],
+        6
+        /* CLASS, STYLE */
+      )), [
+        [_directive_draggable, {
+          triggerSelector: ".menu-toggler"
+        }]
+      ]);
+    };
+  }
+});
+
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/index.mjs
+var BoatRotateMenu = withInstall(_sfc_main5);
+
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
 var styleDependencies = {
   // 基础组件
   icon: [],
@@ -866,8 +1112,14 @@ function getAllDependencies(componentName) {
   return Array.from(visited);
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.4_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
-var components = [BoatIcon, BoatButton, BoatNotification, BoatProgressNotification];
+// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
+var components = [
+  BoatIcon,
+  BoatButton,
+  BoatNotification,
+  BoatProgressNotification,
+  BoatRotateMenu
+];
 function install(app) {
   components.forEach((item) => {
     if (item.install) {
@@ -876,6 +1128,7 @@ function install(app) {
       app.component(item.name, item);
     }
   });
+  app.directive("draggable", vDraggable);
 }
 var index = {
   install
@@ -885,6 +1138,7 @@ export {
   BoatIcon,
   BoatNotification,
   BoatProgressNotification,
+  BoatRotateMenu,
   boatButtonProps,
   boatNotificationProps,
   boatProgressNotificationProps,
@@ -892,6 +1146,7 @@ export {
   getAllDependencies,
   iconProps,
   install,
+  rotateMenuProps,
   styleDependencies
 };
 //# sourceMappingURL=@koihe_boat-ui.js.map

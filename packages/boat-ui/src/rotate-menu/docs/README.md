@@ -64,6 +64,7 @@ const menus = computed(() => {
 | customClass | 自定义类名 | string | - | '' |
 | radius | 半径 | number | - | 110 |
 | zIndex | 设置 z-index | number | - | 9999 |
+| appendTo | 挂载到哪个 DOM 元素，默认为 body 元素。在挂载前请确保该元素已经存在 |  string / HTMLElement | - | 'body' |
 
 ### Events
 

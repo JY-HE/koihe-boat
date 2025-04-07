@@ -1,31 +1,33 @@
 <template>
-    <div
-        :class="classes"
-        :style="{ zIndex: props.zIndex }"
-        v-draggable="{
-            triggerSelector: '.menu-toggler',
-        }"
-    >
-        <div class="menu-toggler" @click="isExpanded = !isExpanded">
-            <div class="toggler-content">
-                <div class="toggler-content__line"></div>
-            </div>
-        </div>
-        <ul>
-            <li
-                class="menu-item"
-                v-for="(menu, index) in menus"
-                :key="index"
-                :id="`menu-item__${index}`"
-                @click="clickHandler(menu)"
-            >
-                <div class="menu-item__icon" :style="getLinkStyle(index)">
-                    <slot :data="menu" v-if="$slots.default"></slot>
-                    <boat-icon v-else-if="typeof menu === 'string'" :name="menu" />
+    <teleport :to="appendTo">
+        <div
+            :class="classes"
+            :style="{ zIndex: props.zIndex }"
+            v-draggable="{
+                triggerSelector: '.menu-toggler',
+            }"
+        >
+            <div class="menu-toggler" @click="isExpanded = !isExpanded">
+                <div class="toggler-content">
+                    <div class="toggler-content__line"></div>
                 </div>
-            </li>
-        </ul>
-    </div>
+            </div>
+            <ul>
+                <li
+                    class="menu-item"
+                    v-for="(menu, index) in menus"
+                    :key="index"
+                    :id="`menu-item__${index}`"
+                    @click="clickHandler(menu)"
+                >
+                    <div class="menu-item__icon" :style="getLinkStyle(index)">
+                        <slot :data="menu" v-if="$slots.default"></slot>
+                        <boat-icon v-else-if="typeof menu === 'string'" :name="menu" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </teleport>
 </template>
 
 <script lang="ts" setup>

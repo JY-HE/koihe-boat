@@ -2,6 +2,39 @@
 
 悬浮在页面上可拖拽的旋转菜单按钮。
 
+<boat-rotate-menu :menus="['home1', 'download', 'search']" @click="click"/>
+
+<script setup lang="ts">
+import { useRouter, useData } from 'vitepress';
+
+const router = useRouter();
+const { site } = useData();
+const map = new Map([
+    ['home1',''],
+    ['download','guide/installation'],
+])
+
+const click = (item: string) => {
+    if (item === 'search') {
+        triggerSearchShortcut();
+        return;
+    }
+    const path = map.get(item)
+    const base = site.value.base;
+    router.go(`${base}${path}`)
+};
+
+const triggerSearchShortcut = () => {
+  const event = new KeyboardEvent('keydown', {
+    key: 'k',
+    code: 'KeyK',
+    ctrlKey: true,
+    bubbles: true,
+  });
+  document.dispatchEvent(event);
+};
+</script>
+
 ## 基础用法
 
 `RotateMenu` 接收一个 `menus` 字段，它的类型是字符串数组或者数组对象。
@@ -12,7 +45,7 @@
 
 ```vue
 <template>
-    <boat-rotate-menu :menus="['play', 'shut', 'close', 'move', 'delete']"></boat-rotate-menu>
+    <boat-rotate-menu :menus="['home1', 'download', 'search']"></boat-rotate-menu>
 </template>
 ```
 

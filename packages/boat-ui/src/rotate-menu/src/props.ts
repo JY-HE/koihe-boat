@@ -21,6 +21,10 @@ export const rotateMenuProps = {
      * z-index，默认为 9999
      */
     zIndex: makeNumberProp(9999),
+    /**
+     * 挂载到指定元素上，默认为 body 元素
+     */
+    appendTo: makeUnionProp<string | HTMLElement>([String, Object], 'body'),
 };
 
 /**

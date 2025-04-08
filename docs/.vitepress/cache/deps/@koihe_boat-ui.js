@@ -30,7 +30,7 @@ import {
   withDirectives
 } from "./chunk-YV5EF3ZW.js";
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/directives/draggable/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/directives/draggable/index.mjs
 var getTriggerElement = (context, selector) => {
   if (!selector) return context;
   const target = context.querySelector(selector);
@@ -133,7 +133,7 @@ var vDraggable = {
   }
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/install/index.mjs
 var withInstall = (main, extra) => {
   main.install = (app) => {
     for (const comp of [main, ...Object.values(extra ?? {})]) {
@@ -155,7 +155,7 @@ var withInstallFunction = (fn, name) => {
   return fn;
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/utils/makeProps/index.mjs
 function makeBooleanProp(defaultValue = false) {
   return {
     type: Boolean,
@@ -196,7 +196,7 @@ function makeUnionProp(types, defaultValue) {
   };
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/props.mjs
 var iconProps = {
   /**
    * 图标名称
@@ -212,7 +212,7 @@ var iconProps = {
   size: makeStringProp("")
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/src/icon.vue2.mjs
 var _hoisted_1 = ["xlink:href"];
 var __default__ = defineComponent({
   name: "BoatIcon"
@@ -246,10 +246,10 @@ var _sfc_main = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/icon/index.mjs
 var BoatIcon = withInstall(_sfc_main);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/props.mjs
 var boatButtonProps = {
   /**
    * 按钮类型
@@ -268,7 +268,7 @@ var boatButtonProps = {
   plain: makeBooleanProp(false)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/src/button.vue2.mjs
 var _hoisted_12 = ["disabled"];
 var __default__2 = defineComponent({
   name: "BoatButton"
@@ -303,10 +303,10 @@ var _sfc_main2 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/button/index.mjs
 var BoatButton = withInstall(_sfc_main2);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/props.mjs
 var boatNotificationProps = {
   /**
    * 通知标题
@@ -398,7 +398,7 @@ var boatNotificationProps = {
   })
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notification.vue2.mjs
 var _hoisted_13 = ["id"];
 var _hoisted_2 = { class: "notification-header" };
 var _hoisted_3 = { class: "notification-header__icon" };
@@ -565,7 +565,7 @@ var _sfc_main3 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/src/notify.mjs
 var notifications = {
   "top-left": [],
   "top-right": [],
@@ -639,10 +639,10 @@ function closeAll() {
 notify.closeAll = closeAll;
 notify._context = null;
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/notification/index.mjs
 var BoatNotification = withInstallFunction(notify, "$notify");
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/props.mjs
 var boatProgressNotificationProps = {
   /**
    * 进度通知是否可见
@@ -717,7 +717,7 @@ var boatProgressNotificationProps = {
   offset: makeNumberProp(16)
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/src/progressNotification.vue2.mjs
 var _hoisted_14 = { class: "progress-header" };
 var _hoisted_22 = { class: "progress-header__icon" };
 var _hoisted_32 = { class: "progress-header__title" };
@@ -947,10 +947,10 @@ var _sfc_main4 = defineComponent({
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/progress-notification/index.mjs
 var BoatProgressNotification = withInstall(_sfc_main4);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/props.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/props.mjs
 var rotateMenuProps = {
   /**
    * 自定义类名
@@ -967,10 +967,14 @@ var rotateMenuProps = {
   /**
    * z-index，默认为 9999
    */
-  zIndex: makeNumberProp(9999)
+  zIndex: makeNumberProp(9999),
+  /**
+   * 挂载到指定元素上，默认为 body 元素
+   */
+  appendTo: makeUnionProp([String, Object], "body")
 };
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/rotateMenu.vue2.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/src/rotateMenu.vue2.mjs
 var _hoisted_15 = ["id", "onClick"];
 var __default__5 = defineComponent({
   name: "BoatRotateMenu"
@@ -1019,85 +1023,88 @@ var _sfc_main5 = defineComponent({
     }
     return (_ctx, _cache) => {
       const _directive_draggable = resolveDirective("draggable");
-      return withDirectives((openBlock(), createElementBlock(
-        "div",
-        {
-          class: normalizeClass(classes.value),
-          style: normalizeStyle({ zIndex: props.zIndex })
-        },
-        [
-          createBaseVNode("div", {
-            class: "menu-toggler",
-            onClick: _cache[0] || (_cache[0] = ($event) => isExpanded.value = !isExpanded.value)
-          }, _cache[1] || (_cache[1] = [
-            createBaseVNode(
-              "div",
-              { class: "toggler-content" },
-              [
-                createBaseVNode("div", { class: "toggler-content__line" })
-              ],
-              -1
-              /* HOISTED */
-            )
-          ])),
-          createBaseVNode("ul", null, [
-            (openBlock(true), createElementBlock(
-              Fragment,
-              null,
-              renderList(_ctx.menus, (menu, index2) => {
-                return openBlock(), createElementBlock("li", {
-                  class: "menu-item",
-                  key: index2,
-                  id: `menu-item__${index2}`,
-                  onClick: ($event) => clickHandler(menu)
-                }, [
-                  createBaseVNode(
-                    "div",
-                    {
-                      class: "menu-item__icon",
-                      style: normalizeStyle(getLinkStyle(index2))
-                    },
-                    [
-                      _ctx.$slots.default ? renderSlot(_ctx.$slots, "default", {
-                        key: 0,
-                        data: menu
-                      }) : typeof menu === "string" ? (openBlock(), createBlock(unref(BoatIcon), {
-                        key: 1,
-                        name: menu
-                      }, null, 8, ["name"])) : createCommentVNode("v-if", true)
-                    ],
-                    4
-                    /* STYLE */
-                  )
-                ], 8, _hoisted_15);
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            ))
-          ])
-        ],
-        6
-        /* CLASS, STYLE */
-      )), [
-        [_directive_draggable, {
-          triggerSelector: ".menu-toggler"
-        }]
-      ]);
+      return openBlock(), createBlock(Teleport, { to: _ctx.appendTo }, [
+        withDirectives((openBlock(), createElementBlock(
+          "div",
+          {
+            class: normalizeClass(classes.value),
+            style: normalizeStyle({ zIndex: props.zIndex })
+          },
+          [
+            createBaseVNode("div", {
+              class: "menu-toggler",
+              onClick: _cache[0] || (_cache[0] = ($event) => isExpanded.value = !isExpanded.value)
+            }, _cache[1] || (_cache[1] = [
+              createBaseVNode(
+                "div",
+                { class: "toggler-content" },
+                [
+                  createBaseVNode("div", { class: "toggler-content__line" })
+                ],
+                -1
+                /* HOISTED */
+              )
+            ])),
+            createBaseVNode("ul", null, [
+              (openBlock(true), createElementBlock(
+                Fragment,
+                null,
+                renderList(_ctx.menus, (menu, index2) => {
+                  return openBlock(), createElementBlock("li", {
+                    class: "menu-item",
+                    key: index2,
+                    id: `menu-item__${index2}`,
+                    onClick: ($event) => clickHandler(menu)
+                  }, [
+                    createBaseVNode(
+                      "div",
+                      {
+                        class: "menu-item__icon",
+                        style: normalizeStyle(getLinkStyle(index2))
+                      },
+                      [
+                        _ctx.$slots.default ? renderSlot(_ctx.$slots, "default", {
+                          key: 0,
+                          data: menu
+                        }) : typeof menu === "string" ? (openBlock(), createBlock(unref(BoatIcon), {
+                          key: 1,
+                          name: menu
+                        }, null, 8, ["name"])) : createCommentVNode("v-if", true)
+                      ],
+                      4
+                      /* STYLE */
+                    )
+                  ], 8, _hoisted_15);
+                }),
+                128
+                /* KEYED_FRAGMENT */
+              ))
+            ])
+          ],
+          6
+          /* CLASS, STYLE */
+        )), [
+          [_directive_draggable, {
+            triggerSelector: ".menu-toggler"
+          }]
+        ])
+      ], 8, ["to"]);
     };
   }
 });
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/rotate-menu/index.mjs
 var BoatRotateMenu = withInstall(_sfc_main5);
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/styleDependencies.mjs
 var styleDependencies = {
   // 基础组件
   icon: [],
   button: [],
   // 依赖其他组件的组件
   notification: ["icon"],
-  "progress-notification": ["notification", "button"]
+  "progress-notification": ["notification", "button"],
+  "rotate-menu": ["icon"]
 };
 function getAllDependencies(componentName) {
   const visited = /* @__PURE__ */ new Set();
@@ -1112,7 +1119,7 @@ function getAllDependencies(componentName) {
   return Array.from(visited);
 }
 
-// ../node_modules/.pnpm/@koihe+boat-ui@1.0.5_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
+// ../node_modules/.pnpm/@koihe+boat-ui@1.1.0_vue@3.5.13_typescript@5.4.2_/node_modules/@koihe/boat-ui/es/index.mjs
 var components = [
   BoatIcon,
   BoatButton,

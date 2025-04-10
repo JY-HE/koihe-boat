@@ -11,6 +11,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import BoatUI from '@koihe/boat-ui';
 import '@koihe/boat-ui/dist/index.css';
+// 如果你需要使用 boat-icon 图标，需要引入此文件，否则不需要
+import '@koihe/boat-ui/dist/iconfont.js';
 
 const app = createApp(App);
 app.use(BoatUI);

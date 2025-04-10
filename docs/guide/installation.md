@@ -25,9 +25,13 @@ pnpm add @koihe/boat-ui
 
 # 引入组件库-UMD方式
 <script src="https://unpkg.com/@koihe/boat-ui/dist/index.js"></script>
+# 引入图标文件
+<script src="https://unpkg.com/@koihe/boat-ui/dist/iconfont.js"></script>
 
 # 引入组件库-ESM方式
 <script src="https://esm.sh/@koihe/boat-ui/dist/index.mjs"></script>
+# 引入图标文件
+<script src="https://esm.sh/@koihe/boat-ui/dist/iconfont.js"></script>
 ```
 
 
@@ -51,6 +55,7 @@ pnpm add @koihe/boat-ui
         <div id="app"></div>
         <script src="https://unpkg.com/vue"></script>
         <script src="https://unpkg.com/@koihe/boat-ui/dist/index.js"></script>
+        <script src="https://unpkg.com/@koihe/boat-ui/dist/iconfont.js"></script>
         <script>
             const app = Vue.createApp({
                 template: `
@@ -89,6 +94,7 @@ pnpm add @koihe/boat-ui
                 }
             }
         </script>
+        <script src="https://esm.sh/@koihe/boat-ui/dist/iconfont.js"></script>
         <script type="module">
             import { createApp } from 'vue';
             import BoatUI from '@koihe/boat-ui';

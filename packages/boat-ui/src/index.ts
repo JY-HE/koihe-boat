@@ -31,7 +31,11 @@ export function install(app: App) {
             app.component(item.name, item);
         }
     });
-    app.directive('draggable', vDraggable);
+    // 只在没有注册过拖拽指令时，进行注册
+    if (!app.config.globalProperties._draggableRegistered) {
+        app.directive('draggable', vDraggable);
+        app.config.globalProperties._draggableRegistered = true;
+    }
 }
 
 // 导出默认对象，包含 install 方法

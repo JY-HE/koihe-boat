@@ -89,7 +89,7 @@ const menus = computed(() => {
 
 ## 注意事项
 
-如果只是单纯引入 `RotateMenu` 组件使用，并且需要使用内置 `icon` 图标，则需要额外引入 `iconfont.js` 文件，如下：
+如果只是单纯引入 `RotateMenu` 组件使用，并且需要使用内置 `icon` 图标，则需要额外引入 `iconfont.js` 文件，或者提前在 `main.ts` 文件中引入，如下：
 
 ```vue
 <template>
@@ -101,16 +101,6 @@ import { BoatRotateMenu } from '@koihe/boat-ui';
 import '@koihe/boat-ui/es/rotate-menu/style/index';
 import '@koihe/boat-ui/dist/iconfont.js';
 </script>
-```
-
-或者在你的入口文件引入，并且需要同时注册拖拽指令，如下：
-
-```typescript
-import '@koihe/boat-ui/dist/iconfont.js';
-import { vDraggable } from '@koihe/boat-ui/es/directives/draggable/index';
-
-// ...
-app.directive('draggable', vDraggable);
 ```
 
 ## API

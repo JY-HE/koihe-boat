@@ -56,7 +56,7 @@ const menus = computed(() => {
 
 ## 注意事项
 
-如果只是单纯引入 `RotateMenu` 组件使用，而不是使用[完整引入](https://jy-he.github.io/koihe-boat/guide/quickstart.html#%E5%AE%8C%E6%95%B4%E5%BC%95%E5%85%A5)或者[自动引入](https://jy-he.github.io/koihe-boat/guide/quickstart.html#%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5-%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8)，则需要额外引入 `iconfont.js` 文件，如下：
+如果只是单纯引入 `RotateMenu` 组件使用，并且需要使用内置 `icon` 图标，则需要额外引入 `iconfont.js` 文件，或者提前在 `main.ts` 文件中引入，如下：
 
 ```vue
 <template>
@@ -66,17 +66,8 @@ const menus = computed(() => {
 <script setup lang="ts">
 import { BoatRotateMenu } from '@koihe/boat-ui';
 import '@koihe/boat-ui/es/rotate-menu/style/index';
-import '@koihe/boat-ui/dist/icons/iconfont.js';
+import '@koihe/boat-ui/dist/iconfont.js';
 </script>
-```
-
-同时，需要在你的入口文件，如 `main.ts` 中注册拖拽指令，如下：
-
-```typescript
-import { vDraggable } from '@koihe/boat-ui/es/directives/draggable/index';
-
-// ...
-app.directive('draggable', vDraggable);
 ```
 
 ## API

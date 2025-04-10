@@ -46,6 +46,3 @@ export * from './button';
 export * from './notification';
 export * from './progress-notification';
 export * from './rotate-menu';
-
-// 导出组件样式依赖关系
-export * from './styleDependencies';

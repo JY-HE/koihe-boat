@@ -61,6 +61,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import BoatUI from '@koihe/boat-ui';
 import '@koihe/boat-ui/dist/index.css';
+import '@koihe/boat-ui/dist/icons/iconfont.js';
 
 const app = createApp(App);
 app.use(BoatUI);
@@ -85,7 +86,7 @@ npm install unplugin-vue-components --save-dev
 
 ```javascript
 import Components from 'unplugin-vue-components/vite';
-import { BoatUIResolver } from '@koihe/boat-ui/lib/resolver';
+import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
 
 export default {
   // ...
@@ -101,7 +102,7 @@ export default {
 
 ```javascript
 const Components = require('unplugin-vue-components/webpack')
-const { BoatUIResolver } = require('@koihe/boat-ui/lib/resolver')
+const { BoatUIResolver } = require('@koihe/boat-ui/dist/resolver')
 
 module.exports = {
   // ...

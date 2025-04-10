@@ -16,7 +16,7 @@ import { PKG_CAMELCASE_NAME } from '../utils/constants';
 const buildIconfontCopy = async () => {
     await new Promise(resolve => {
         src(`${COMPILER_ROOT}/assets/icons/iconfont.js`)
-            .pipe(dest(path.join(OUTPUT, 'icons')))
+            .pipe(dest(`${OUTPUT}`))
             .on('end', resolve);
     });
 };
@@ -75,7 +75,39 @@ const build = async (minify: boolean = false) => {
     ]);
 };
 
+/**
+ * @description 编译 /utils/resolver/index.ts 文件到 dist 目录
+ */
+const buildResolver = async () => {
+    const input = path.resolve(`${COMPILER_ROOT}/utils/resolver`, 'index.ts');
+
+    const bundle = await rollup({
+        input,
+        plugins: [
+            esbuild({
+                target: 'esnext',
+                sourceMap: true,
+            }),
+        ],
+        external: [/./], // 保持外部依赖为外部
+        treeshake: false,
+    });
+
+    await Promise.all([
+        bundle.write({
+            format: 'esm',
+            file: path.resolve(OUTPUT, 'resolver.mjs'),
+            sourcemap: true,
+        }),
+        bundle.write({
+            format: 'cjs',
+            file: path.resolve(OUTPUT, 'resolver.js'),
+            sourcemap: true,
+        }),
+    ]);
+};
+
 // 合并为一个主任务
 export const buildFull = async () => {
-    await Promise.all([build(false), build(true)]);
+    await Promise.all([build(false), build(true), buildResolver()]);
 };

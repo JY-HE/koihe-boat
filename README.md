@@ -85,7 +85,7 @@ npm install unplugin-vue-components --save-dev
 
 ```javascript
 import Components from 'unplugin-vue-components/vite';
-import { BoatUIResolver } from '@koihe/boat-ui/lib/resolver';
+import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
 
 export default {
   // ...
@@ -101,7 +101,7 @@ export default {
 
 ```javascript
 const Components = require('unplugin-vue-components/webpack')
-const { BoatUIResolver } = require('@koihe/boat-ui/lib/resolver')
+const { BoatUIResolver } = require('@koihe/boat-ui/dist/resolver')
 
 module.exports = {
   // ...

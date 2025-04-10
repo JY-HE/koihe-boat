@@ -53,16 +53,12 @@
             ],
             "require": "./lib/*.js"
         },
-        "./lib/resolver": {
-            "types": "./lib/resolver.d.ts",
-            "require": "./lib/resolver.js"
+        "./dist/*": "./dist/*",
+        "./dist/resolver": {
+            "types": "./dist/resolver.d.ts",
+            "require": "./dist/resolver.js",
+            "import": "./dist/resolver.mjs"
         },
-        "./es/resolver": {
-            "types": "./es/resolver.d.ts",
-            "import": "./es/resolver.mjs"
-        },
-        "./dist/index.css": "./dist/index.css",
-        "./dist/icons/iconfont.js": "./dist/icons/iconfont.js",
         "./es/*.scss": "./es/*.scss",
         "./lib/*.scss": "./lib/*.scss",
         "./es/*/style/*": "./es/*/style/*",
@@ -102,6 +98,7 @@
         "@types/gulp": "^4.0.17",
         "@types/gulp-autoprefixer": "^0.0.37",
         "@types/gulp-clean-css": "^4.3.4",
+        "@types/gulp-rename": "^2.0.6",
         "@types/gulp-sass": "^5.0.4",
         "@types/node": "^18.7.16",
         "@types/rollup": "^0.54.0",
@@ -117,6 +114,7 @@
         "gulp": "^5.0.0",
         "gulp-autoprefixer": "^9.0.0",
         "gulp-clean-css": "^4.3.0",
+        "gulp-rename": "^2.0.0",
         "gulp-sass": "^6.0.0",
         "happy-dom": "^16.5.3",
         "rollup": "^3.29.5",

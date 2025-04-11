@@ -31,9 +31,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, getCurrentInstance } from 'vue';
 import { rotateMenuProps } from './props';
 import BoatIcon from '../../icon';
+import { vDraggable } from '../../directives/draggable';
 
 defineOptions({
     name: 'BoatRotateMenu',
@@ -85,5 +86,19 @@ watch(
 
 function clickHandler(menu: string | object) {
     emit('click', menu);
+}
+
+/**
+ * 自动注册拖拽指令（避免用户手动 app.directive 注册）
+ */
+const instance = getCurrentInstance();
+if (
+    instance &&
+    instance.appContext &&
+    !instance.appContext.config.globalProperties._draggableRegistered
+) {
+    instance.appContext.app.directive('draggable', vDraggable);
+    // 打上标记，避免重复注册
+    instance.appContext.config.globalProperties._draggableRegistered = true;
 }
 </script>

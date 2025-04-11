@@ -15,8 +15,7 @@
 ## 特性
 
 - 🚀 性能极佳，组件平均体积小于 1KB（min+gzip）
-- 🚀 20+ 个高质量组件
-- 🚀 零外部依赖，不依赖三方 npm 包
+- 🚀 20+ 个[高质量组件](https://jy-he.github.io/koihe-boat/)
 - 💪 使用 TypeScript 编写，提供完整的类型定义
 - 📖 提供丰富的文档和组件示例
 - 🍭 支持 Vue 3
@@ -86,7 +85,7 @@ npm install unplugin-vue-components --save-dev
 
 ```javascript
 import Components from 'unplugin-vue-components/vite';
-import { BoatUIResolver } from '@koihe/boat-ui/lib/resolver';
+import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
 
 export default {
   // ...
@@ -102,7 +101,7 @@ export default {
 
 ```javascript
 const Components = require('unplugin-vue-components/webpack')
-const { BoatUIResolver } = require('@koihe/boat-ui/lib/resolver')
+const { BoatUIResolver } = require('@koihe/boat-ui/dist/resolver')
 
 module.exports = {
   // ...

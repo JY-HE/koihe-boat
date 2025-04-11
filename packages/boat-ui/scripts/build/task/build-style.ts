@@ -93,8 +93,6 @@ const buildStyleModules = async () => {
             absolute: true,
             onlyFiles: true,
         })),
-        // resolver
-        path.resolve(COMPILER_ROOT, 'resolver.ts'),
     ];
 
     const bundle = await rollup({

@@ -1,6 +1,40 @@
 import type { ComponentResolver } from 'unplugin-vue-components/types';
 import { kebabCase } from 'unplugin-vue-components';
-import { getAllDependencies } from './styleDependencies';
+
+/**
+ * @description 组件样式依赖关系配置
+ */
+const styleDependencies: Record<string, string[]> = {
+    // 基础组件
+    icon: [],
+    button: [],
+
+    // 依赖其他组件的组件
+    notification: ['icon'],
+    'progress-notification': ['notification', 'button'],
+    'rotate-menu': ['icon'],
+};
+
+/**
+ * @description 获取组件的所有样式依赖（包括递归依赖）
+ * @param componentName 组件名称
+ * @returns 所有依赖的数组
+ */
+function getAllDependencies(componentName: string): string[] {
+    const visited = new Set<string>();
+
+    function collectDependencies(name: string) {
+        if (visited.has(name)) return;
+
+        visited.add(name);
+        const deps = styleDependencies[name] || [];
+        deps.forEach(dep => collectDependencies(dep));
+    }
+
+    collectDependencies(componentName);
+    visited.delete(componentName); // 移除自身
+    return Array.from(visited);
+}
 
 /**
  * @description 是否服务端渲染
@@ -46,15 +80,6 @@ function getSideEffects(dirName: string, options: BoatUIResolverOptions): string
 }
 
 /**
- * @description 获取组件的样式依赖
- * @param componentName 组件名称
- * @returns 依赖的组件数组
- */
-function getStyleDependencies(componentName: string): string[] {
-    return getAllDependencies(componentName);
-}
-
-/**
  * @description 解析器, 应用于自动导入
  * @param options.importStyle 是否加载样式，默认加载
  * @returns
@@ -72,7 +97,7 @@ export function BoatUIResolver(options: BoatUIResolverOptions = {}): ComponentRe
                 const sideEffects: string[] = [];
 
                 // 先处理依赖组件的样式，确保依赖先导入
-                const dependencies = getStyleDependencies(componentName);
+                const dependencies = getAllDependencies(componentName);
                 dependencies.forEach(dep => {
                     const depStyle = getSideEffects(dep, options);
                     if (depStyle && !importedStyles.has(depStyle)) {

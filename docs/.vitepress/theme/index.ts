@@ -8,7 +8,7 @@ export default {
     ...DefaultTheme,
     async enhanceApp({ app }) {
         if (!import.meta.env.SSR) {
-            await import('@koihe/boat-ui/dist/icons/iconfont.js');
+            await import('@koihe/boat-ui/dist/iconfont.js');
         }
         app.use(BoatUI);
     },

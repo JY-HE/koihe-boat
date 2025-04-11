@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://esm.sh/@koihe/boat-ui/dist/index.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Esm App</title>
     </head>
@@ -12,27 +13,25 @@
             {
                 "imports": {
                     "vue": "https://esm.sh/vue/dist/vue.esm-bundler.js",
-                    "@koihe/boat-ui": "./node_modules/@koihe/boat-ui/dist/index.mjs"
+                    "@koihe/boat-ui": "https://esm.sh/@koihe/boat-ui/dist/index.mjs"
                 }
             }
         </script>
+        <script src="https://unpkg.com/@koihe/boat-ui/dist/iconfont.js"></script>
         <script type="module">
             import { createApp } from 'vue';
             import BoatUI from '@koihe/boat-ui';
 
             const app = createApp({
                 template: `
-    <div>
-        <boat-button type="primary" plain>测试全量esm模块</boat-button>
-        <boat-button type="primary" plain>需要使用Live Server</boat-button>
-    </div>
-        `,
+                            <div>
+                                <boat-button type="primary" plain>BoatUI</boat-button>
+                                <boat-icon name="search" size="24" color="#409EFF"></boat-icon>
+                            </div>
+                        `,
             });
-
             app.use(BoatUI);
             app.mount('#app');
-
-            console.log('🚀 ~ index.esm.html:33 ~ BoatUI:', BoatUI);
         </script>
     </body>
 </html>

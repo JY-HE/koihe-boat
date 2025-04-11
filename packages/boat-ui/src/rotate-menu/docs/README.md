@@ -54,6 +54,22 @@ const menus = computed(() => {
 </script>
 ```
 
+## 注意事项
+
+如果只是单纯引入 `RotateMenu` 组件使用，并且需要使用内置 `icon` 图标，则需要额外引入 `iconfont.js` 文件，或者提前在 `main.ts` 文件中引入，如下：
+
+```vue
+<template>
+    <boat-rotate-menu :menus="['play', 'shut', 'close', 'move', 'delete']"></boat-rotate-menu>
+</template>
+
+<script setup lang="ts">
+import { BoatRotateMenu } from '@koihe/boat-ui';
+import '@koihe/boat-ui/es/rotate-menu/style/index';
+import '@koihe/boat-ui/dist/iconfont.js';
+</script>
+```
+
 ## API
 
 ### Props

@@ -22,16 +22,14 @@ pnpm add @koihe/boat-ui
 ```bash
 # 引入样式
 <link rel="stylesheet" href="https://unpkg.com/@koihe/boat-ui/dist/index.css">
-
-# 引入组件库-UMD方式
-<script src="https://unpkg.com/@koihe/boat-ui/dist/index.js"></script>
 # 引入图标文件
 <script src="https://unpkg.com/@koihe/boat-ui/dist/iconfont.js"></script>
 
+# 引入组件库-UMD方式
+<script src="https://unpkg.com/@koihe/boat-ui/dist/index.js"></script>
+
 # 引入组件库-ESM方式
 <script src="https://esm.sh/@koihe/boat-ui/dist/index.mjs"></script>
-# 引入图标文件
-<script src="https://esm.sh/@koihe/boat-ui/dist/iconfont.js"></script>
 ```
 
 
@@ -94,7 +92,7 @@ pnpm add @koihe/boat-ui
                 }
             }
         </script>
-        <script src="https://esm.sh/@koihe/boat-ui/dist/iconfont.js"></script>
+        <script src="https://unpkg.com/@koihe/boat-ui/dist/iconfont.js"></script>
         <script type="module">
             import { createApp } from 'vue';
             import BoatUI from '@koihe/boat-ui';

@@ -11,6 +11,6 @@
         "vitepress": "^1.5.0"
     },
     "dependencies": {
-        "@koihe/boat-ui": "^1.1.0"
+        "@koihe/boat-ui": "^1.1.2"
     }
 }

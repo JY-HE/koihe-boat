@@ -5,11 +5,33 @@
 
 ---
 
+## [1.1.2] - 2025-04-10
+
+### ✨ Features
+
+1. `iconfont.js` 引入路径变更，需要使用内置图标时，统一通过以下路径引入
+```javascript
+// main.ts
+import '@koihe/boat-ui/dist/iconfont.js';
+```
+2. `resolver.js` 引入路径变更，当使用按需引入组件时，统一通过以下路径引入解析器
+```javascript
+// vite.config.ts
+import { BoatUIResolver } from '@koihe/boat-ui/dist/resolver';
+```
+3. `boat-rotate-menu` 组件内部自动注册拖拽指令，不需要用户额外注册
+
+### 🐛 Fix
+
+1. 修复引入解析器路径不能识别问题
+
+---
+
 ## [1.1.1] - 2025-04-08
 
 ### 🐛 Fix
 
-- 修复导出配置问题
+1. 修复导出配置问题
 
 ---
 
@@ -17,7 +39,7 @@
 
 ### ✨ Features
 
-- 新增 `RotateMenu` 旋转菜单组件
+1. 新增 `RotateMenu` 旋转菜单组件
 
 ---
 
@@ -25,7 +47,7 @@
 
 ### 🐛 Fix
 
-- 修复已知问题
+1. 修复已知问题
 
 ---
 
@@ -33,7 +55,7 @@
 
 ### 🐛 Fix
 
-- 修复已知问题
+1. 修复已知问题
 
 ---
 
@@ -41,7 +63,7 @@
 
 ### ✨ Features
 
-- 新增一批图标组件（`Icon`）
+1. 新增一批图标组件（`Icon`）
 
 ---
 
@@ -49,7 +71,7 @@
 
 ### 🎉 Initial Release
 
-- 项目初始化，发布首个版本
+1. 项目初始化，发布首个版本
 
 ---
 

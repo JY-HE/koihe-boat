@@ -74,9 +74,11 @@ function getSideEffects(dirName: string, options: BoatUIResolverOptions): string
 
     // 获取到副作用的路径
     if (importStyle === 'scss') {
-        return `@koihe/boat-ui/${moduleType}/${dirName}/style/scss`;
+        return `@koihe/boat-ui/${moduleType}/${dirName}/style/index.scss`;
     }
-    return `@koihe/boat-ui/${moduleType}/${dirName}/style/index`;
+    return `@koihe/boat-ui/${moduleType}/${dirName}/style/index${
+        moduleType === 'lib' ? '.js' : '.mjs'
+    }`;
 }
 
 /**

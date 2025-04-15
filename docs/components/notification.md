@@ -299,7 +299,7 @@ const open1 = (type = '') => {
     });
 }
 
-const open2 = (position = '', duration = 0) => {
+const open2 = (position = 'top-right', duration = 0) => {
     proxy.$notify({
         title: 'Title',
         content: 'This is a reminder',

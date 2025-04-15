@@ -50,8 +50,9 @@ export const withInstallDirective = <T extends Directive>(directive: T, name: st
 
     return directive as SFCWithInstall<T>;
 };
+
 /**
- * 添加空的 install 方法
+ * 添加空的 install 方法，阻止组件被单独全局注册
  * @param component 组件
  */
 export const withNoopInstall = <T>(component: T) => {

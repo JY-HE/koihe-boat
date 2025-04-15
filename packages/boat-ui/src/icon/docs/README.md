@@ -10,7 +10,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 // 引入图标文件
-import '@koihe/boat-ui/dist/icons/iconfont.js';
+import '@koihe/boat-ui/dist/iconfont.js';
 
 const app = createApp(App);
 app.mount('#app');

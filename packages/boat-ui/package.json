@@ -1,12 +1,20 @@
 {
     "name": "@koihe/boat-ui",
-    "version": "1.1.3",
+    "version": "1.1.4",
     "description": "Front-end UI component library for Vue3",
     "private": false,
     "author": "koihe",
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
+    },
+    "homepage": "https://jy-he.github.io/koihe-boat/",
+    "bugs": {
+        "url": "https://github.com/JY-HE/koihe-boat/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JY-HE/koihe-boat.git"
     },
     "main": "lib/index.js",
     "module": "es/index.mjs",

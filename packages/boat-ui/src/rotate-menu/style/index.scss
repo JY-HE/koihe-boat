@@ -7,6 +7,7 @@
     position: fixed;
     right: 0;
     bottom: 0;
+    pointer-events: none;
 
     .menu-toggler {
         width: 62px;
@@ -21,6 +22,7 @@
         justify-content: center;
         z-index: 10;
         border-radius: 50%;
+        pointer-events: auto;
 
         &::before {
             display: block;
